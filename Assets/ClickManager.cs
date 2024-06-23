@@ -8,43 +8,70 @@ public class ClickManager : MonoBehaviour
     public bool isMoving;
     public Transform player;
     GameManager gameManager;
+    private Vector3 previousPosition; // Speichert die vorherige Position des Spielers
+    private bool facingRight = true; // Speichert die aktuelle Richtung, in die der Spieler schaut
+
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        previousPosition = player.position; // Initialisiert die vorherige Position
+    }
+
+    private void Update()
+    {
+        // Überprüfen, ob der Spieler sich bewegt hat
+        if (isMoving)
+        {
+            Vector3 currentPosition = player.position; // Aktuelle Position des Spielers
+            if (currentPosition.x > previousPosition.x && !facingRight)
+            {
+                // Spieler bewegt sich nach rechts und schaut nach links
+                Flip();
+            }
+            else if (currentPosition.x < previousPosition.x && facingRight)
+            {
+                // Spieler bewegt sich nach links und schaut nach rechts
+                Flip();
+            }
+            previousPosition = currentPosition; // Aktualisiert die vorherige Position
+        }
+    }
+
+    private void Flip()
+    {
+        facingRight = !facingRight;
+        Vector3 scale = player.localScale;
+        scale.x *= -1; // Flips the player horizontally
+        player.localScale = scale;
     }
 
     public void GoToItem(ItemData item) //in item hitbox platziert und dann, die hitbox reinziehen
     {   
         if (!isMoving)
         {
-           //update hintbox
-        gameManager.UpdateHintBox(null);
-        //start moving player
-        StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position)); //gameManager spricht die class "GameManager" an um MoveToPoint zu holen
-         isMoving = true; 
-        TryGettingItem(item); //wird sofot in die liste gepackt, weil
-       
-        //wird dann abgespielt, wenn der spieler sich nicht mehr bewegt, heißt isMoving = false  
+            //update hintbox
+            gameManager.UpdateHintBox(null);
+            //start moving player
+            StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position)); //gameManager spricht die class "GameManager" an um MoveToPoint zu holen
+            isMoving = true; 
+            TryGettingItem(item); //wird sofort in die liste gepackt, weil
+        
+            //wird dann abgespielt, wenn der spieler sich nicht mehr bewegt, heißt isMoving = false  
         
         }
-       
     }
-
-
-
 
     private void TryGettingItem(ItemData item)
     {
-        bool canGetItem = item.requiredItemID == -1 || gameManager.selectedItemID == item.requiredItemID;//überprüft ob das ITEM eine requiredItemID zugewiesen bekommen hat, in dem fall -1, wenn nicht, dann kann das Item nicht aufgehoben werden
+        bool canGetItem = item.requiredItemID == -1 || gameManager.selectedItemID == item.requiredItemID; //überprüft ob das ITEM eine requiredItemID zugewiesen bekommen hat, in dem fall -1, wenn nicht, dann kann das Item nicht aufgehoben werden
         if (canGetItem)
         {
-
             GameManager.collectedItems.Add(item); // item wird aufgehoben, checkt was für eine "itemID" das item hat, dann wird das in die liste eingespeichert
             Debug.Log("Item Collected");
-
         }
         StartCoroutine(UpdateSceneAfterAction(item, canGetItem)); //wenn das item aufgehoben wurde, werden die items zerstört
     }
+
     private IEnumerator UpdateSceneAfterAction(ItemData item, bool canGetItem) //ist eine Couroutine, diese alleine macht noch nichts
     {
         while (isMoving)
@@ -53,18 +80,14 @@ public class ClickManager : MonoBehaviour
         {   
             foreach (GameObject g in item.objectsToRemove) //geht jedes item in der liste durch, wenn das item gefunden wurde, wird es zerstört
                 Destroy(g);
-           gameManager.UpdateEquipmentCanvas();
+            gameManager.UpdateEquipmentCanvas();
         }
         else
         {
-             gameManager.UpdateHintBox(item); // wenn das item nicht aufgehoben werden kann, wird eine hintbox displayed die dem spieler sagt was er braucht
-             gameManager.CheckSpecialConditions(item);
-        } 
+            gameManager.UpdateHintBox(item); // wenn das item nicht aufgehoben werden kann, wird eine hintbox displayed die dem spieler sagt was er braucht
+            gameManager.CheckSpecialConditions(item);
+        }
            
         yield return null;
-
-
-
     }
-
 }
