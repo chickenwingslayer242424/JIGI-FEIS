@@ -10,7 +10,7 @@ using Unity.VisualScripting.FullSerializer;
 //game manager in clickmanager reinpacken
 public class GameManager : MonoBehaviour
 {
-    static float moveSpeed = 10f, moveAccuracy = 0.15f; //wenn frames geskipt werden, wird dieser mit moveaccuracy korriegiert
+    static float moveSpeed = 3.5f, moveAccuracy = 0.15f; //wenn frames geskipt werden, wird dieser mit moveaccuracy korriegiert
     public static List<ItemData> collectedItems = new List<ItemData>();  //wurde von Int auf ItemData umgestellt, wenn es zu problemen führt zurück
     public RectTransform nameTag, hintBox; //rect transform weil es das einzige ist was wir brauchen und nutzen
 
