@@ -129,11 +129,15 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(ChangeScene(0, 0));
                 break;
             case -12:
-                //go to scene 2
+                //von der bar zur hochzeitskapelle
                 StartCoroutine(ChangeScene(1, 0));
                 break;
             case -13:
-                //go to scene 2
+                //von der bar zum vip club 
+                StartCoroutine(ChangeScene(2, 0));
+                break;
+                   case -14:
+                //vom vip club zur bar 
                 StartCoroutine(ChangeScene(2, 0));
                 break;
             case -32:
