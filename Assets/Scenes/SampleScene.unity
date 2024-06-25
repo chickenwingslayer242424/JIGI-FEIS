@@ -2744,7 +2744,7 @@ GameObject:
   - component: {fileID: 483058051}
   m_Layer: 0
   m_Name: Scene2
-  m_TagString: Untagged
+  m_TagString: Scene2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3137,6 +3137,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3263,6 +3264,23 @@ Transform:
   - {fileID: 886455484}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce317f327390d445a4c7ad0c0815db7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1216800213}
+  offset: {x: 0, y: 0, z: -10}
+  minPosition: {x: 0, y: 0}
+  maxPosition: {x: 43, y: 10}
+  edgeOffset: 5
 --- !u!1 &521266034
 GameObject:
   m_ObjectHideFlags: 0
@@ -11651,6 +11669,12 @@ MonoBehaviour:
   localScenes:
   - {fileID: 425190781}
   - {fileID: 483058050}
+<<<<<<< Updated upstream
+=======
+  - {fileID: 77648249}
+  - {fileID: 425190781}
+  activeLocalScene: 0
+>>>>>>> Stashed changes
   playerStartPos:
   - {fileID: 1020109597}
   - {fileID: 666336662}
@@ -11681,6 +11705,7 @@ MonoBehaviour:
   selectedItemColor: {r: 0.51197046, g: 0.60112333, b: 0.6132076, a: 0.70980394}
   selectedCanvasSlotID: 0
   selectedItemID: 0
+  cameraFollow: {fileID: 519420033}
 --- !u!4 &2104052243
 Transform:
   m_ObjectHideFlags: 0
