@@ -46,18 +46,21 @@ public class ClickManager : MonoBehaviour
     }
 
     public void GoToItem(ItemData item) //in item hitbox platziert und dann, die hitbox reinziehen
-    {   
+    {
         if (!isMoving)
+            
         {
+
             //update hintbox
             gameManager.UpdateHintBox(null);
             //start moving player
+             isMoving = true;  //so eine scheiße, bitte hier lassen!!!
             StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position)); //gameManager spricht die class "GameManager" an um MoveToPoint zu holen
-            isMoving = true; 
+           
             TryGettingItem(item); //wird sofort in die liste gepackt, weil
-        
+
             //wird dann abgespielt, wenn der spieler sich nicht mehr bewegt, heißt isMoving = false  
-        
+
         }
     }
 
@@ -77,7 +80,7 @@ public class ClickManager : MonoBehaviour
         while (isMoving)
             yield return new WaitForSeconds(0.05f); //macht nichts, bis es "isMoving" am ziel ankommt
         if (canGetItem)
-        {   
+        {
             foreach (GameObject g in item.objectsToRemove) //geht jedes item in der liste durch, wenn das item gefunden wurde, wird es zerstört
                 Destroy(g);
             gameManager.UpdateEquipmentCanvas();
@@ -87,7 +90,7 @@ public class ClickManager : MonoBehaviour
             gameManager.UpdateHintBox(item); // wenn das item nicht aufgehoben werden kann, wird eine hintbox displayed die dem spieler sagt was er braucht
             gameManager.CheckSpecialConditions(item);
         }
-           
+
         yield return null;
     }
 }
