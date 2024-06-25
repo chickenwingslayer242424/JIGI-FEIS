@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     public IEnumerator MoveToPoint(Transform myObject, Vector2 point)  //myObject ist der player //point ist der gespeicherte punkt vom object
 
     {
+
+
         Vector2 positionDifference = point - (Vector2)myObject.position;
         while (positionDifference.magnitude > moveAccuracy)
         {
