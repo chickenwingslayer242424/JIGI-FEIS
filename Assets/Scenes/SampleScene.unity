@@ -5822,7 +5822,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1011325259}
-  - component: {fileID: 1011325260}
   m_Layer: 0
   m_Name: BackGround
   m_TagString: Untagged
@@ -5846,63 +5845,6 @@ Transform:
   - {fileID: 908311938}
   m_Father: {fileID: 425190782}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &1011325260
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011325258}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 6.8681536, y: -2.4633985}
-      - {x: 3.4573908, y: -2.225499}
-      - {x: 3.1658897, y: -1.4905264}
-      - {x: 2.9799452, y: -0.82972336}
-      - {x: 0.19115257, y: -0.64868927}
-      - {x: -0.13865954, y: -1.3874605}
-      - {x: 0.031632423, y: -2.936052}
-      - {x: -2.929099, y: -3.2609658}
-      - {x: -7.606905, y: -2.7099147}
-      - {x: -7.4316416, y: -4.4786453}
-      - {x: 29.69074, y: -4.201972}
-      - {x: 10.4131, y: -3.083938}
-  m_UseDelaunayMesh: 0
 --- !u!1 &1020109596
 GameObject:
   m_ObjectHideFlags: 0
@@ -10151,7 +10093,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMoving: 0
   player: {fileID: 1216800213}
-  floorCollider: {fileID: 1011325260}
 --- !u!4 &1818828532
 Transform:
   m_ObjectHideFlags: 0
