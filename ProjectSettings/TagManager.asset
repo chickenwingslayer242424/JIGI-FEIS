@@ -41,3 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Vordergrund
+    uniqueID: 3114725597
+    locked: 0
