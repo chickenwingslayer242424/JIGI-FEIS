@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public Image[] equipmentSlot, equipmentImages;
     public Sprite emtyItemSlotSprite;
     public Color selectedItemColor;
-   public int selectedCanvasSlotID = 0, selectedItemID;
+    public int selectedCanvasSlotID = 0, selectedItemID;
     public IEnumerator MoveToPoint(Transform myObject, Vector2 point)  //myObject ist der player //point ist der gespeicherte punkt vom object
 
     {
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         c.a = 0;
         equipmentSlot[selectedCanvasSlotID].color = c;
         //speichert änderungen und hört auf wenn keine items vorhanden sind oder das letzte item entfernt wurde
-        if (equipmentCanvasID >= collectedItems.Count || equipmentCanvasID < 0) 
+        if (equipmentCanvasID >= collectedItems.Count || equipmentCanvasID < 0)
         {
             //keine items selected
             selectedItemID = -1;
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         //änderungen der IDs werden hier gespeichert
         selectedCanvasSlotID = equipmentCanvasID;
         selectedItemID = collectedItems[selectedCanvasSlotID].itemID;
-        
+
 
     }
     public void ShowItemName(int equipmentCanvasID)
@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < itemSlotAmount; i++)
         {
             //wählt zwischen 2 items aus eine ohne Image und das andere mit Image
-            if (i < itemsAmount &&collectedItems[i].itemSlotSprite != null)
+            if (i < itemsAmount && collectedItems[i].itemSlotSprite != null)
             {
                 equipmentImages[i].sprite = collectedItems[i].itemSlotSprite;
             }
@@ -132,9 +132,13 @@ public class GameManager : MonoBehaviour
                 //go to scene 2
                 StartCoroutine(ChangeScene(1, 0));
                 break;
+            case -13:
+                //go to scene 2
+                StartCoroutine(ChangeScene(2, 0));
+                break;
             case -32:
                 //win game
-                StartCoroutine(ChangeScene(2, 1));
+                StartCoroutine(ChangeScene(3, 1));
                 break;
         }
 
