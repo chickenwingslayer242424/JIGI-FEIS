@@ -3,37 +3,46 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
 public class ClickManager : MonoBehaviour
 {
     public bool isMoving;
     public Transform player;
-    GameManager gameManager;
-    private Vector3 previousPosition; // Speichert die vorherige Position des Spielers
-    private bool facingRight = true; // Speichert die aktuelle Richtung, in die der Spieler schaut
+    private GameManager gameManager;
+    private Vector3 previousPosition;
+    private bool facingRight = true;
 
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
-        previousPosition = player.position; // Initialisiert die vorherige Position
+        previousPosition = player.position;
     }
 
     private void Update()
     {
-        // Überprüfen, ob der Spieler sich bewegt hat
         if (isMoving)
         {
-            Vector3 currentPosition = player.position; // Aktuelle Position des Spielers
+            Vector3 currentPosition = player.position;
             if (currentPosition.x > previousPosition.x && !facingRight)
             {
-                // Spieler bewegt sich nach rechts und schaut nach links
                 Flip();
             }
             else if (currentPosition.x < previousPosition.x && facingRight)
             {
-                // Spieler bewegt sich nach links und schaut nach rechts
                 Flip();
             }
-            previousPosition = currentPosition; // Aktualisiert die vorherige Position
+            previousPosition = currentPosition;
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+            
+            if (hit.collider != null && hit.collider.CompareTag("Ground"))
+            {
+                GoToGround(hit.point);
+            }
         }
     }
 
@@ -41,56 +50,56 @@ public class ClickManager : MonoBehaviour
     {
         facingRight = !facingRight;
         Vector3 scale = player.localScale;
-        scale.x *= -1; // Flips the player horizontally
+        scale.x *= -1;
         player.localScale = scale;
     }
 
-    public void GoToItem(ItemData item) //in item hitbox platziert und dann, die hitbox reinziehen
+    public void GoToItem(ItemData item)
     {
         if (!isMoving)
-            
         {
-
-            //update hintbox
             gameManager.UpdateHintBox(null);
-            //start moving player
-             isMoving = true;  //so eine scheiße, bitte hier lassen!!!
-            StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position)); //gameManager spricht die class "GameManager" an um MoveToPoint zu holen
-           
-            TryGettingItem(item); //wird sofort in die liste gepackt, weil
-
-            //wird dann abgespielt, wenn der spieler sich nicht mehr bewegt, heißt isMoving = false  
-
+            isMoving = true;
+            StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position));
+            TryGettingItem(item);
         }
     }
 
     private void TryGettingItem(ItemData item)
     {
-        bool canGetItem = item.requiredItemID == -1 || gameManager.selectedItemID == item.requiredItemID; //überprüft ob das ITEM eine requiredItemID zugewiesen bekommen hat, in dem fall -1, wenn nicht, dann kann das Item nicht aufgehoben werden
+        bool canGetItem = item.requiredItemID == -1 || gameManager.selectedItemID == item.requiredItemID;
         if (canGetItem)
         {
-            GameManager.collectedItems.Add(item); // item wird aufgehoben, checkt was für eine "itemID" das item hat, dann wird das in die liste eingespeichert
+            GameManager.collectedItems.Add(item);
             Debug.Log("Item Collected");
         }
-        StartCoroutine(UpdateSceneAfterAction(item, canGetItem)); //wenn das item aufgehoben wurde, werden die items zerstört
+        StartCoroutine(UpdateSceneAfterAction(item, canGetItem));
     }
 
-    private IEnumerator UpdateSceneAfterAction(ItemData item, bool canGetItem) //ist eine Couroutine, diese alleine macht noch nichts
+    private IEnumerator UpdateSceneAfterAction(ItemData item, bool canGetItem)
     {
         while (isMoving)
-            yield return new WaitForSeconds(0.05f); //macht nichts, bis es "isMoving" am ziel ankommt
+            yield return new WaitForSeconds(0.05f);
         if (canGetItem)
         {
-            foreach (GameObject g in item.objectsToRemove) //geht jedes item in der liste durch, wenn das item gefunden wurde, wird es zerstört
+            foreach (GameObject g in item.objectsToRemove)
                 Destroy(g);
             gameManager.UpdateEquipmentCanvas();
         }
         else
         {
-            gameManager.UpdateHintBox(item); // wenn das item nicht aufgehoben werden kann, wird eine hintbox displayed die dem spieler sagt was er braucht
+            gameManager.UpdateHintBox(item);
             gameManager.CheckSpecialConditions(item);
         }
-
         yield return null;
+    }
+
+    public void GoToGround(Vector3 point)
+    {
+        if (!isMoving)
+        {
+            isMoving = true;
+            StartCoroutine(gameManager.MoveToPoint(player, point));
+        }
     }
 }
