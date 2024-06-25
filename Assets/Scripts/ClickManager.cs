@@ -7,33 +7,92 @@ public class ClickManager : MonoBehaviour
 {
     public bool isMoving;
     public Transform player;
+    public PolygonCollider2D floorCollider; // Referenz zum PolygonCollider des Bodens
     GameManager gameManager;
-    private Vector3 previousPosition; // Speichert die vorherige Position des Spielers
-    private bool facingRight = true; // Speichert die aktuelle Richtung, in die der Spieler schaut
+    private Vector3 previousPosition;
+    private bool facingRight = true;
+    private Camera mainCamera;
 
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
-        previousPosition = player.position; // Initialisiert die vorherige Position
+        previousPosition = player.position;
+        mainCamera = Camera.main;
+
+        // Initialisiere den floorCollider
+        if (floorCollider == null)
+        {
+            floorCollider = GameObject.FindGameObjectWithTag("Ground").GetComponent<PolygonCollider2D>();
+            if (floorCollider == null)
+            {
+                Debug.LogError("PolygonCollider2D not found on the floor object!");
+            }
+        }
     }
 
     private void Update()
     {
-        // Überprüfen, ob der Spieler sich bewegt hat
+        HandleMovement();
+        CheckPlayerDirection();
+    }
+
+    private void HandleMovement()
+    {
+        if (Input.GetMouseButtonDown(0) && !isMoving)
+        {
+            Vector3 targetPosition = GetMouseWorldPosition();
+            if (floorCollider.OverlapPoint(targetPosition))
+            {
+                isMoving = true;
+                StartCoroutine(MoveToPosition(targetPosition));
+            }
+            else
+            {
+                Vector2 closestPoint = FindClosestPointOnPolygon(targetPosition);
+                isMoving = true;
+                StartCoroutine(MoveToPosition(closestPoint));
+            }
+        }
+    }
+
+    private Vector3 GetMouseWorldPosition()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition.z = mainCamera.nearClipPlane;
+        return mainCamera.ScreenToWorldPoint(mousePosition);
+    }
+
+    private Vector2 FindClosestPointOnPolygon(Vector3 targetPosition)
+    {
+        Vector2 closestPoint = floorCollider.ClosestPoint(targetPosition);
+        return closestPoint;
+    }
+
+    private IEnumerator MoveToPosition(Vector3 targetPosition)
+    {
+        while ((targetPosition - player.position).sqrMagnitude > 0.01f)
+        {
+            player.position = Vector3.MoveTowards(player.position, targetPosition, 5f * Time.deltaTime);
+            yield return null;
+        }
+        player.position = targetPosition;
+        isMoving = false;
+    }
+
+    private void CheckPlayerDirection()
+    {
         if (isMoving)
         {
-            Vector3 currentPosition = player.position; // Aktuelle Position des Spielers
+            Vector3 currentPosition = player.position;
             if (currentPosition.x > previousPosition.x && !facingRight)
             {
-                // Spieler bewegt sich nach rechts und schaut nach links
                 Flip();
             }
             else if (currentPosition.x < previousPosition.x && facingRight)
             {
-                // Spieler bewegt sich nach links und schaut nach rechts
                 Flip();
             }
-            previousPosition = currentPosition; // Aktualisiert die vorherige Position
+            previousPosition = currentPosition;
         }
     }
 
@@ -41,56 +100,47 @@ public class ClickManager : MonoBehaviour
     {
         facingRight = !facingRight;
         Vector3 scale = player.localScale;
-        scale.x *= -1; // Flips the player horizontally
+        scale.x *= -1;
         player.localScale = scale;
     }
 
-    public void GoToItem(ItemData item) //in item hitbox platziert und dann, die hitbox reinziehen
+    public void GoToItem(ItemData item)
     {
         if (!isMoving)
-            
         {
-
-            //update hintbox
             gameManager.UpdateHintBox(null);
-            //start moving player
-             isMoving = true;  //so eine scheiße, bitte hier lassen!!!
-            StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position)); //gameManager spricht die class "GameManager" an um MoveToPoint zu holen
-           
-            TryGettingItem(item); //wird sofort in die liste gepackt, weil
-
-            //wird dann abgespielt, wenn der spieler sich nicht mehr bewegt, heißt isMoving = false  
-
+            isMoving = true;
+            StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position));
+            TryGettingItem(item);
         }
     }
 
     private void TryGettingItem(ItemData item)
     {
-        bool canGetItem = item.requiredItemID == -1 || gameManager.selectedItemID == item.requiredItemID; //überprüft ob das ITEM eine requiredItemID zugewiesen bekommen hat, in dem fall -1, wenn nicht, dann kann das Item nicht aufgehoben werden
+        bool canGetItem = item.requiredItemID == -1 || gameManager.selectedItemID == item.requiredItemID;
         if (canGetItem)
         {
-            GameManager.collectedItems.Add(item); // item wird aufgehoben, checkt was für eine "itemID" das item hat, dann wird das in die liste eingespeichert
+            GameManager.collectedItems.Add(item);
             Debug.Log("Item Collected");
         }
-        StartCoroutine(UpdateSceneAfterAction(item, canGetItem)); //wenn das item aufgehoben wurde, werden die items zerstört
+        StartCoroutine(UpdateSceneAfterAction(item, canGetItem));
     }
 
-    private IEnumerator UpdateSceneAfterAction(ItemData item, bool canGetItem) //ist eine Couroutine, diese alleine macht noch nichts
+    private IEnumerator UpdateSceneAfterAction(ItemData item, bool canGetItem)
     {
         while (isMoving)
-            yield return new WaitForSeconds(0.05f); //macht nichts, bis es "isMoving" am ziel ankommt
+            yield return new WaitForSeconds(0.05f);
         if (canGetItem)
         {
-            foreach (GameObject g in item.objectsToRemove) //geht jedes item in der liste durch, wenn das item gefunden wurde, wird es zerstört
+            foreach (GameObject g in item.objectsToRemove)
                 Destroy(g);
             gameManager.UpdateEquipmentCanvas();
         }
         else
         {
-            gameManager.UpdateHintBox(item); // wenn das item nicht aufgehoben werden kann, wird eine hintbox displayed die dem spieler sagt was er braucht
+            gameManager.UpdateHintBox(item);
             gameManager.CheckSpecialConditions(item);
         }
-
         yield return null;
     }
 }
