@@ -18,8 +18,17 @@ public class ClickManager : MonoBehaviour
         previousPosition = player.position;
     }
 
+    //Dialog
+    public void InteractWithNPC(NPC npc)
+    {
+        npc.Interact();
+        Debug.Log("Interacting with NPC: " + npc.name);
+    }
+
     private void Update()
     {
+        // Abbrechen, wenn der Dialog aktiv ist
+        if (DialogManager.isDialogActive) return;
         if (isMoving)
         {
             Vector3 currentPosition = player.position;
@@ -44,6 +53,9 @@ public class ClickManager : MonoBehaviour
                 GoToGround(hit.point);
             }
         }
+
+        // Prüfen, ob auf einen NPC geklickt wurde
+        CheckForNPCInteraction();
     }
 
     private void Flip()
@@ -56,6 +68,8 @@ public class ClickManager : MonoBehaviour
 
     public void GoToItem(ItemData item)
     {
+        //Dialog
+        if (DialogManager.isDialogActive) return;
         if (!isMoving)
         {
             gameManager.UpdateHintBox(null);
@@ -100,6 +114,24 @@ public class ClickManager : MonoBehaviour
         {
             isMoving = true;
             StartCoroutine(gameManager.MoveToPoint(player, point));
+        }
+    }
+
+    //Dialog
+    private void CheckForNPCInteraction()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (DialogManager.isDialogActive) return;
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            if (hit.collider != null)
+            {
+                NPC npc = hit.collider.GetComponent<NPC>();
+                if (npc != null)
+                {
+                    InteractWithNPC(npc);
+                }
+            }
         }
     }
 }
