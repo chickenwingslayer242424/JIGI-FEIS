@@ -10,14 +10,12 @@ public class NPC : MonoBehaviour
     public ItemData requiredItem; // Das benötigte Item, um den Dialog zu starten
     public ItemData rewardItem; // Das Item, das der NPC nach Erfüllung der Bedingung gibt
 
-    private bool hasReceivedItem = false; // Gibt an, ob der NPC das benötigte Item erhalten hat
+    protected bool hasReceivedItem = false; // Ändere von private zu protected
     public Sprite npcSprite; // Das Bild des NPCs
     public Sprite pcImage; // Das Bild des Player Characters (PC)
+    public string npcName; // Neues Feld für den NPC-Namen
 
-    // Neues Feld für den NPC-Namen
-    public string npcName;
-
-    public void Interact()
+    public virtual void Interact() // Die Methode als virtual markieren
     {
         Debug.Log("Interact aufgerufen"); // Debug-Ausgabe für Interaktion
 
@@ -37,14 +35,15 @@ public class NPC : MonoBehaviour
             else
             {
                 initialDialogLines = new string[] { "O nourrrrrrr, I can’t do this anymore.", " My poor snakey Bertha…", "...she’s gone...", "I can’t find her.",  "If someone brings Bertha back to me, I would let them use my special cocktail shaker." }; // Setze die Dialogzeilen des NPCs
-                playerQuestion = "hmmmmm";
-                npcResponse = "";
+                playerQuestion = "Hmmmmm";
+                npcResponse = "She always escapes me when she sees food.....";
+                
             }
         }
         else
         {
             Debug.Log("NPC hat das benötigte Item bereits erhalten oder benötigt kein Item"); // Debug-Ausgabe für den Zustand des NPCs
-            initialDialogLines = new string[] { "Oh my, you scared me Bertha!!Where were you?", "Thank you, total stranger, that I’ve never seen before....", " Here, now you can make special drinks just like me. You can’t take it with you, just bring me 2 ingredients and I can mix it up for ya." }; // Setze die Dialogzeilen des NPCs
+            initialDialogLines = new string[] { "Oh my, you scared me Bertha!!Where were you?", "Thank you, total stranger, that I’ve never seen before....", "Here, now you can make special drinks just like me. You can’t take it with you, just bring me 2 ingredients and I can mix it up for ya." }; // Setze die Dialogzeilen des NPCs
             playerQuestion = "Do you know, how to get the key to the wedding chapel?";
             npcResponse = "Well, I knaurr that the chapel keys are kept by the security in the entrance.";
         }
@@ -54,9 +53,10 @@ public class NPC : MonoBehaviour
         FindObjectOfType<DialogManager>().StartDialog(this); // Starte den Dialog mit dem DialogManager
     }
 
-    public void OnDialogEnd()
+    public virtual void OnDialogEnd() // Die Methode als virtual markieren
     {
         // Zusätzliche Logik nach dem Dialog (falls nötig)
         Debug.Log("Dialog beendet"); // Debug-Ausgabe für das Dialogende
     }
 }
+
