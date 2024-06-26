@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public Color selectedItemColor;
     public int selectedCanvasSlotID = 0, selectedItemID;
 
+    public Camera mainCamera; // Hinzufügen einer Referenz zu Main Camera
+
     public CameraFollow cameraFollow; // Hinzufügen einer Referenz zu CameraFollow
 
     public IEnumerator MoveToPoint(Transform myObject, Vector2 point)  // myObject ist der Spieler // point ist der gespeicherte Punkt vom Objekt
@@ -171,7 +173,13 @@ public class GameManager : MonoBehaviour
         }
 
         UpdateHintBox(null);
+        
+        if (mainCamera != null)
+        {
+            mainCamera.gameObject.SetActive(sceneNumber != 2);
+        }
 
+        UpdateHintBox(null);
         // Neue Szene wird gezeigt, klicken wird wieder aktiviert
         while (blockingImage.color.a > 0)
         {
