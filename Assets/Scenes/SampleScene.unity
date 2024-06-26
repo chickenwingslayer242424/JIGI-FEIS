@@ -428,7 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogLines: []
-  requiredItem: {fileID: 1349274316}
+  requiredItem: {fileID: 540320177}
   rewardItem: {fileID: 216911018}
   npcSprite: {fileID: 21300000, guid: 636b685b55635824080b61e8e56e8b59, type: 3}
   pcImage: {fileID: 21300000, guid: e9eefdac08a80a3488b8bb0659dfeb30, type: 3}
@@ -6591,7 +6591,7 @@ GameObject:
   - component: {fileID: 1321888369}
   - component: {fileID: 1321888368}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ...
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
