@@ -34,15 +34,16 @@ public class NPC : MonoBehaviour
             }
             else
             {
-                dialogLines = new string[] { "Ich brauche das Item Erdbeere, bevor ich dir weiterhelfen kann." }; // Setze die Dialogzeilen des NPCs
-                pcDialogLines = new string[] { "halts maul" }; // Setze die Dialogzeilen des PCs
+                dialogLines = new string[] { "O nourrrrrrr, I can’t do this anymore.", " My poor snakey Bertha…", "...she’s gone...", "I can’t find her.",  "If someone brings Bertha back to me, I would let them use my special cocktail shaker." }; // Setze die Dialogzeilen des NPCs
+                pcDialogLines = new string[] { "hmmmmm" }; // Setze die Dialogzeilen des PCs
             }
         }
         else
         {
             Debug.Log("NPC hat das benötigte Item bereits erhalten oder benötigt kein Item"); // Debug-Ausgabe für den Zustand des NPCs
-            dialogLines = new string[] { "Danke, dass du mir das gebracht hast!", "jetzt kann ich Mario Kart spielen und Smoothie trinken.", "Yippiiiiiiiiiiiiiii." }; // Setze die Dialogzeilen des NPCs
-            pcDialogLines = new string[] { "Heißt du giang? oder was!" }; // Setze die Dialogzeilen des PCs
+            dialogLines = new string[] { "Oh my, you scared me Bertha!!Where were you?", "Thank you, total stranger, that I’ve never seen before....", " Here, now you can make special drinks just like me. You can’t take it with you, just bring me 2 ingredients and I can mix it up for ya."  }; // Setze die Dialogzeilen des NPCs
+            pcDialogLines = new string[] { "Do you know, how to get the key to the wedding chapel? " }; // Setze die Dialogzeilen des PCs
+            dialogLines = new string[] { "Well, I knaurr that the chapel keys are kept by the security in the entrance." };
         }
 
         Debug.Log("NPC Sprite gesetzt: " + (npcSprite != null ? npcSprite.name : "null")); // Debug-Ausgabe für das NPC-Bild
