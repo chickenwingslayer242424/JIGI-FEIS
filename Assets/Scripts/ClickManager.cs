@@ -19,6 +19,22 @@ public class ClickManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetMouseButtonDown(0) && !isMoving)
+        {
+            Vector3 mousePos = Input.mousePosition;
+            Vector3 mousePosWorld = Camera.main.ScreenToWorldPoint(mousePos);
+            Vector2 mousePosWorld2D = new Vector2(mousePosWorld.x, mousePosWorld.y);
+
+            RaycastHit2D hit = Physics2D.Raycast(mousePosWorld2D, Vector2.zero);
+
+            if (hit.collider != null && hit.collider.CompareTag("Ground"))
+            {
+                // Spieler hat auf den Boden geklickt, beginnen Sie mit der Bewegung
+                isMoving = true;
+                StartCoroutine(gameManager.MoveToPoint(player, hit.point));
+            }
+        }
+
         // Überprüfen, ob der Spieler sich bewegt hat
         if (isMoving)
         {
@@ -45,43 +61,39 @@ public class ClickManager : MonoBehaviour
         player.localScale = scale;
     }
 
-    public void GoToItem(ItemData item) //in item hitbox platziert und dann, die hitbox reinziehen
+    public void GoToItem(ItemData item) // in item hitbox platziert und dann, die hitbox reinziehen
     {
         if (!isMoving)
-            
         {
-
-            //update hintbox
+            // update hintbox
             gameManager.UpdateHintBox(null);
-            //start moving player
-             isMoving = true;  //so eine scheiße, bitte hier lassen!!!
-            StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position)); //gameManager spricht die class "GameManager" an um MoveToPoint zu holen
-           
-            TryGettingItem(item); //wird sofort in die liste gepackt, weil
+            // start moving player
+            isMoving = true;  // so eine scheiße, bitte hier lassen!!!
+            StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position)); // gameManager spricht die class "GameManager" an um MoveToPoint zu holen
 
-            //wird dann abgespielt, wenn der spieler sich nicht mehr bewegt, heißt isMoving = false  
-
+            TryGettingItem(item); // wird sofort in die liste gepackt, weil
+            // wird dann abgespielt, wenn der spieler sich nicht mehr bewegt, heißt isMoving = false  
         }
     }
 
     private void TryGettingItem(ItemData item)
     {
-        bool canGetItem = item.requiredItemID == -1 || gameManager.selectedItemID == item.requiredItemID; //überprüft ob das ITEM eine requiredItemID zugewiesen bekommen hat, in dem fall -1, wenn nicht, dann kann das Item nicht aufgehoben werden
+        bool canGetItem = item.requiredItemID == -1 || gameManager.selectedItemID == item.requiredItemID; // überprüft ob das ITEM eine requiredItemID zugewiesen bekommen hat, in dem fall -1, wenn nicht, dann kann das Item nicht aufgehoben werden
         if (canGetItem)
         {
             GameManager.collectedItems.Add(item); // item wird aufgehoben, checkt was für eine "itemID" das item hat, dann wird das in die liste eingespeichert
             Debug.Log("Item Collected");
         }
-        StartCoroutine(UpdateSceneAfterAction(item, canGetItem)); //wenn das item aufgehoben wurde, werden die items zerstört
+        StartCoroutine(UpdateSceneAfterAction(item, canGetItem)); // wenn das item aufgehoben wurde, werden die items zerstört
     }
 
-    private IEnumerator UpdateSceneAfterAction(ItemData item, bool canGetItem) //ist eine Couroutine, diese alleine macht noch nichts
+    private IEnumerator UpdateSceneAfterAction(ItemData item, bool canGetItem) // ist eine Couroutine, diese alleine macht noch nichts
     {
         while (isMoving)
-            yield return new WaitForSeconds(0.05f); //macht nichts, bis es "isMoving" am ziel ankommt
+            yield return new WaitForSeconds(0.05f); // macht nichts, bis es "isMoving" am ziel ankommt
         if (canGetItem)
         {
-            foreach (GameObject g in item.objectsToRemove) //geht jedes item in der liste durch, wenn das item gefunden wurde, wird es zerstört
+            foreach (GameObject g in item.objectsToRemove) // geht jedes item in der liste durch, wenn das item gefunden wurde, wird es zerstört
                 Destroy(g);
             gameManager.UpdateEquipmentCanvas();
         }

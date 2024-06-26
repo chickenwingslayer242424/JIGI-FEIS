@@ -6,40 +6,35 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    static float moveSpeed = 3.5f, moveAccuracy = 0.15f; //wenn frames geskipt werden, wird dieser mit moveaccuracy korriegiert
-    public static List<ItemData> collectedItems = new List<ItemData>();  //wurde von Int auf ItemData umgestellt, wenn es zu Problemen führt zurück
-    public RectTransform nameTag, hintBox; //rect transform weil es das einzige ist was wir brauchen und nutzen
+    static float moveSpeed = 3.5f, moveAccuracy = 0.15f; // Wenn frames geskipt werden, wird dieser mit moveaccuracy korrigiert
+    public static List<ItemData> collectedItems = new List<ItemData>();  // Wurde von Int auf ItemData umgestellt, wenn es zu Problemen führt zurück
+    public RectTransform nameTag, hintBox; // Rect transform weil es das einzige ist was wir brauchen und nutzen
 
-    public Image blockingImage; //Szene wird blockiert und es kann nichts angeklickt werden
+    public Image blockingImage; // Szene wird blockiert und es kann nichts angeklickt werden
     public GameObject[] localScenes;
-    public int activeLocalScene = 0; // sicherstellen, dass dies öffentlich ist
+    public int activeLocalScene = 0; // Sicherstellen, dass dies öffentlich ist
     public Transform[] playerStartPos;
 
     public GameObject equipmentCanvas;
     public Image[] equipmentSlot, equipmentImages;
     public Sprite emtyItemSlotSprite;
     public Color selectedItemColor;
-<<<<<<< Updated upstream
-   public int selectedCanvasSlotID = 0, selectedItemID;
-    public IEnumerator MoveToPoint(Transform myObject, Vector2 point)  //myObject ist der player //point ist der gespeicherte punkt vom object
-=======
     public int selectedCanvasSlotID = 0, selectedItemID;
->>>>>>> Stashed changes
 
     public CameraFollow cameraFollow; // Hinzufügen einer Referenz zu CameraFollow
 
-    public IEnumerator MoveToPoint(Transform myObject, Vector2 point)  //myObject ist der Spieler //point ist der gespeicherte Punkt vom Objekt
+    public IEnumerator MoveToPoint(Transform myObject, Vector2 point)  // myObject ist der Spieler // point ist der gespeicherte Punkt vom Objekt
     {
         Vector2 positionDifference = point - (Vector2)myObject.position;
         while (positionDifference.magnitude > moveAccuracy)
         {
             myObject.Translate(moveSpeed * positionDifference.normalized * Time.deltaTime);
             positionDifference = point - (Vector2)myObject.position;
-            yield return null; //warte einen Frame
+            yield return null; // Warte einen Frame
         }
 
         myObject.position = point;
-        if (myObject == FindObjectOfType<ClickManager>().player) //myObject ist Spieler
+        if (myObject == FindObjectOfType<ClickManager>().player) // myObject ist Spieler
         {
             FindObjectOfType<ClickManager>().isMoving = false;
         }
@@ -51,30 +46,20 @@ public class GameManager : MonoBehaviour
         Color c = Color.white;
         c.a = 0;
         equipmentSlot[selectedCanvasSlotID].color = c;
-<<<<<<< Updated upstream
-        //speichert änderungen und hört auf wenn keine items vorhanden sind oder das letzte item entfernt wurde
-        if (equipmentCanvasID >= collectedItems.Count || equipmentCanvasID < 0) 
-=======
-        //speichert Änderungen und hört auf wenn keine Items vorhanden sind oder das letzte Item entfernt wurde
+        // Speichert Änderungen und hört auf wenn keine Items vorhanden sind oder das letzte Item entfernt wurde
         if (equipmentCanvasID >= collectedItems.Count || equipmentCanvasID < 0)
->>>>>>> Stashed changes
         {
-            //keine Items ausgewählt
+            // Keine Items ausgewählt
             selectedItemID = -1;
             selectedCanvasSlotID = 0;
             return;
         }
 
-        equipmentSlot[equipmentCanvasID].color = selectedItemColor; //später die Farbe setzen
+        equipmentSlot[equipmentCanvasID].color = selectedItemColor; // Später die Farbe setzen
 
-        //Änderungen der IDs werden hier gespeichert
+        // Änderungen der IDs werden hier gespeichert
         selectedCanvasSlotID = equipmentCanvasID;
         selectedItemID = collectedItems[selectedCanvasSlotID].itemID;
-<<<<<<< Updated upstream
-        
-
-=======
->>>>>>> Stashed changes
     }
 
     public void ShowItemName(int equipmentCanvasID)
@@ -84,17 +69,12 @@ public class GameManager : MonoBehaviour
 
     public void UpdateEquipmentCanvas()
     {
-        //wie viele Items wir haben und wann wir stoppen
+        // Wie viele Items wir haben und wann wir stoppen
         int itemsAmount = collectedItems.Count, itemSlotAmount = equipmentSlot.Length;
         for (int i = 0; i < itemSlotAmount; i++)
         {
-<<<<<<< Updated upstream
-            //wählt zwischen 2 items aus eine ohne Image und das andere mit Image
-            if (i < itemsAmount &&collectedItems[i].itemSlotSprite != null)
-=======
-            //wählt zwischen 2 Items aus eine ohne Bild und das andere mit Bild
+            // Wählt zwischen 2 Items aus eine ohne Bild und das andere mit Bild
             if (i < itemsAmount && collectedItems[i].itemSlotSprite != null)
->>>>>>> Stashed changes
             {
                 equipmentImages[i].sprite = collectedItems[i].itemSlotSprite;
             }
@@ -131,42 +111,33 @@ public class GameManager : MonoBehaviour
 
         hintBox.GetComponentInChildren<TextMeshProUGUI>().text = item.hintMessage;
         hintBox.sizeDelta = item.hintBoxSize;
-        hintBox.localPosition = new Vector2(item.nameTagSize.x, -0.5f); //erstmal stehen lassen für flipped kommt in Zukunft
+        hintBox.localPosition = new Vector2(item.nameTagSize.x, -0.5f); // Erstmal stehen lassen für flipped kommt in Zukunft
     }
 
     public void CheckSpecialConditions(ItemData item)
     {
-        //wenn Item ID == etwas, gehe zu Szene 1
+        // Wenn Item ID == etwas, gehe zu Szene 1
         switch (item.itemID)
         {
             case -11:
-                //gehe zu Szene 1
+                // Gehe zu Szene 1
                 StartCoroutine(ChangeScene(0, 0));
                 break;
             case -12:
-<<<<<<< Updated upstream
-                //go to scene 2
-                StartCoroutine(ChangeScene(1, 0));
-                break;
-            case -32:
-                //win game
-                StartCoroutine(ChangeScene(2, 1));
-=======
-                //von der Bar zur Hochzeitskapelle
+                // Von der Bar zur Hochzeitskapelle
                 StartCoroutine(ChangeScene(1, 0));
                 break;
             case -13:
-                //von der Bar zum VIP Club 
+                // Von der Bar zum VIP Club 
                 StartCoroutine(ChangeScene(2, 0));
                 break;
             case -14:
-                //vom VIP Club zur Bar 
+                // Vom VIP Club zur Bar 
                 StartCoroutine(ChangeScene(2, 0));
                 break;
             case -32:
-                //Spiel gewinnen
+                // Spiel gewinnen
                 StartCoroutine(ChangeScene(3, 1));
->>>>>>> Stashed changes
                 break;
         }
     }
@@ -176,18 +147,18 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         blockingImage.enabled = true;
         Color c = blockingImage.color;
-        //Szene wird geblockt und es kann nichts geklickt werden
+        // Szene wird geblockt und es kann nichts geklickt werden
         while (blockingImage.color.a < 1)
         {
             yield return null;
-            c.a += Time.deltaTime; //Szene wird in einer Sekunde schwarz
+            c.a += Time.deltaTime; // Szene wird in einer Sekunde schwarz
             blockingImage.color = c;
         }
-        //alte Szene verstecken
+        // Alte Szene verstecken
         localScenes[activeLocalScene].SetActive(false);
-        //neue Szene zeigen
+        // Neue Szene zeigen
         localScenes[sceneNumber].SetActive(true);
-        //aktuelle Szene speichern
+        // Aktuelle Szene speichern
         activeLocalScene = sceneNumber;
         // Spielerposition zurücksetzen
         Transform playerTransform = FindObjectOfType<ClickManager>().player;
@@ -201,7 +172,7 @@ public class GameManager : MonoBehaviour
 
         UpdateHintBox(null);
 
-        // neue Szene wird gezeigt, klicken wird wieder aktiviert
+        // Neue Szene wird gezeigt, klicken wird wieder aktiviert
         while (blockingImage.color.a > 0)
         {
             yield return null;
