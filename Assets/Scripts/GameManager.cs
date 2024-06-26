@@ -7,7 +7,6 @@ using System.Diagnostics;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
-//game manager in clickmanager reinpacken
 
 public class GameManager : MonoBehaviour
 {
@@ -24,6 +23,7 @@ public class GameManager : MonoBehaviour
     public Sprite emtyItemSlotSprite;
     public Color selectedItemColor;
     public int selectedCanvasSlotID = 0, selectedItemID;
+    public CameraFollow cameraFollow; // 添加对 CameraFollow 的引用
 
     public IEnumerator MoveToPoint(Transform myObject, Vector2 point)
     {
@@ -116,21 +116,21 @@ public class GameManager : MonoBehaviour
         switch (item.itemID)
         {
             case -11:
-                StartCoroutine(ChangeScene(0, 0));
+                StartCoroutine(ChangeScene(localScenes[0], 0));
                 break;
             case -12:
-                StartCoroutine(ChangeScene(1, 0));
+                StartCoroutine(ChangeScene(localScenes[1], 0));
                 break;
             case -13:
-                StartCoroutine(ChangeScene(2, 0));
+                StartCoroutine(ChangeScene(localScenes[2], 0));
                 break;
             case -32:
-                StartCoroutine(ChangeScene(3, 1));
+                StartCoroutine(ChangeScene(localScenes[3], 1));
                 break;
         }
     }
 
-    public IEnumerator ChangeScene(int sceneNumber, float delay)
+    public IEnumerator ChangeScene(GameObject newScene, float delay)
     {
         yield return new WaitForSeconds(delay);
         blockingImage.enabled = true;
@@ -143,9 +143,28 @@ public class GameManager : MonoBehaviour
         }
 
         localScenes[activeLocalScene].SetActive(false);
-        localScenes[sceneNumber].SetActive(true);
-        activeLocalScene = sceneNumber;
-        FindObjectOfType<ClickManager>().player.position = playerStartPos[sceneNumber].position;
+        newScene.SetActive(true);
+        activeLocalScene = System.Array.IndexOf(localScenes, newScene);
+
+         if (cameraFollow != null)
+        {
+            cameraFollow.enabled = true;
+        }
+
+        FindObjectOfType<ClickManager>().player.position = playerStartPos[activeLocalScene].position;
+        UpdateHintBox(null);
+
+        // 等待摄像机位置刷新
+        yield return new WaitForEndOfFrame();
+
+
+        // 启用或禁用 CameraFollow 脚本
+        if (cameraFollow != null)
+        {
+            cameraFollow.enabled = (newScene.name != "Scene2");
+        }
+
+        FindObjectOfType<ClickManager>().player.position = playerStartPos[activeLocalScene].position;
         UpdateHintBox(null);
 
         while (blockingImage.color.a > 0)
