@@ -435,6 +435,7 @@ MonoBehaviour:
   npcSprite: {fileID: 21300000, guid: 636b685b55635824080b61e8e56e8b59, type: 3}
   pcImage: {fileID: 21300000, guid: e9eefdac08a80a3488b8bb0659dfeb30, type: 3}
   npcName: Bartender
+  objectToSpawn: {fileID: 499810925}
 --- !u!70 &33776415
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2418,113 +2419,16 @@ Transform:
   - {fileID: 1570833444}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &499810925
+--- !u!1 &499810925 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6838529090842059261, guid: 6c8863458660c7246a4799cbcf8d5968, type: 3}
+  m_PrefabInstance: {fileID: 5716985407962655142}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 499810927}
-  - component: {fileID: 499810926}
-  - component: {fileID: 499810928}
-  m_Layer: 0
-  m_Name: switch_drink
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &499810926
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 499810925}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 6c8c5ad9c74b4724ab7f0a32659d78a7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 20.48, y: 20.48}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &499810927
+--- !u!4 &499810927 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2630274772601661527, guid: 6c8863458660c7246a4799cbcf8d5968, type: 3}
+  m_PrefabInstance: {fileID: 5716985407962655142}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 499810925}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.0999994, y: 0.42000008, z: 10}
-  m_LocalScale: {x: 0.11342052, y: 0.07930378, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 425190782}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &499810928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 499810925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 464236e443a06bd47a7d8386e963beb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemID: 0
-  requiredItemID: 2
-  goToPoint: {fileID: 0}
-  objectsToRemove: []
-  hideUI: {fileID: 0}
-  itemSlotSprite: {fileID: 0}
-  objectName: 
-  nameTagSize: {x: 3, y: 0.65}
-  hintMessage: 
-  hintBoxSize: {x: 3, y: 0.65}
 --- !u!1 &514670859
 GameObject:
   m_ObjectHideFlags: 0
@@ -7088,6 +6992,7 @@ MonoBehaviour:
   npcSprite: {fileID: 21300000, guid: 7d76a75f946f88b48b668381d3144386, type: 3}
   pcImage: {fileID: 21300000, guid: e9eefdac08a80a3488b8bb0659dfeb30, type: 3}
   npcName: Finley
+  objectToSpawn: {fileID: 0}
 --- !u!70 &1396747430
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -11113,6 +11018,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2140426360}
   m_CullTransparentMesh: 1
+--- !u!1001 &5716985407962655142
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 425190782}
+    m_Modifications:
+    - target: {fileID: 2630274772601661527, guid: 6c8863458660c7246a4799cbcf8d5968, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.0999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 2630274772601661527, guid: 6c8863458660c7246a4799cbcf8d5968, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.42000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 2630274772601661527, guid: 6c8863458660c7246a4799cbcf8d5968, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2630274772601661527, guid: 6c8863458660c7246a4799cbcf8d5968, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2630274772601661527, guid: 6c8863458660c7246a4799cbcf8d5968, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2630274772601661527, guid: 6c8863458660c7246a4799cbcf8d5968, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2630274772601661527, guid: 6c8863458660c7246a4799cbcf8d5968, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2630274772601661527, guid: 6c8863458660c7246a4799cbcf8d5968, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2630274772601661527, guid: 6c8863458660c7246a4799cbcf8d5968, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2630274772601661527, guid: 6c8863458660c7246a4799cbcf8d5968, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6838529090842059261, guid: 6c8863458660c7246a4799cbcf8d5968, type: 3}
+      propertyPath: m_Name
+      value: switch_drink
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6c8863458660c7246a4799cbcf8d5968, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
