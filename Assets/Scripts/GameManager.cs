@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public Sprite emtyItemSlotSprite;
     public Color selectedItemColor;
     public int selectedCanvasSlotID = 0, selectedItemID;
-    public CameraFollow cameraFollow; // 添加对 CameraFollow 的引用
+    public CameraFollow cameraFollow; 
 
     public IEnumerator MoveToPoint(Transform myObject, Vector2 point)
     {
@@ -154,11 +154,11 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<ClickManager>().player.position = playerStartPos[activeLocalScene].position;
         UpdateHintBox(null);
 
-        // 等待摄像机位置刷新
+        
         yield return new WaitForEndOfFrame();
 
 
-        // 启用或禁用 CameraFollow 脚本
+        
         if (cameraFollow != null)
         {
             cameraFollow.enabled = (newScene.name != "Scene2");
