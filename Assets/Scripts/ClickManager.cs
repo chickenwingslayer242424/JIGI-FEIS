@@ -9,6 +9,8 @@ public class ClickManager : MonoBehaviour
     private GameManager gameManager;
     private Vector3 previousPosition;
     private bool facingRight = true;
+    public AudioSource footstepAudioSource; // AudioSource-Komponente hinzufügen
+    public AudioClip[] footstepSounds; // Audio-Clips für die Schrittgeräusche
 
     private void Start()
     {
@@ -39,6 +41,20 @@ public class ClickManager : MonoBehaviour
                 Flip();
             }
             previousPosition = currentPosition;
+
+            // Schrittgeräusche abspielen
+            if (!footstepAudioSource.isPlaying)
+            {
+                PlayFootstepSound();
+            }
+        }
+        else
+        {
+            // Schrittgeräusche stoppen
+            if (footstepAudioSource.isPlaying)
+            {
+                footstepAudioSource.Stop();
+            }
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -66,7 +82,7 @@ public class ClickManager : MonoBehaviour
 
     public void GoToItem(ItemData item)
     {
-        //Dialog
+        // Dialog
         if (DialogManager.isDialogActive) return;
         if (!isMoving)
         {
@@ -115,7 +131,17 @@ public class ClickManager : MonoBehaviour
         }
     }
 
-    //Dialog
+    private void PlayFootstepSound()
+    {
+        if (footstepSounds.Length > 0)
+        {
+            int index = Random.Range(0, footstepSounds.Length);
+            footstepAudioSource.clip = footstepSounds[index];
+            footstepAudioSource.Play();
+        }
+    }
+
+    // Dialog
     private void CheckForNPCInteraction()
     {
         if (Input.GetMouseButtonDown(0))
