@@ -15,11 +15,22 @@ public class NPC : MonoBehaviour
     public Sprite pcImage; // Das Bild des Player Characters (PC)
     public string npcName; // Neues Feld für den NPC-Namen
 
+    public GameObject objectToSpawn; // Das Objekt, das gespawnt werden soll
+    private bool hasSpokenToPlayer = false; // Variable, um zu verfolgen, ob der NPC bereits mit dem Spieler gesprochen hat
+
     public virtual void Interact() // Die Methode als virtual markieren
     {
         Debug.Log("Interact aufgerufen"); // Debug-Ausgabe für Interaktion
 
-        if (!hasReceivedItem && requiredItem != null) // Wenn der NPC das benötigte Item nicht erhalten hat und ein Item benötigt wird
+        if (!hasSpokenToPlayer)
+        {
+            // Spezielle Begrüßung beim ersten Gespräch
+            initialDialogLines = new string[] { "You look very stressed.", "Let me guess, your looking for someone?" };
+            playerQuestion = "Yes, I am looking for my love. Did you see them??";
+            npcResponse = "You should grab one of my very special drinks. They will guide you the right way.";
+            hasSpokenToPlayer = true;
+        }
+        else if (!hasReceivedItem && requiredItem != null) // Wenn der NPC das benötigte Item nicht erhalten hat und ein Item benötigt wird
         {
             if (GameManager.collectedItems.Contains(requiredItem)) // Wenn das benötigte Item gesammelt wurde
             {
@@ -37,7 +48,6 @@ public class NPC : MonoBehaviour
                 initialDialogLines = new string[] { "O nourrrrrrr, I can’t do this anymore.", " My poor snakey Bertha…", "...she’s gone...", "I can’t find her.",  "If someone brings Bertha back to me, I would let them use my special cocktail shaker." }; // Setze die Dialogzeilen des NPCs
                 playerQuestion = "Hmmmmm";
                 npcResponse = "She always escapes me when she sees food.....";
-                
             }
         }
         else
@@ -59,4 +69,3 @@ public class NPC : MonoBehaviour
         Debug.Log("Dialog beendet"); // Debug-Ausgabe für das Dialogende
     }
 }
-
