@@ -138,11 +138,15 @@ public class DialogManager : MonoBehaviour
         DisplayNextSentence(); // Zeige die Spielerfrage an
     }
 
-    void EndDialog()
+void EndDialog()
+{
+    dialogPanel.SetActive(false); // Blende das Dialogfeld aus
+    isNpcSpeaking = true; // Setze den Sprecher auf NPC zurück
+    isDialogActive = false; // Setze den Dialogstatus auf inaktiv
+    Debug.Log("EndDialog aufgerufen, aktueller NPC: " + (currentNpc != null ? currentNpc.name : "null")); // Debug-Ausgabe
+    if (currentNpc != null)
     {
-        dialogPanel.SetActive(false); // Blende das Dialogfeld aus
-        isNpcSpeaking = true; // Setze den Sprecher auf NPC zurück
-        isDialogActive = false; // Setze den Dialogstatus auf inaktiv
         currentNpc.OnDialogEnd(); // Rufe die Methode OnDialogEnd des aktuellen NPCs auf
     }
+}
 }

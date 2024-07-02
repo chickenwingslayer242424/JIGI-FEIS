@@ -25,8 +25,8 @@ public class NPC : MonoBehaviour
         if (!hasSpokenToPlayer)
         {
             // Spezielle Begrüßung beim ersten Gespräch
-            initialDialogLines = new string[] { "You look very stressed.", "Let me guess, your looking for someone?" };
-            playerQuestion = "Yes, I am looking for my love. Did you see them??";
+            initialDialogLines = new string[] { "You look very stressed.", "Let me guess, you're looking for someone?" };
+            playerQuestion = "Yes, I am looking for my love. Did you see them?";
             npcResponse = "You should grab one of my very special drinks. They will guide you the right way.";
             hasSpokenToPlayer = true;
         }
@@ -38,14 +38,18 @@ public class NPC : MonoBehaviour
                 hasReceivedItem = true; // Setze den Zustand auf erhalten
 
                 GameManager.collectedItems.Add(rewardItem); // Füge das Belohnungs-Item zur Sammlung hinzu
+                Debug.Log("Belohnungs-Item hinzugefügt: " + rewardItem.name); // Debug-Ausgabe für das Belohnungs-Item
 
-                initialDialogLines = new string[] { "Wow du super hecht", "hier mein super shaker" }; // Setze die Dialogzeilen des NPCs
-                playerQuestion = "ich bin eine Frau...";
+                initialDialogLines = new string[] { "Wow, du super Hecht!", "Hier mein super Shaker." }; // Setze die Dialogzeilen des NPCs
+                playerQuestion = "Ich bin eine Frau...";
                 npcResponse = "..Abstand";
+
+                // Aktiviere das Objekt
+                ActivateObjectToSpawn();
             }
             else
             {
-                initialDialogLines = new string[] { "O nourrrrrrr, I can’t do this anymore.", " My poor snakey Bertha…", "...she’s gone...", "I can’t find her.",  "If someone brings Bertha back to me, I would let them use my special cocktail shaker." }; // Setze die Dialogzeilen des NPCs
+                initialDialogLines = new string[] { "Oh no, I can’t do this anymore.", "My poor snakey Bertha…", "...she’s gone...", "I can’t find her.", "If someone brings Bertha back to me, I would let them use my special cocktail shaker." }; // Setze die Dialogzeilen des NPCs
                 playerQuestion = "Hmmmmm";
                 npcResponse = "She always escapes me when she sees food.....";
             }
@@ -53,9 +57,9 @@ public class NPC : MonoBehaviour
         else
         {
             Debug.Log("NPC hat das benötigte Item bereits erhalten oder benötigt kein Item"); // Debug-Ausgabe für den Zustand des NPCs
-            initialDialogLines = new string[] { "Oh my, you scared me Bertha!!Where were you?", "Thank you, total stranger, that I’ve never seen before....", "Here, now you can make special drinks just like me. You can’t take it with you, just bring me 2 ingredients and I can mix it up for ya." }; // Setze die Dialogzeilen des NPCs
+            initialDialogLines = new string[] { "Oh my, you scared me Bertha!! Where were you?", "Thank you, total stranger, that I’ve never seen before....", "Here, now you can make special drinks just like me. You can’t take it with you, just bring me 2 ingredients and I can mix it up for ya." }; // Setze die Dialogzeilen des NPCs
             playerQuestion = "Do you know, how to get the key to the wedding chapel?";
-            npcResponse = "Well, I knaurr that the chapel keys are kept by the security in the entrance.";
+            npcResponse = "Well, I know that the chapel keys are kept by the security in the entrance.";
         }
 
         Debug.Log("NPC Sprite gesetzt: " + (npcSprite != null ? npcSprite.name : "null")); // Debug-Ausgabe für das NPC-Bild
@@ -63,9 +67,28 @@ public class NPC : MonoBehaviour
         FindObjectOfType<DialogManager>().StartDialog(this); // Starte den Dialog mit dem DialogManager
     }
 
-    public virtual void OnDialogEnd() // Die Methode als virtual markieren
+public virtual void OnDialogEnd() // Die Methode als virtual markieren
+{
+    // Zusätzliche Logik nach dem Dialog (falls nötig)
+    Debug.Log("Dialog beendet"); // Debug-Ausgabe für das Dialogende
+    
+    // Aktiviere das Objekt, wenn es noch nicht aktiviert wurde
+    if (!hasReceivedItem && requiredItem != null && objectToSpawn != null)
     {
-        // Zusätzliche Logik nach dem Dialog (falls nötig)
-        Debug.Log("Dialog beendet"); // Debug-Ausgabe für das Dialogende
+        ActivateObjectToSpawn();
     }
+}
+
+private void ActivateObjectToSpawn()
+{
+    if (objectToSpawn != null)
+    {
+        objectToSpawn.SetActive(true);
+        Debug.Log("Objekt aktiviert: " + objectToSpawn.name);
+    }
+    else
+    {
+        Debug.Log("Kein Objekt zum Aktivieren gefunden.");
+    }
+}
 }
