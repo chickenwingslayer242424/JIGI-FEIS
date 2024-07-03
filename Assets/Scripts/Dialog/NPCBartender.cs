@@ -10,7 +10,8 @@ public class NPC : MonoBehaviour
     public ItemData requiredItem; // Das benötigte Item, um den Dialog zu starten
     public ItemData rewardItem; // Das Item, das der NPC nach Erfüllung der Bedingung gibt
 
-    protected bool hasReceivedItem = false; // Ändere von private zu protected
+    public bool hasReceivedItem = false; // Überprüft, ob das Item bereits erhalten wurde
+
     public Sprite npcSprite; // Das Bild des NPCs
     public Sprite pcImage; // Das Bild des Player Characters (PC)
     public string npcName; // Neues Feld für den NPC-Namen
@@ -25,7 +26,7 @@ public class NPC : MonoBehaviour
         if (!hasSpokenToPlayer)
         {
             // Spezielle Begrüßung beim ersten Gespräch
-            initialDialogLines = new string[] { "You look very stressed.", "Let me guess, your looking for someone?" };
+            initialDialogLines = new string[] { "You look very stressed.", "Let me guess, you're looking for someone?" };
             playerQuestion = "Yes, I am looking for my love. Did you see them??";
             npcResponse = "You should grab one of my very special drinks. They will guide you the right way.";
             hasSpokenToPlayer = true;
@@ -39,13 +40,13 @@ public class NPC : MonoBehaviour
 
                 GameManager.collectedItems.Add(rewardItem); // Füge das Belohnungs-Item zur Sammlung hinzu
 
-                initialDialogLines = new string[] { "Wow du super hecht", "hier mein super shaker" }; // Setze die Dialogzeilen des NPCs
-                playerQuestion = "ich bin eine Frau...";
+                initialDialogLines = new string[] { "Wow, du super Hecht", "Hier mein super Shaker" }; // Setze die Dialogzeilen des NPCs
+                playerQuestion = "Ich bin eine Frau...";
                 npcResponse = "..Abstand";
             }
             else
             {
-                initialDialogLines = new string[] { "O nourrrrrrr, I can’t do this anymore.", " My poor snakey Bertha…", "...she’s gone...", "I can’t find her.",  "If someone brings Bertha back to me, I would let them use my special cocktail shaker." }; // Setze die Dialogzeilen des NPCs
+                initialDialogLines = new string[] { "O nourrrrrrr, I can’t do this anymore.", "My poor snakey Bertha…", "...she’s gone...", "I can’t find her.", "If someone brings Bertha back to me, I would let them use my special cocktail shaker." }; // Setze die Dialogzeilen des NPCs
                 playerQuestion = "Hmmmmm";
                 npcResponse = "She always escapes me when she sees food.....";
             }
@@ -53,14 +54,20 @@ public class NPC : MonoBehaviour
         else
         {
             Debug.Log("NPC hat das benötigte Item bereits erhalten oder benötigt kein Item"); // Debug-Ausgabe für den Zustand des NPCs
-            initialDialogLines = new string[] { "Oh my, you scared me Bertha!!Where were you?", "Thank you, total stranger, that I’ve never seen before....", "Here, now you can make special drinks just like me. You can’t take it with you, just bring me 2 ingredients and I can mix it up for ya." }; // Setze die Dialogzeilen des NPCs
-            playerQuestion = "Do you know, how to get the key to the wedding chapel?";
+            initialDialogLines = new string[] { "Oh my, you scared me Bertha!! Where were you?", "Thank you, total stranger, that I’ve never seen before....", "Here, now you can make special drinks just like me. You can’t take it with you, just bring me 2 ingredients and I can mix it up for ya." }; // Setze die Dialogzeilen des NPCs
+            playerQuestion = "Do you know how to get the key to the wedding chapel?";
             npcResponse = "Well, I knaurr that the chapel keys are kept by the security in the entrance.";
         }
 
         Debug.Log("NPC Sprite gesetzt: " + (npcSprite != null ? npcSprite.name : "null")); // Debug-Ausgabe für das NPC-Bild
 
         FindObjectOfType<DialogManager>().StartDialog(this); // Starte den Dialog mit dem DialogManager
+    }
+
+    public virtual void OnItemReceived()
+    {
+        // Logik für das Erhalten eines Items
+        Debug.Log("Item erhalten!");
     }
 
     public virtual void OnDialogEnd() // Die Methode als virtual markieren
