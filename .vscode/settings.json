@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "8th Avenue.sln"
+    "dotnet.defaultSolution": "JIGI-FEIS.sln"
 }

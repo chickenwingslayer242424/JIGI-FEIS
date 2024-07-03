@@ -1,13 +1,17 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+<<<<<<< Updated upstream
 using System.Diagnostics;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 //game manager in clickmanager reinpacken
+=======
+
+>>>>>>> Stashed changes
 public class GameManager : MonoBehaviour
 {
     static float moveSpeed = 3.5f, moveAccuracy = 0.15f; //wenn frames geskipt werden, wird dieser mit moveaccuracy korriegiert
@@ -23,8 +27,29 @@ public class GameManager : MonoBehaviour
     public Image[] equipmentSlot, equipmentImages;
     public Sprite emtyItemSlotSprite;
     public Color selectedItemColor;
+<<<<<<< Updated upstream
    public int selectedCanvasSlotID = 0, selectedItemID;
     public IEnumerator MoveToPoint(Transform myObject, Vector2 point)  //myObject ist der player //point ist der gespeicherte punkt vom object
+=======
+    public int selectedCanvasSlotID = 0, selectedItemID;
+    public CameraFollow cameraFollow;
+    public static bool hasSpokenToCasinoDealer = false;
+    public static bool isOmaDefeated = false;
+    public static GameManager Instance; // Singleton-Instanz des GameManagers
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Verhindere, dass der GameManager zerstört wird
+        }
+        else
+        {
+            Destroy(gameObject); // Zerstöre Duplikate des GameManagers
+        }
+    }
+>>>>>>> Stashed changes
 
     {
 
@@ -154,17 +179,41 @@ public class GameManager : MonoBehaviour
         }
         //alte scene verstecken
         localScenes[activeLocalScene].SetActive(false);
+<<<<<<< Updated upstream
         //neue scene zeigen
         localScenes[sceneNumber].SetActive(true);
         //aktuelle scene speichern
         activeLocalScene = sceneNumber;
         //spieler teleportieren
         FindObjectOfType<ClickManager>().player.position = playerStartPos[sceneNumber].position;
+=======
+        newScene.SetActive(true);
+        activeLocalScene = System.Array.IndexOf(localScenes, newScene);
+
+        if (cameraFollow != null)
+        {
+            cameraFollow.enabled = true;
+        }
+
+        FindObjectOfType<ClickManager>().player.position = playerStartPos[activeLocalScene].position;
+>>>>>>> Stashed changes
         UpdateHintBox(null);
 
 
+<<<<<<< Updated upstream
 
         //neue scene wird gezeigt, klicken wird wieder aktiviert
+=======
+        // 启用或禁用 CameraFollow 脚本
+        if (cameraFollow != null)
+        {
+            cameraFollow.enabled = (newScene.name != "Scene2");
+        }
+
+        FindObjectOfType<ClickManager>().player.position = playerStartPos[activeLocalScene].position;
+        UpdateHintBox(null);
+
+>>>>>>> Stashed changes
         while (blockingImage.color.a > 0)
         {
             yield return null;
@@ -175,4 +224,20 @@ public class GameManager : MonoBehaviour
         yield return null;
     }
 
+<<<<<<< Updated upstream
 }
+=======
+    // Methode zum Sammeln der Maus
+    public void CollectMouse(Mover mouseMover)
+    {
+        Debug.Log("Mouse collected!");
+        ItemData mouseItem = mouseMover.GetComponent<ItemData>();
+        if (mouseItem != null)
+        {
+            collectedItems.Add(mouseItem);
+            UpdateEquipmentCanvas();
+            mouseItem.HideItem(); // Maus ausblenden
+        }
+    }
+}
+>>>>>>> Stashed changes
