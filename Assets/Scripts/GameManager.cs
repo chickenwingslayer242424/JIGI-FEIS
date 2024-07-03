@@ -119,7 +119,9 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(ChangeScene(localScenes[0], 0));
                 break;
             case -12:
+
                 StartCoroutine(ChangeScene(localScenes[1], 0));
+
                 break;
             case -13:
                 StartCoroutine(ChangeScene(localScenes[2], 0));
@@ -146,7 +148,7 @@ public class GameManager : MonoBehaviour
         newScene.SetActive(true);
         activeLocalScene = System.Array.IndexOf(localScenes, newScene);
 
-         if (cameraFollow != null)
+        if (cameraFollow != null)
         {
             cameraFollow.enabled = true;
         }

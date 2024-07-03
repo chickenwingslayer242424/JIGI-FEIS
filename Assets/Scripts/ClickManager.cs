@@ -79,7 +79,7 @@ public class ClickManager : MonoBehaviour
 
     private void TryGettingItem(ItemData item)
     {
-        bool canGetItem = item.requiredItemID == -1 || gameManager.selectedItemID == item.requiredItemID;
+        bool canGetItem = item.requiredItemID == -1 || gameManager.selectedItemID == item.requiredItemID; //selectedItemID gemeint sind sachen aus dem Inventar, wenn die selectedItemID mit dem requieredItemID überinstimmt
         if (canGetItem)
         {
             GameManager.collectedItems.Add(item);
