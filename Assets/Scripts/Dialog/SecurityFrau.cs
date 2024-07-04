@@ -11,7 +11,7 @@ public class SecurityFrau : NPC
         Debug.Log("SecurityFrau Interact aufgerufen");
 
         // Überprüfe, ob der Spieler das benötigte Item hat
-        if (GameManager.collectedItems.Contains(requiredItem))
+        if (GameManager.Instance.IsSelectedItem(requiredItemID))
         {
             // Wenn der Spieler das benötigte Item hat, setze die Dialogzeilen entsprechend
             initialDialogLines = new string[] { "Natürlich darfst du durch, Kollege." };

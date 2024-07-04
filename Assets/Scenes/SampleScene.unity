@@ -434,13 +434,14 @@ MonoBehaviour:
   npcResponses2: []
   playerQuestions3: []
   npcResponses3: []
-  requiredItem: {fileID: 540320177}
+  requiredItemID: 0
   rewardItem: {fileID: 216911018}
   hasReceivedItem: 0
   npcSprite: {fileID: 21300000, guid: 636b685b55635824080b61e8e56e8b59, type: 3}
   pcImage: {fileID: 21300000, guid: e9eefdac08a80a3488b8bb0659dfeb30, type: 3}
   npcName: Bartender
   objectToSpawn: {fileID: 499810925}
+  requestedItem: {fileID: 0}
 --- !u!70 &33776415
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -813,7 +814,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -176.84998, y: 64.51001}
+  m_AnchoredPosition: {x: -176.84999, y: 64.51001}
   m_SizeDelta: {x: -351.05, y: -84.41}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &56239947
@@ -3530,13 +3531,14 @@ MonoBehaviour:
   npcResponses2: []
   playerQuestions3: []
   npcResponses3: []
-  requiredItem: {fileID: 411793979}
+  requiredItemID: 456
   rewardItem: {fileID: 0}
   hasReceivedItem: 0
   npcSprite: {fileID: 21300000, guid: 7d76a75f946f88b48b668381d3144386, type: 3}
   pcImage: {fileID: 21300000, guid: e9eefdac08a80a3488b8bb0659dfeb30, type: 3}
   npcName: Chaya
   objectToSpawn: {fileID: 0}
+  requestedItem: {fileID: 0}
   objectToDeactivate: {fileID: 868725311}
 --- !u!1 &589554740
 GameObject:
@@ -8433,13 +8435,14 @@ MonoBehaviour:
   npcResponses2: []
   playerQuestions3: []
   npcResponses3: []
-  requiredItem: {fileID: 0}
+  requiredItemID: 0
   rewardItem: {fileID: 411793979}
   hasReceivedItem: 0
   npcSprite: {fileID: 21300000, guid: 7d76a75f946f88b48b668381d3144386, type: 3}
   pcImage: {fileID: 21300000, guid: e9eefdac08a80a3488b8bb0659dfeb30, type: 3}
   npcName: Finley
   objectToSpawn: {fileID: 0}
+  requestedItem: {fileID: 0}
   rewardItemForOmaDefeat: {fileID: 411793979}
 --- !u!70 &1396747430
 CapsuleCollider2D:
@@ -12632,7 +12635,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -176.84998, y: 64.51001}
+  m_AnchoredPosition: {x: -176.84999, y: 64.51001}
   m_SizeDelta: {x: -351.05, y: -84.41}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2136684692

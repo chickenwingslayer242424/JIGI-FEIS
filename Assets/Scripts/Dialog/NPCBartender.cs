@@ -4,80 +4,74 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-    public string[] initialDialogLines; // Array der Dialogzeilen für den NPC
-    public string[] playerQuestions1; // Fragen des Spielers an den Dealer (Set 1)
-    public string[] npcResponses1; // Antworten des Dealers an den NPC (Set 1)
+    public string[] initialDialogLines;
+    public string[] playerQuestions1;
+    public string[] npcResponses1;
 
-    public string[] playerQuestions2; // Fragen des Spielers an den Dealer (Set 2)
-    public string[] npcResponses2; // Antworten des Dealers an den NPC (Set 2)
-    public string[] playerQuestions3; // Fragen des Spielers an den Dealer (Set 2)
-    public string[] npcResponses3; // Antworten des Dealers an den NPC (Set 2)
-    public ItemData requiredItem; // Das benötigte Item, um den Dialog zu starten
-    public ItemData rewardItem; // Das Item, das der NPC nach Erfüllung der Bedingung gibt
+    public string[] playerQuestions2;
+    public string[] npcResponses2;
+    public string[] playerQuestions3;
+    public string[] npcResponses3;
 
-    public bool hasReceivedItem = false; // Überprüft, ob das Item bereits erhalten wurde
+    public int requiredItemID; // Verwende Item-ID anstelle des Items
+    public ItemData rewardItem;
 
-    public Sprite npcSprite; // Das Bild des NPCs
-    public Sprite pcImage; // Das Bild des Player Characters (PC)
-    public string npcName; // Neues Feld für den NPC-Namen
+    public bool hasReceivedItem = false;
+    public Sprite npcSprite;
+    public Sprite pcImage;
+    public string npcName;
+    public GameObject objectToSpawn;
+    private bool hasSpokenToPlayer = false;
+    public ItemData requestedItem;
 
-    public GameObject objectToSpawn; // Das Objekt, das gespawnt werden soll
-    private bool hasSpokenToPlayer = false; // Variable, um zu verfolgen, ob der NPC bereits mit dem Spieler gesprochen hat
-
-    public virtual void Interact() // Die Methode als virtual markieren
+    public virtual void Interact()
     {
-        Debug.Log("Interact aufgerufen"); // Debug-Ausgabe für Interaktion
-
+        Debug.Log("Interact aufgerufen");
+        
         if (!hasSpokenToPlayer)
         {
-            // Spezielle Begrüßung beim ersten Gespräch
             initialDialogLines = new string[] { "You look very stressed.", "Let me guess, you're looking for someone?" };
-            playerQuestions1 = new string[] { "Yes, I am looking for my love. Did you see them??" };
+            playerQuestions1 = new string[] { "Yes, I am looking for my love. Did you see them?" };
             npcResponses1 = new string[] { "You should grab one of my very special drinks. They will guide you the right way." };
             hasSpokenToPlayer = true;
         }
-        else if (!hasReceivedItem && requiredItem != null) // Wenn der NPC das benötigte Item nicht erhalten hat und ein Item benötigt wird
+        else if (!hasReceivedItem && requiredItemID != 0)
         {
-            if (GameManager.collectedItems.Contains(requiredItem)) // Wenn das benötigte Item gesammelt wurde
+            GameManager gameManager = GameManager.Instance;
+            Debug.Log("Required Item ID: " + requiredItemID + ", Selected Item ID: " + (gameManager.selectedItem != null ? gameManager.selectedItem.itemID.ToString() : "null"));
+            
+            if (gameManager.IsSelectedItem(requiredItemID))
             {
-                GameManager.collectedItems.Remove(requiredItem); // Entferne das Item aus der Sammlung
-                hasReceivedItem = true; // Setze den Zustand auf erhalten
+                Debug.Log("Required item is selected.");
+                gameManager.RemoveCollectedItem(requiredItemID);
+                hasReceivedItem = true;
 
-                GameManager.collectedItems.Add(rewardItem); // Füge das Belohnungs-Item zur Sammlung hinzu
+                GameManager.collectedItems.Add(rewardItem);
 
-                initialDialogLines = new string[] { "Wow, du super Hecht", "Hier mein super Shaker" }; // Setze die Dialogzeilen des NPCs
+                initialDialogLines = new string[] { "Wow, du super Hecht", "Hier mein super Shaker" };
                 playerQuestions1 = new string[] { "Ich bin eine Frau..." };
                 npcResponses1 = new string[] { "..Abstand" };
             }
             else
             {
-                initialDialogLines = new string[] { "O nourrrrrrr, I can’t do this anymore.", "My poor snakey Bertha…", "...she’s gone...", "I can’t find her.", "If someone brings Bertha back to me, I would let them use my special cocktail shaker." }; // Setze die Dialogzeilen des NPCs
+                Debug.Log("Required item is not selected.");
+                initialDialogLines = new string[] { "O nourrrrrrr, I can’t do this anymore.", "My poor snakey Bertha…", "...she’s gone...", "I can’t find her.", "If someone brings Bertha back to me, I would let them use my special cocktail shaker." };
                 playerQuestions1 = new string[] { "Hmmmmm" };
                 npcResponses1 = new string[] { "She always escapes me when she sees food....." };
             }
         }
-        else
-        {
-            Debug.Log("NPC hat das benötigte Item bereits erhalten oder benötigt kein Item"); // Debug-Ausgabe für den Zustand des NPCs
-            initialDialogLines = new string[] { "Oh my, you scared me Bertha!! Where were you?", "Thank you, total stranger, that I’ve never seen before....", "Here, now you can make special drinks just like me. You can’t take it with you, just bring me 2 ingredients and I can mix it up for ya." }; // Setze die Dialogzeilen des NPCs
-            playerQuestions1 = new string[] { "Do you know how to get the key to the wedding chapel?" };
-            npcResponses1 = new string[] { "Well, I knaurr that the chapel keys are kept by the security in the entrance." };
-        }
-
-        Debug.Log("NPC Sprite gesetzt: " + (npcSprite != null ? npcSprite.name : "null")); // Debug-Ausgabe für das NPC-Bild
-
-        FindObjectOfType<DialogManager>().StartDialog(this); // Starte den Dialog mit dem DialogManager
+        
+        Debug.Log("NPC Sprite gesetzt: " + (npcSprite != null ? npcSprite.name : "null"));
+        FindObjectOfType<DialogManager>().StartDialog(this);
     }
 
     public virtual void OnItemReceived()
     {
-        // Logik für das Erhalten eines Items
         Debug.Log("Item erhalten!");
     }
 
-    public virtual void OnDialogEnd() // Die Methode als virtual markieren
+    public virtual void OnDialogEnd()
     {
-        // Zusätzliche Logik nach dem Dialog (falls nötig)
-        Debug.Log("Dialog beendet"); // Debug-Ausgabe für das Dialogende
+        Debug.Log("Dialog beendet");
     }
 }

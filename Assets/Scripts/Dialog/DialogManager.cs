@@ -208,13 +208,13 @@ public class DialogManager : MonoBehaviour
     {
         if (hasTalkedToBarkeeper)
         {
-            // Rufe die Methode IsSelectedItem auf und übergebe das Item
-            if (GameManager.Instance.IsSelectedItem(currentNpc.requiredItem) && !hasDrinkSpawned)
+            // Rufe die Methode IsSelectedItem auf und übergebe die Item-ID
+            if (GameManager.Instance.IsSelectedItem(currentNpc.requiredItemID) && !hasDrinkSpawned)
             {
-                // Code zum Spawnen des Drinks
                 Debug.Log("Drink wird gespawnt");
-                hasDrinkSpawned = true; // Setze die Variable auf true
+                hasDrinkSpawned = true;
             }
         }
     }
+
 }

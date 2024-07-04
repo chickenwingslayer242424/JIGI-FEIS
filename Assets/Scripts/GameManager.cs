@@ -6,32 +6,31 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public float moveSpeed = 3.5f;
-    public float moveAccuracy = 0.15f;
-    public static List<ItemData> collectedItems = new List<ItemData>();
-    public RectTransform nameTag, hintBox;
-    public Image blockingImage;
-    public GameObject[] localScenes;
-    int activeLocalScene = 0;
-    public Transform[] playerStartPos;
-    public GameObject equipmentCanvas;
-    public Image[] equipmentSlot, equipmentImages;
-    public Sprite emtyItemSlotSprite;
-    public Color selectedItemColor;
-    public int selectedCanvasSlotID = 0, selectedItemID;
-    public CameraFollow cameraFollow; // 添加对 CameraFollow 的引用
-    public static bool hasSpokenToCasinoDealer = false;
-    public static bool isOmaDefeated = false;
+    public float moveSpeed = 3.5f; // Bewegungsgeschwindigkeit des Spielers
+    public float moveAccuracy = 0.15f; // Genauigkeit der Bewegung
+    public static List<ItemData> collectedItems = new List<ItemData>(); // Liste der gesammelten Items
+    public RectTransform nameTag, hintBox; // UI-Elemente für Namensschilder und Hinweisbox
+    public Image blockingImage; // Bild zum Blockieren des Bildschirms (z.B. für Übergänge)
+    public GameObject[] localScenes; // Array der lokalen Szenen
+    int activeLocalScene = 0; // Index der aktiven lokalen Szene
+    public Transform[] playerStartPos; // Startpositionen des Spielers in den Szenen
+    public GameObject equipmentCanvas; // UI-Canvas für die Ausrüstung
+    public Image[] equipmentSlot, equipmentImages; // UI-Elemente für die Ausrüstungsslots und -bilder
+    public Sprite emtyItemSlotSprite; // Sprite für leere Itemslots
+    public Color selectedItemColor; // Farbe für das ausgewählte Item
+    public int selectedCanvasSlotID = 0, selectedItemID; // IDs für den ausgewählten Slot und das ausgewählte Item
+    public CameraFollow cameraFollow; // Referenz auf das CameraFollow-Skript
+    public static bool hasSpokenToCasinoDealer = false; // Flag, ob mit dem Casino-Dealer gesprochen wurde
+    public static bool isOmaDefeated = false; // Flag, ob die Oma besiegt wurde
     public static GameManager Instance; // Singleton-Instanz des GameManagers
-    public ItemData selectedItem; // Hinzugefügt, um den ausgewählten Artikel zu speichern
-
+    public ItemData selectedItem; // Das aktuell ausgewählte Item
 
     private void Awake()
     {
-        if (Instance == null)
+        if (Instance == null) // Überprüfe, ob die Singleton-Instanz null ist
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // Verhindere, dass der GameManager zerstört wird
+            Instance = this; // Setze die Singleton-Instanz auf diese Instanz
+            DontDestroyOnLoad(gameObject); // Verhindere, dass der GameManager beim Szenenwechsel zerstört wird
         }
         else
         {
@@ -41,117 +40,127 @@ public class GameManager : MonoBehaviour
 
     public void SelectItem(int equipmentCanvasID)
     {
-        Color c = Color.white;
-        c.a = 0;
-        equipmentSlot[selectedCanvasSlotID].color = c;
+        Color c = Color.white; // Setze die Farbe auf weiß
+        c.a = 0; // Setze die Alpha-Komponente auf 0
+        equipmentSlot[selectedCanvasSlotID].color = c; // Setze die Farbe des zuvor ausgewählten Slots
 
-        if (equipmentCanvasID >= collectedItems.Count || equipmentCanvasID < 0)
+        if (equipmentCanvasID >= collectedItems.Count || equipmentCanvasID < 0) // Überprüfe, ob die übergebene ID gültig ist
         {
-            selectedItemID = -1;
-            selectedCanvasSlotID = 0;
-            return;
+            selectedItemID = -1; // Setze die ausgewählte Item-ID auf -1 (kein Item)
+            selectedCanvasSlotID = 0; // Setze die ausgewählte Slot-ID auf 0
+            return; // Beende die Methode
         }
 
-        equipmentSlot[equipmentCanvasID].color = selectedItemColor;
-        selectedCanvasSlotID = equipmentCanvasID;
-        selectedItemID = collectedItems[selectedCanvasSlotID].itemID;
+        equipmentSlot[equipmentCanvasID].color = selectedItemColor; // Setze die Farbe des neuen ausgewählten Slots
+        selectedCanvasSlotID = equipmentCanvasID; // Aktualisiere die ausgewählte Slot-ID
+        selectedItemID = collectedItems[selectedCanvasSlotID].itemID; // Aktualisiere die ausgewählte Item-ID
         selectedItem = collectedItems[selectedCanvasSlotID]; // Speichere das ausgewählte Item
     }
 
-    // dialog ist das item auch wirklich ausgewählt?
-    public bool IsSelectedItem(ItemData item)
+    public bool IsSelectedItem(int itemID)
     {
-        return selectedItem != null && selectedItem.itemID == item.itemID; //sehr viele fehler
+        return selectedItem != null && selectedItem.itemID == itemID; // Überprüfe, ob das ausgewählte Item die übergebene Item-ID hat
+    }
+
+    // Hier ist die fehlende Methode hinzugefügt
+    public void RemoveCollectedItem(int itemID)
+    {
+        ItemData itemToRemove = collectedItems.Find(item => item.itemID == itemID);
+        if (itemToRemove != null)
+        {
+            collectedItems.Remove(itemToRemove);
+            UpdateEquipmentCanvas();
+        }
     }
 
     public IEnumerator MoveToPoint(Transform myObject, Vector2 point)
     {
-        Vector2 positionDifference = point - (Vector2)myObject.position;
-        while (positionDifference.magnitude > moveAccuracy)
+        Vector2 positionDifference = point - (Vector2)myObject.position; // Berechne den Unterschied zwischen Ziel- und aktueller Position
+        while (positionDifference.magnitude > moveAccuracy) // Schleife, bis die Position genau genug ist
         {
-            myObject.Translate(moveSpeed * positionDifference.normalized * Time.deltaTime);
-            positionDifference = point - (Vector2)myObject.position;
-            yield return null; //wait one frame
+            myObject.Translate(moveSpeed * positionDifference.normalized * Time.deltaTime); // Bewege das Objekt in Richtung des Ziels
+            positionDifference = point - (Vector2)myObject.position; // Aktualisiere den Positionsunterschied
+            yield return null; // Warte einen Frame
         }
 
-        myObject.position = point;
-        if (myObject == FindObjectOfType<ClickManager>().player)
+        myObject.position = point; // Setze die Position des Objekts genau auf den Zielpunkt
+        if (myObject == FindObjectOfType<ClickManager>().player) // Überprüfe, ob das bewegte Objekt der Spieler ist
         {
-            FindObjectOfType<ClickManager>().isMoving = false;
+            FindObjectOfType<ClickManager>().isMoving = false; // Setze das Bewegungs-Flag auf false
         }
-        yield return null;
+        yield return null; // Warte einen Frame
     }
 
     public void ShowItemName(int equipmentCanvasID)
     {
-        // Implement this method if needed
+        // Implementiere diese Methode, falls erforderlich
     }
 
     public void UpdateEquipmentCanvas()
     {
-        int itemsAmount = collectedItems.Count, itemSlotAmount = equipmentSlot.Length;
-        for (int i = 0; i < itemSlotAmount; i++)
+        int itemsAmount = collectedItems.Count, itemSlotAmount = equipmentSlot.Length; // Anzahl der Items und Slots
+        for (int i = 0; i < itemSlotAmount; i++) // Schleife über alle Slots
         {
-            if (i < itemsAmount && collectedItems[i].itemSlotSprite != null)
+            if (i < itemsAmount && collectedItems[i].itemSlotSprite != null) // Überprüfe, ob es ein Item mit einem Sprite gibt
             {
-                equipmentImages[i].sprite = collectedItems[i].itemSlotSprite;
+                equipmentImages[i].sprite = collectedItems[i].itemSlotSprite; // Setze das Sprite des Items im Slot
             }
             else
             {
-                equipmentImages[i].sprite = emtyItemSlotSprite;
+                equipmentImages[i].sprite = emtyItemSlotSprite; // Setze das Sprite für einen leeren Slot
             }
         }
 
-        if (itemsAmount == 0)
+        if (itemsAmount == 0) // Überprüfe, ob keine Items vorhanden sind
         {
-            SelectItem(-1);
+            SelectItem(-1); // Wähle kein Item aus
         }
-        else if (itemsAmount == 1)
+        else if (itemsAmount == 1) // Überprüfe, ob genau ein Item vorhanden ist
         {
-            SelectItem(0);
+            SelectItem(0); // Wähle das erste Item aus
         }
     }
 
     public void UpdateNameTag(ItemData item)
     {
-        nameTag.GetComponentInChildren<TextMeshProUGUI>().text = item.objectName;
-        nameTag.sizeDelta = item.nameTagSize;
-        nameTag.localPosition = new Vector2(item.nameTagSize.x, -0.5f);
+        nameTag.GetComponentInChildren<TextMeshProUGUI>().text = item.objectName; // Aktualisiere den Namen im Namensschild
+        nameTag.sizeDelta = item.nameTagSize; // Setze die Größe des Namensschildes
+        nameTag.localPosition = new Vector2(item.nameTagSize.x, -0.5f); // Setze die Position des Namensschildes
     }
 
     public void UpdateHintBox(ItemData item)
     {
-        if (item == null)
+        if (item == null) // Überprüfe, ob kein Item übergeben wurde
         {
-            hintBox.gameObject.SetActive(false);
-            return;
+            hintBox.gameObject.SetActive(false); // Verstecke die Hinweisbox
+            return; // Beende die Methode
         }
-        hintBox.gameObject.SetActive(true);
-        hintBox.GetComponentInChildren<TextMeshProUGUI>().text = item.hintMessage;
-        hintBox.sizeDelta = item.hintBoxSize;
-        hintBox.localPosition = new Vector2(item.nameTagSize.x, -0.5f);
+        hintBox.gameObject.SetActive(true); // Zeige die Hinweisbox an
+        hintBox.GetComponentInChildren<TextMeshProUGUI>().text = item.hintMessage; // Setze die Nachricht in der Hinweisbox
+        hintBox.sizeDelta = item.hintBoxSize; // Setze die Größe der Hinweisbox
+        hintBox.localPosition = new Vector2(item.nameTagSize.x, -0.5f); // Setze die Position der Hinweisbox
     }
 
     public void CheckSpecialConditions(ItemData item)
     {
-        switch (item.itemID)
+        switch (item.itemID) // Überprüfe die Item-ID und führe spezielle Aktionen aus
         {
             case -11:
-                StartCoroutine(ChangeScene(localScenes[0], 0));
+                StartCoroutine(ChangeScene(localScenes[0], 0)); // Szene wechseln
                 break;
             case -12:
-                StartCoroutine(ChangeScene(localScenes[1], 0));
+                StartCoroutine(ChangeScene(localScenes[1], 0)); // Szene wechseln
                 break;
             case -13:
-                StartCoroutine(ChangeScene(localScenes[2], 0));
+                StartCoroutine(ChangeScene(localScenes[2], 0)); // Szene wechseln
                 break;
             case -32:
-                StartCoroutine(ChangeScene(localScenes[3], 1));
+                StartCoroutine(ChangeScene(localScenes[3], 1)); // Szene wechseln
                 break;
         }
     }
 
-    public IEnumerator ChangeScene(GameObject newScene, float delay)
+      public IEnumerator ChangeScene(GameObject newScene, float delay)
     {
         yield return new WaitForSeconds(delay);
         blockingImage.enabled = true;
@@ -197,12 +206,7 @@ public class GameManager : MonoBehaviour
         yield return null;
     }
 
-    
-   public bool HasSelectedEquipment(ItemData item)
-    {
-        return selectedItemID == item.itemID;
-    }
-    // Methode zum Sammeln der Maus
+     // Methode zum Sammeln der Maus
     public void CollectMouse(Mover mouseMover)
     {
         Debug.Log("Mouse collected!");
@@ -220,5 +224,6 @@ public class GameManager : MonoBehaviour
                 Debug.LogWarning("Mouse already collected!"); // Warnung, falls die Maus bereits gesammelt wurde
             }
         }
-    }
+     }
 }
+
