@@ -9,6 +9,7 @@ public class ClickManager : MonoBehaviour
     private GameManager gameManager;
     private Vector3 previousPosition;
     private bool facingRight = true;
+    private const int steckerItemID = 123; // ID für das Item "Stecker"
 
     private void Start()
     {
@@ -16,7 +17,7 @@ public class ClickManager : MonoBehaviour
         previousPosition = player.position;
     }
 
-    //Dialog
+    // Dialog
     public void InteractWithNPC(NPC npc)
     {
         npc.Interact();
@@ -45,7 +46,7 @@ public class ClickManager : MonoBehaviour
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
-            
+
             if (hit.collider != null && hit.collider.CompareTag("Ground"))
             {
                 GoToGround(hit.point);
@@ -66,44 +67,66 @@ public class ClickManager : MonoBehaviour
 
     public void GoToItem(ItemData item)
     {
-        //Dialog
-        if (DialogManager.isDialogActive) return;
-        if (!isMoving)
+        // Dialog
+        if (DialogManager.isDialogActive) return; // Unterbricht, wenn ein Dialog aktiv ist
+        if (!isMoving) // Wenn der Spieler sich nicht bewegt
         {
-            gameManager.UpdateHintBox(null);
-            isMoving = true;
-            StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position));
-            TryGettingItem(item);
+            gameManager.UpdateHintBox(null); // Aktualisiert die Hinweiskiste
+            isMoving = true; // Setzt den Bewegungsstatus auf wahr
+            StartCoroutine(MoveAndTryGettingItem(item)); // Startet die Coroutine zum Bewegen und Holen des Items
         }
     }
 
-    private void TryGettingItem(ItemData item)
+    private IEnumerator MoveAndTryGettingItem(ItemData item)
     {
-        bool canGetItem = item.requiredItemID == -1 || gameManager.selectedItemID == item.requiredItemID; //selectedItemID gemeint sind sachen aus dem Inventar, wenn die selectedItemID mit dem requieredItemID überinstimmt
+        yield return StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position)); // Bewegt den Spieler zum Zielpunkt des Items
+        TryGettingItem(item); // Versucht, das Item zu holen
+        isMoving = false; // Setzt den Bewegungsstatus auf falsch
+    }
+
+    public void TryGettingItem(ItemData item)
+    {
+        if (item.itemID == steckerItemID && !GameManager.hasSpokenToCasinoDealer)
+        {
+            Debug.Log("Du musst zuerst mit dem Casino-Dealer sprechen.");
+            return; // Unterbricht die Methode, wenn die Bedingung nicht erfüllt ist
+        }
+
+        bool canGetItem = item.requiredItemID == -1 || gameManager.selectedItemID == item.requiredItemID;
         if (canGetItem)
         {
-            GameManager.collectedItems.Add(item);
+            GameManager.collectedItems.Add(item); // Item zur Liste der gesammelten Items hinzufügen
             Debug.Log("Item Collected");
         }
+
         StartCoroutine(UpdateSceneAfterAction(item, canGetItem));
+
+        if (item.itemID == steckerItemID)
+        {
+            GameManager.isOmaDefeated = true; // Setze die Variable, dass die Oma besiegt wurde
+            Debug.Log("Oma wurde besiegt");
+        }
     }
 
     private IEnumerator UpdateSceneAfterAction(ItemData item, bool canGetItem)
     {
-        while (isMoving)
-            yield return new WaitForSeconds(0.05f);
-        if (canGetItem)
+        while (isMoving) // Solange sich der Spieler bewegt
+            yield return new WaitForSeconds(0.05f); // Warte 0,05 Sekunden
+
+        if (canGetItem) // Wenn das Item geholt werden kann
         {
-            foreach (GameObject g in item.objectsToRemove)
-                Destroy(g);
-            gameManager.UpdateEquipmentCanvas();
+            foreach (GameObject obj in item.objectsToRemove) // Für jedes zu entfernende Objekt des Items
+            {
+                obj.SetActive(false); // Setzt das GameObject auf inaktiv
+                Destroy(obj); // Entfernt das GameObject
+            }
+            gameManager.UpdateEquipmentCanvas(); // Aktualisiert das Ausrüstungs-Canvas
         }
         else
         {
-            gameManager.UpdateHintBox(item);
-            gameManager.CheckSpecialConditions(item);
+            gameManager.UpdateHintBox(item); // Aktualisiert die Hinweiskiste mit dem Item
+            gameManager.CheckSpecialConditions(item); // Überprüft spezielle Bedingungen des Items
         }
-        yield return null;
     }
 
     public void GoToGround(Vector3 point)
@@ -115,19 +138,26 @@ public class ClickManager : MonoBehaviour
         }
     }
 
-    //Dialog
+    // Dialog
     private void CheckForNPCInteraction()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)) // Wenn die linke Maustaste gedrückt wird
         {
-            if (DialogManager.isDialogActive) return;
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            if (hit.collider != null)
+            if (DialogManager.isDialogActive) return; // Unterbricht, wenn ein Dialog aktiv ist
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero); // Raycast an der Mausposition
+            if (hit.collider != null) // Wenn der Raycast etwas trifft
             {
-                NPC npc = hit.collider.GetComponent<NPC>();
-                if (npc != null)
+                NPC npc = hit.collider.GetComponent<NPC>(); // Holt das NPC-Component des getroffenen Objekts
+                if (npc != null) // Wenn das getroffene Objekt ein NPC ist
                 {
-                    InteractWithNPC(npc);
+                    InteractWithNPC(npc); // Interagiert mit dem NPC
+                }
+
+                // Prüfen, ob auf ein Item geklickt wurde
+                ItemData item = hit.collider.GetComponent<ItemData>(); // Holt das ItemData-Component des getroffenen Objekts
+                if (item != null) // Wenn das getroffene Objekt ein Item ist
+                {
+                    GoToItem(item); // Gehe zu dem Item
                 }
             }
         }

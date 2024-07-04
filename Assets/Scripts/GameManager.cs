@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Diagnostics;
-using JetBrains.Annotations;
-using Unity.VisualScripting;
-using Unity.VisualScripting.FullSerializer;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,6 +20,22 @@ public class GameManager : MonoBehaviour
     public Color selectedItemColor;
     public int selectedCanvasSlotID = 0, selectedItemID;
     public CameraFollow cameraFollow; // 添加对 CameraFollow 的引用
+    public static bool hasSpokenToCasinoDealer = false;
+    public static bool isOmaDefeated = false;
+    public static GameManager Instance; // Singleton-Instanz des GameManagers
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Verhindere, dass der GameManager zerstört wird
+        }
+        else
+        {
+            Destroy(gameObject); // Zerstöre Duplikate des GameManagers
+        }
+    }
 
     public IEnumerator MoveToPoint(Transform myObject, Vector2 point)
     {
@@ -119,9 +131,7 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(ChangeScene(localScenes[0], 0));
                 break;
             case -12:
-
                 StartCoroutine(ChangeScene(localScenes[1], 0));
-
                 break;
             case -13:
                 StartCoroutine(ChangeScene(localScenes[2], 0));
@@ -159,7 +169,6 @@ public class GameManager : MonoBehaviour
         // 等待摄像机位置刷新
         yield return new WaitForEndOfFrame();
 
-
         // 启用或禁用 CameraFollow 脚本
         if (cameraFollow != null)
         {
@@ -177,5 +186,25 @@ public class GameManager : MonoBehaviour
         }
         blockingImage.enabled = false;
         yield return null;
+    }
+
+    // Methode zum Sammeln der Maus
+    public void CollectMouse(Mover mouseMover)
+    {
+        Debug.Log("Mouse collected!");
+        ItemData mouseItem = mouseMover.GetComponent<ItemData>();
+        if (mouseItem != null)
+        {
+            if (!collectedItems.Contains(mouseItem)) // Überprüfen, ob die Maus bereits gesammelt wurde
+            {
+                collectedItems.Add(mouseItem);
+                UpdateEquipmentCanvas();
+                mouseItem.HideItem(); // Maus ausblenden
+            }
+            else
+            {
+                Debug.LogWarning("Mouse already collected!"); // Warnung, falls die Maus bereits gesammelt wurde
+            }
+        }
     }
 }
