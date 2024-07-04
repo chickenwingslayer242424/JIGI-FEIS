@@ -74,59 +74,58 @@ public class DialogManager : MonoBehaviour
     }
 
     public void DisplayNextSentence()
-{
-    if (isNpcSpeaking)
     {
-        if (npcSentences.Count == 0)
+        if (isNpcSpeaking)
         {
-            SwitchToPlayerQuestion();
-            return;
+            if (npcSentences.Count == 0)
+            {
+                SwitchToPlayerQuestion();
+                return;
+            }
+
+            string sentence = npcSentences.Dequeue(); // Nächste NPC-Dialogzeile aus der Warteschlange
+            StopAllCoroutines(); // Stoppe alle laufenden Coroutinen
+            StartCoroutine(TypeSentence(sentence)); // Starte die Coroutine zum schrittweisen Anzeigen des Satzes
+            npcImage.gameObject.SetActive(true); // Zeige NPC-Image an
+            pcImage.gameObject.SetActive(false); // Verstecke PC-Image
+
+            npcNamePanel.SetActive(true); // Aktiviere das NPC Namensschild
+            pcNamePanel.SetActive(false); // Deaktiviere das PC Namensschild
+
+            Debug.Log("NPC Sprite gesetzt: " + (npcImage.sprite != null ? npcImage.sprite.name : "null")); // Debug-Ausgabe
         }
-
-        string sentence = npcSentences.Dequeue(); // Nächste NPC-Dialogzeile aus der Warteschlange
-        StopAllCoroutines(); // Stoppe alle laufenden Coroutinen
-        StartCoroutine(TypeSentence(sentence)); // Starte die Coroutine zum schrittweisen Anzeigen des Satzes
-        npcImage.gameObject.SetActive(true); // Zeige NPC-Image an
-        pcImage.gameObject.SetActive(false); // Verstecke PC-Image
-
-        npcNamePanel.SetActive(true); // Aktiviere das NPC Namensschild
-        pcNamePanel.SetActive(false); // Deaktiviere das PC Namensschild
-
-        Debug.Log("NPC Sprite gesetzt: " + (npcImage.sprite != null ? npcImage.sprite.name : "null")); // Debug-Ausgabe
-    }
-    else if (playerQuestions.Count > 0)
-    {
-        string question = playerQuestions.Dequeue(); // Nächste Spieler-Dialogzeile aus der Warteschlange
-        StopAllCoroutines(); // Stoppe alle laufenden Coroutinen
-        StartCoroutine(TypeSentence(question)); // Starte die Coroutine zum schrittweisen Anzeigen des Satzes
-        npcImage.gameObject.SetActive(false); // Verstecke NPC-Image
-        pcImage.gameObject.SetActive(true); // Zeige PC-Image an
-
-        npcNamePanel.SetActive(false); // Deaktiviere das NPC Namensschild
-        pcNamePanel.SetActive(true); // Aktiviere das PC Namensschild
-    }
-    else if (npcResponses.Count > 0)
-    {
-        string response = npcResponses.Dequeue(); // Nächste NPC-Antwortzeile aus der Warteschlange
-        StopAllCoroutines(); // Stoppe alle laufenden Coroutinen
-        StartCoroutine(TypeSentence(response)); // Starte die Coroutine zum schrittweisen Anzeigen des Satzes
-        npcImage.gameObject.SetActive(true); // Zeige NPC-Image an
-        pcImage.gameObject.SetActive(false); // Verstecke PC-Image
-
-        npcNamePanel.SetActive(true); // Aktiviere das NPC Namensschild
-        pcNamePanel.SetActive(false); // Deaktiviere das PC Namensschild
-
-        if (npcResponses.Count == 0)
+        else if (playerQuestions.Count > 0)
         {
-            LoadNextQuestionSet();
+            string question = playerQuestions.Dequeue(); // Nächste Spieler-Dialogzeile aus der Warteschlange
+            StopAllCoroutines(); // Stoppe alle laufenden Coroutinen
+            StartCoroutine(TypeSentence(question)); // Starte die Coroutine zum schrittweisen Anzeigen des Satzes
+            npcImage.gameObject.SetActive(false); // Verstecke NPC-Image
+            pcImage.gameObject.SetActive(true); // Zeige PC-Image an
+
+            npcNamePanel.SetActive(false); // Deaktiviere das NPC Namensschild
+            pcNamePanel.SetActive(true); // Aktiviere das PC Namensschild
+        }
+        else if (npcResponses.Count > 0)
+        {
+            string response = npcResponses.Dequeue(); // Nächste NPC-Antwortzeile aus der Warteschlange
+            StopAllCoroutines(); // Stoppe alle laufenden Coroutinen
+            StartCoroutine(TypeSentence(response)); // Starte die Coroutine zum schrittweisen Anzeigen des Satzes
+            npcImage.gameObject.SetActive(true); // Zeige NPC-Image an
+            pcImage.gameObject.SetActive(false); // Verstecke PC-Image
+
+            npcNamePanel.SetActive(true); // Aktiviere das NPC Namensschild
+            pcNamePanel.SetActive(false); // Deaktiviere das PC Namensschild
+
+            if (npcResponses.Count == 0)
+            {
+                LoadNextQuestionSet();
+            }
+        }
+        else
+        {
+            EndDialog(); // Beende den Dialog
         }
     }
-    else
-    {
-        EndDialog(); // Beende den Dialog
-    }
-}
-
 
     void SwitchToPlayerQuestion()
     {
@@ -140,7 +139,7 @@ public class DialogManager : MonoBehaviour
         LoadQuestionSet(currentPlayerQuestionSet);
     }
 
-        void LoadQuestionSet(int questionSet)
+    void LoadQuestionSet(int questionSet)
     {
         playerQuestions.Clear();
         npcResponses.Clear();
@@ -186,29 +185,36 @@ public class DialogManager : MonoBehaviour
                     }
                 }
                 break;
-            default:
-                Debug.Log("Keine weiteren Fragensätze verfügbar"); // Debug-Ausgabe
-                break;
         }
     }
-
 
     IEnumerator TypeSentence(string sentence)
     {
-        dialogText.text = "";
+        dialogText.text = ""; // Leere den Text
         foreach (char letter in sentence.ToCharArray())
         {
-            dialogText.text += letter;
-            yield return null;
+            dialogText.text += letter; // Füge Buchstabe für Buchstabe hinzu
+            yield return null; // Warte einen Frame
         }
     }
 
-    void EndDialog()
+    public void EndDialog()
     {
-        dialogPanel.SetActive(false); // Verstecke das Dialogfeld
+        dialogPanel.SetActive(false); // Dialogfeld ausblenden
         isDialogActive = false; // Setze den Dialogstatus auf inaktiv
-        currentNpc.OnDialogEnd(); // Rufe OnDialogEnd des aktuellen NPCs auf
-        Debug.Log("Dialog beendet"); // Debug-Ausgabe für das Dialogende
     }
 
+    void Update()
+    {
+        if (hasTalkedToBarkeeper)
+        {
+            // Rufe die Methode IsSelectedItem auf und übergebe das Item
+            if (GameManager.Instance.IsSelectedItem(currentNpc.requiredItem) && !hasDrinkSpawned)
+            {
+                // Code zum Spawnen des Drinks
+                Debug.Log("Drink wird gespawnt");
+                hasDrinkSpawned = true; // Setze die Variable auf true
+            }
+        }
+    }
 }

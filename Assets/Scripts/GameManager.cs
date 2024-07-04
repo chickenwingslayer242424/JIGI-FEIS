@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     public static bool hasSpokenToCasinoDealer = false;
     public static bool isOmaDefeated = false;
     public static GameManager Instance; // Singleton-Instanz des GameManagers
+    public ItemData selectedItem; // Hinzugefügt, um den ausgewählten Artikel zu speichern
+
 
     private void Awake()
     {
@@ -35,24 +37,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject); // Zerstöre Duplikate des GameManagers
         }
-    }
-
-    public IEnumerator MoveToPoint(Transform myObject, Vector2 point)
-    {
-        Vector2 positionDifference = point - (Vector2)myObject.position;
-        while (positionDifference.magnitude > moveAccuracy)
-        {
-            myObject.Translate(moveSpeed * positionDifference.normalized * Time.deltaTime);
-            positionDifference = point - (Vector2)myObject.position;
-            yield return null; //wait one frame
-        }
-
-        myObject.position = point;
-        if (myObject == FindObjectOfType<ClickManager>().player)
-        {
-            FindObjectOfType<ClickManager>().isMoving = false;
-        }
-        yield return null;
     }
 
     public void SelectItem(int equipmentCanvasID)
@@ -71,6 +55,31 @@ public class GameManager : MonoBehaviour
         equipmentSlot[equipmentCanvasID].color = selectedItemColor;
         selectedCanvasSlotID = equipmentCanvasID;
         selectedItemID = collectedItems[selectedCanvasSlotID].itemID;
+        selectedItem = collectedItems[selectedCanvasSlotID]; // Speichere das ausgewählte Item
+    }
+
+    // dialog ist das item auch wirklich ausgewählt?
+    public bool IsSelectedItem(ItemData item)
+    {
+        return selectedItem != null && selectedItem.itemID == item.itemID;
+    }
+
+    public IEnumerator MoveToPoint(Transform myObject, Vector2 point)
+    {
+        Vector2 positionDifference = point - (Vector2)myObject.position;
+        while (positionDifference.magnitude > moveAccuracy)
+        {
+            myObject.Translate(moveSpeed * positionDifference.normalized * Time.deltaTime);
+            positionDifference = point - (Vector2)myObject.position;
+            yield return null; //wait one frame
+        }
+
+        myObject.position = point;
+        if (myObject == FindObjectOfType<ClickManager>().player)
+        {
+            FindObjectOfType<ClickManager>().isMoving = false;
+        }
+        yield return null;
     }
 
     public void ShowItemName(int equipmentCanvasID)
@@ -188,6 +197,11 @@ public class GameManager : MonoBehaviour
         yield return null;
     }
 
+    
+   public bool HasSelectedEquipment(ItemData item)
+    {
+        return selectedItemID == item.itemID;
+    }
     // Methode zum Sammeln der Maus
     public void CollectMouse(Mover mouseMover)
     {

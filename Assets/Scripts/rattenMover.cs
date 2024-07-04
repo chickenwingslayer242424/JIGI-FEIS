@@ -65,25 +65,25 @@ public class Mover : MonoBehaviour
     }
 
     void OnMouseDown()
-{
-    Debug.Log("Mouse down on Mover!");
-    if (!isCollected)
     {
-        if (!isStopped)
+        Debug.Log("Mouse down on Mover!");
+        if (!isCollected)
         {
-            isStopped = true;
+            if (!isStopped)
+            {
+                isStopped = true;
+                Debug.Log("Mouse stopped!");
+            }
+            else
+            {
+                isCollected = true;
+                GameManager.Instance.CollectMouse(this);
+                gameObject.SetActive(false); // Deaktiviere das GameObject, nachdem es eingesammelt wurde
+            }
         }
         else
         {
-            isCollected = true;
-            GameManager.Instance.CollectMouse(this);
-            gameObject.SetActive(false); // Deaktiviere das GameObject, nachdem es eingesammelt wurde
+            Debug.LogWarning("Mouse already collected!"); // Warnung, falls die Maus bereits gesammelt wurde
         }
     }
-    else
-    {
-        Debug.LogWarning("Mouse already collected!"); // Warnung, falls die Maus bereits gesammelt wurde
-    }
-}
-
 }
