@@ -77,10 +77,6 @@ public class ClickManager : MonoBehaviour
         }
     }
 
- 
-
-
-
     private IEnumerator MoveAndTryGettingItem(ItemData item)
     {
         yield return StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position)); // Bewegt den Spieler zum Zielpunkt des Items
@@ -97,7 +93,7 @@ public class ClickManager : MonoBehaviour
         }
 
         bool canGetItem = item.requiredItemID == -1 || gameManager.selectedItemID == item.requiredItemID;
-        if (canGetItem)
+        if (canGetItem && item.itemID != steckerItemID) // Hier wird das Item mit der ID 123 nicht gesammelt
         {
             GameManager.collectedItems.Add(item); // Item zur Liste der gesammelten Items hinzufügen
             Debug.Log("Item Collected");
