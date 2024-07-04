@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
     // dialog ist das item auch wirklich ausgewählt?
     public bool IsSelectedItem(ItemData item)
     {
-        return selectedItem != null && selectedItem.itemID == item.itemID;
+        return selectedItem != null && selectedItem.itemID == item.itemID; //sehr viele fehler
     }
 
     public IEnumerator MoveToPoint(Transform myObject, Vector2 point)
