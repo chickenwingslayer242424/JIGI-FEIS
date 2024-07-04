@@ -3353,8 +3353,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464236e443a06bd47a7d8386e963beb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 1
-  requiredItemID: 2
+  itemID: 99
+  requiredItemID: 77
   goToPoint: {fileID: 1077788754}
   objectsToRemove:
   - {fileID: 540320173}
