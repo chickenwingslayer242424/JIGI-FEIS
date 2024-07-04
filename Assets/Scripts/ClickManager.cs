@@ -77,6 +77,10 @@ public class ClickManager : MonoBehaviour
         }
     }
 
+ 
+
+
+
     private IEnumerator MoveAndTryGettingItem(ItemData item)
     {
         yield return StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position)); // Bewegt den Spieler zum Zielpunkt des Items

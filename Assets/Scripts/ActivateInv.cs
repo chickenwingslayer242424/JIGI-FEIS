@@ -5,6 +5,8 @@ using UnityEngine;
 public class ActivateInv : MonoBehaviour
 {
 public GameObject ActiveInvObject;
+
+  
 public void ActivateObject()
 {
     if (ActiveInvObject.activeSelf != true)
@@ -15,6 +17,6 @@ public void ActivateObject()
    {
     ActiveInvObject.SetActive(false);
    }
-
 }
+
 }

@@ -23,7 +23,39 @@ public class GameManager : MonoBehaviour
     public static bool hasSpokenToCasinoDealer = false;
     public static bool isOmaDefeated = false;
     public static GameManager Instance; // Singleton-Instanz des GameManagers
-    public ItemData selectedItem; // Hinzugefügt, um den ausgewählten Artikel zu speichern
+    public ItemData selectedItem;
+    public GameObject ActiveInvObjectA;// Hinzugefügt, um den ausgewählten Artikel zu speichern
+    public GameObject ActiveInvObjectB;
+
+
+
+    void Update()
+    {
+        // Desired number to check for
+        int desiredNumber = 99;
+
+        // Check for desired number in collectedItems
+        foreach (ItemData item in collectedItems)
+        {
+            if (item.itemID == desiredNumber)
+            {
+
+                if (ActiveInvObjectA != null)
+                {
+                    ActiveInvObjectA.SetActive(true);
+                }
+
+                // Check if ActiveInvObjectB is not null before setting it active
+                if (ActiveInvObjectB != null)
+                {
+                    ActiveInvObjectB.SetActive(true);
+                }
+
+
+            }
+        }
+    }
+
 
 
     private void Awake()
@@ -197,8 +229,8 @@ public class GameManager : MonoBehaviour
         yield return null;
     }
 
-    
-   public bool HasSelectedEquipment(ItemData item)
+
+    public bool HasSelectedEquipment(ItemData item)
     {
         return selectedItemID == item.itemID;
     }
