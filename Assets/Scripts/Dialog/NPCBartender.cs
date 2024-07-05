@@ -40,10 +40,10 @@ public class NPC : MonoBehaviour
             GameManager gameManager = GameManager.Instance;
             Debug.Log("Required Item ID: " + requiredItemID + ", Selected Item ID: " + (gameManager.selectedItem != null ? gameManager.selectedItem.itemID.ToString() : "null"));
             
-            if (gameManager.IsSelectedItem(requiredItemID))
+           if (gameManager.IsSelectedItem(requiredItemID))
             {
                 Debug.Log("Required item is selected.");
-                gameManager.RemoveCollectedItem(requiredItemID);
+                // gameManager.RemoveCollectedItem(requiredItemID); // Entferne oder kommentiere diesen Aufruf
                 hasReceivedItem = true;
 
                 GameManager.collectedItems.Add(rewardItem);
@@ -52,6 +52,10 @@ public class NPC : MonoBehaviour
                 playerQuestions1 = new string[] { "Ich bin eine Frau..." };
                 npcResponses1 = new string[] { "..Abstand" };
             }
+
+
+
+
             else
             {
                 Debug.Log("Required item is not selected.");

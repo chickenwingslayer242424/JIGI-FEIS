@@ -93,16 +93,7 @@ public class GameManager : MonoBehaviour
         return selectedItem != null && selectedItem.itemID == itemID; // Überprüfe, ob das ausgewählte Item die übergebene Item-ID hat
     }
 
-    // Hier ist die fehlende Methode hinzugefügt
-    public void RemoveCollectedItem(int itemID)
-    {
-        ItemData itemToRemove = collectedItems.Find(item => item.itemID == itemID);
-        if (itemToRemove != null)
-        {
-            collectedItems.Remove(itemToRemove);
-            UpdateEquipmentCanvas();
-        }
-    }
+    
 
     public IEnumerator MoveToPoint(Transform myObject, Vector2 point)
     {
