@@ -24,28 +24,31 @@ public class NPC : MonoBehaviour
     private bool hasSpokenToPlayer = false;
     public ItemData requestedItem;
 
+
+
+
     public virtual void Interact()
     {
         Debug.Log("Interact aufgerufen");
         
         if (!hasSpokenToPlayer)
         {
-            initialDialogLines = new string[] { "You look very stressed.", "Let me guess, you're looking for someone?" };
+            initialDialogLines = new string[] { "You look very stressed.", "Let me guess, you're looking for someone?" }; //spielt diesesn dialog nur 1x ab
             playerQuestions1 = new string[] { "Yes, I am looking for my love. Did you see them?" };
             npcResponses1 = new string[] { "You should grab one of my very special drinks. They will guide you the right way." };
             hasSpokenToPlayer = true;
         }
-        else if (!hasReceivedItem && requiredItemID != 0)
+        else if (!hasReceivedItem && requiredItemID != 0) //probleme wenn beim sprechen
         {
             GameManager gameManager = GameManager.Instance;
             Debug.Log("Required Item ID: " + requiredItemID + ", Selected Item ID: " + (gameManager.selectedItem != null ? gameManager.selectedItem.itemID.ToString() : "null"));
             
-           if (gameManager.IsSelectedItem(requiredItemID))
+           if (gameManager.selectedItemID == 99) //checkt ob das item ausgewählt wurde, wenn ja spielt folgendes ab //funktioniert
             {
                 Debug.Log("Required item is selected.");
                 // gameManager.RemoveCollectedItem(requiredItemID); // Entferne oder kommentiere diesen Aufruf
                 hasReceivedItem = true;
-
+                
                 GameManager.collectedItems.Add(rewardItem);
 
                 initialDialogLines = new string[] { "Wow, du super Hecht", "Hier mein super Shaker" };
@@ -56,7 +59,7 @@ public class NPC : MonoBehaviour
 
 
 
-            else
+            else //dialog spielt ab, wenn man kein item hat und schon mit ihm geredet hat
             {
                 Debug.Log("Required item is not selected.");
                 initialDialogLines = new string[] { "O nourrrrrrr, I can’t do this anymore.", "My poor snakey Bertha…", "...she’s gone...", "I can’t find her.", "If someone brings Bertha back to me, I would let them use my special cocktail shaker." };

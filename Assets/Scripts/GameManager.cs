@@ -54,7 +54,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SpecialDrink()
+    {
 
+    }
 
     private void Awake()
     {
@@ -137,10 +140,10 @@ public class GameManager : MonoBehaviour
         {
             SelectItem(-1); // Wähle kein Item aus
         }
-        else if (itemsAmount == 1) // Überprüfe, ob genau ein Item vorhanden ist
-        {
-            SelectItem(0); // Wähle das erste Item aus
-        }
+        //else if (itemsAmount == 1) // Überprüfe, ob genau ein Item vorhanden ist
+        //{
+        //    SelectItem(0); // Wähle das erste Item aus
+        //}
     }
 
     public void UpdateNameTag(ItemData item)
