@@ -18,6 +18,7 @@ public class ClickManager : MonoBehaviour
     public GameObject KnockDrink2;
      public GameObject DeKnockDrink1;// Hinzugefügt, um den ausgewählten Artikel zu speichern
     public GameObject DeKnockDrink2;
+    public GameObject DeKnockDrink3;
     public static bool check1 = true;
 
 
@@ -75,6 +76,7 @@ public class ClickManager : MonoBehaviour
             KnockDrink2.SetActive(true);
              DeKnockDrink1.SetActive(false); // in zukunft in eine foreach schleiche packen wenn mehrere items aktiviert werden!
             DeKnockDrink2.SetActive(false);
+            DeKnockDrink3.SetActive(false);
             check1 = false;// damit es nur 1x abspielt
         } 
     }
@@ -103,6 +105,11 @@ public class ClickManager : MonoBehaviour
         yield return StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position)); // Bewegt den Spieler zum Zielpunkt des Items
         TryGettingItem(item); // Versucht, das Item zu holen
         isMoving = false; // Setzt den Bewegungsstatus auf falsch
+    }
+    public void RemoveItemWhenUsed()
+    {
+        //wenn die selectedItemID mit der requiredItemID übereinstimmt, dann soll das item in der collectedItems liste gelöscht werden.
+        //canvas(inventar) soll geupdated werden, entfernt das bild, und updated diese mit einem emtyItemslot
     }
 
     public void TryGettingItem(ItemData item)

@@ -62,16 +62,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void CheckSpecialDrink(ItemData item)
-    {
-        //rattebreste hat itemID = 100
-        //zigaretten stümmel itemID = 5
-        //prüfen ob das erste richtige item gegeben wurde, wenn ja speichern
-        //prüfen ób das zewite item gegeben wurden dann speichern
-        //checken ob beide items gegeben wurde, wenn ja dann spawnt der drink auf den tisch
-
-
-    }
+  
 
     private void Awake()
     {
