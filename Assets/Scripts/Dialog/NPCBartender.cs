@@ -38,7 +38,7 @@ public class NPC : MonoBehaviour
             npcResponses1 = new string[] { "You should grab one of my very special drinks. They will guide you the right way." };
             hasSpokenToPlayer = true;
         }
-        else if (!hasReceivedItem && requiredItemID != 0) //probleme wenn beim sprechen
+        else if (!hasReceivedItem && requiredItemID != 0) 
         {
             GameManager gameManager = GameManager.Instance;
             Debug.Log("Required Item ID: " + requiredItemID + ", Selected Item ID: " + (gameManager.selectedItem != null ? gameManager.selectedItem.itemID.ToString() : "null"));
@@ -49,7 +49,7 @@ public class NPC : MonoBehaviour
                 // gameManager.RemoveCollectedItem(requiredItemID); // Entferne oder kommentiere diesen Aufruf
                 hasReceivedItem = true;
                 
-                GameManager.collectedItems.Add(rewardItem);
+                //GameManager.collectedItems.Add(rewardItem); das item soll auf der bar sein, kann aber erst benutz werden, wenn die schlange gegeben wurde
 
                 initialDialogLines = new string[] { "Wow, du super Hecht", "Hier mein super Shaker" };
                 playerQuestions1 = new string[] { "Ich bin eine Frau..." };

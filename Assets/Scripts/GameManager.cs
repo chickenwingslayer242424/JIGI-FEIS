@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using JetBrains.Annotations;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,10 +25,17 @@ public class GameManager : MonoBehaviour
     public static bool isOmaDefeated = false; // Flag, ob die Oma besiegt wurde
     public static GameManager Instance; // Singleton-Instanz des GameManagers
     public ItemData selectedItem; // Das aktuell ausgewählte Item
-     public GameObject ActiveInvObjectA;// Hinzugefügt, um den ausgewählten Artikel zu speichern
+    public GameObject ActiveInvObjectA;// Hinzugefügt, um den ausgewählten Artikel zu speichern
     public GameObject ActiveInvObjectB;
 
     void Update()
+    {
+        CheckForDeadRat();
+        
+
+
+    }
+    public void CheckForDeadRat()
     {
         // Desired number to check for
         int desiredNumber = 99;
@@ -54,8 +62,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SpecialDrink()
+    public void CheckSpecialDrink(ItemData item)
     {
+        //rattebreste hat itemID = 100
+        //zigaretten stümmel itemID = 5
+        //prüfen ob das erste richtige item gegeben wurde, wenn ja speichern
+        //prüfen ób das zewite item gegeben wurden dann speichern
+        //checken ob beide items gegeben wurde, wenn ja dann spawnt der drink auf den tisch
+
 
     }
 
@@ -96,7 +110,7 @@ public class GameManager : MonoBehaviour
         return selectedItem != null && selectedItem.itemID == itemID; // Überprüfe, ob das ausgewählte Item die übergebene Item-ID hat
     }
 
-    
+
 
     public IEnumerator MoveToPoint(Transform myObject, Vector2 point)
     {
@@ -185,7 +199,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-      public IEnumerator ChangeScene(GameObject newScene, float delay)
+    public IEnumerator ChangeScene(GameObject newScene, float delay)
     {
         yield return new WaitForSeconds(delay);
         blockingImage.enabled = true;
@@ -231,7 +245,7 @@ public class GameManager : MonoBehaviour
         yield return null;
     }
 
-     // Methode zum Sammeln der Maus
+    // Methode zum Sammeln der Maus
     public void CollectMouse(Mover mouseMover)
     {
         Debug.Log("Mouse collected!");
@@ -249,6 +263,6 @@ public class GameManager : MonoBehaviour
                 Debug.LogWarning("Mouse already collected!"); // Warnung, falls die Maus bereits gesammelt wurde
             }
         }
-     }
+    }
 }
 

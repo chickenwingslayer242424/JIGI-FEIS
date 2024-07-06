@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemData : MonoBehaviour
 {
     public int itemID, requiredItemID; //Item wird in zukunft danach benannt nach nummerierung
+    public int requiredItemID2;
     public Transform goToPoint; //pos von gameobjekten wird hier platziert
     public GameObject[] objectsToRemove;
     public GameObject hideUI; //damit der spieler nicht 2x auf denselben UI drückt

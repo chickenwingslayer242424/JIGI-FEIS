@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ClickManager : MonoBehaviour
@@ -10,6 +11,15 @@ public class ClickManager : MonoBehaviour
     private Vector3 previousPosition;
     private bool facingRight = true;
     private const int steckerItemID = 123; // ID für das Item "Stecker"
+
+    public static bool DrinkItem1 = false;
+    public static bool DrinkItem2 = false;
+    public GameObject KnockDrink1;// Hinzugefügt, um den ausgewählten Artikel zu speichern
+    public GameObject KnockDrink2;
+     public GameObject DeKnockDrink1;// Hinzugefügt, um den ausgewählten Artikel zu speichern
+    public GameObject DeKnockDrink2;
+    public static bool check1 = true;
+
 
     private void Start()
     {
@@ -26,6 +36,7 @@ public class ClickManager : MonoBehaviour
 
     private void Update()
     {
+        CheckForDrink();
         // Abbrechen, wenn der Dialog aktiv ist
         if (DialogManager.isDialogActive) return;
         if (isMoving)
@@ -56,7 +67,17 @@ public class ClickManager : MonoBehaviour
         // Prüfen, ob auf einen NPC geklickt wurde
         CheckForNPCInteraction();
     }
-
+    public void CheckForDrink()
+    {
+        if (DrinkItem1 && DrinkItem2 && check1) // wenn beide drinks gegebn wurde,
+        {
+            KnockDrink1.SetActive(true); // in zukunft in eine foreach schleiche packen wenn mehrere items aktiviert werden!
+            KnockDrink2.SetActive(true);
+             DeKnockDrink1.SetActive(false); // in zukunft in eine foreach schleiche packen wenn mehrere items aktiviert werden!
+            DeKnockDrink2.SetActive(false);
+            check1 = false;// damit es nur 1x abspielt
+        } 
+    }
     private void Flip()
     {
         facingRight = !facingRight;
@@ -86,10 +107,17 @@ public class ClickManager : MonoBehaviour
 
     public void TryGettingItem(ItemData item)
     {
-        if (item.itemID == steckerItemID && !GameManager.hasSpokenToCasinoDealer)
+        if (gameManager.selectedItemID == 16 && !DrinkItem1) //checkt ob rattenreste übergeben wurde wenn ja wird es gespeichert
         {
-            Debug.Log("Du musst zuerst mit dem Casino-Dealer sprechen.");
-            return; // Unterbricht die Methode, wenn die Bedingung nicht erfüllt ist
+            Debug.Log("Zutat1 wurde gegeben");
+            DrinkItem1 = true;
+            return;
+        }
+        if (gameManager.selectedItemID == 17 && !DrinkItem2) //checkt ob zigartten übergeben wurde wenn ja wird es gespeichert
+        {
+            Debug.Log("Zutat2 wurde gegeben");
+            DrinkItem2 = true;
+            return;
         }
 
         bool canGetItem = item.requiredItemID == -1 || gameManager.selectedItemID == item.requiredItemID;
@@ -99,13 +127,22 @@ public class ClickManager : MonoBehaviour
             Debug.Log("Item Collected");
         }
 
-        StartCoroutine(UpdateSceneAfterAction(item, canGetItem));
+        if (item.itemID == steckerItemID && !GameManager.hasSpokenToCasinoDealer)
+        {
+            Debug.Log("Du musst zuerst mit dem Casino-Dealer sprechen.");
+            return; // Unterbricht die Methode, wenn die Bedingung nicht erfüllt ist
+        }
+
 
         if (item.itemID == steckerItemID)
         {
             GameManager.isOmaDefeated = true; // Setze die Variable, dass die Oma besiegt wurde
             Debug.Log("Oma wurde besiegt");
         }
+
+
+
+        StartCoroutine(UpdateSceneAfterAction(item, canGetItem));
     }
 
     private IEnumerator UpdateSceneAfterAction(ItemData item, bool canGetItem)
