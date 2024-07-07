@@ -11,7 +11,7 @@ public class ClickManager : MonoBehaviour
     private Vector3 previousPosition;
     private bool facingRight = true;
     private const int steckerItemID = 123; // ID für das Item "Stecker"
-
+    private const int stromkastenItemID = 666999;
     public static bool DrinkItem1 = false;
     public static bool DrinkItem2 = false;
     public GameObject KnockDrink1;// Hinzugefügt, um den ausgewählten Artikel zu speichern
@@ -54,15 +54,27 @@ public class ClickManager : MonoBehaviour
             previousPosition = currentPosition;
         }
 
-        if (Input.GetMouseButtonDown(0))
+         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
 
-            if (hit.collider != null && hit.collider.CompareTag("Ground"))
+            if (hit.collider != null)
             {
-                GoToGround(hit.point);
+                if (hit.collider.CompareTag("Minispiel Trigger"))
+                {
+                    ItemData item = hit.collider.GetComponent<ItemData>();
+                    if (item != null && item.itemID == 666999)
+                    {
+                        gameManager.StartMiniGame(); // Minispiel starten
+                    }
+                }
+                else if (hit.collider.CompareTag("Ground"))
+                {
+                    GoToGround(hit.point);
+                }
             }
+            
         }
 
         // Prüfen, ob auf einen NPC geklickt wurde
@@ -138,7 +150,7 @@ public class ClickManager : MonoBehaviour
         }
 
         bool canGetItem = item.requiredItemID == -1 || gameManager.selectedItemID == item.requiredItemID;
-        if (canGetItem && item.itemID != steckerItemID) // Hier wird das Item mit der ID 123 nicht gesammelt
+        if (canGetItem && item.itemID != steckerItemID && item.itemID != stromkastenItemID) // Hier wird das Item mit der ID 123 nicht gesammelt
         {
             GameManager.collectedItems.Add(item); // Item zur Liste der gesammelten Items hinzufügen
             Debug.Log("Item Collected");

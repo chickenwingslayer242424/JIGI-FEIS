@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public ItemData selectedItem; // Das aktuell ausgewählte Item
     public GameObject ActiveInvObjectA;// Hinzugefügt, um den ausgewählten Artikel zu speichern
     public GameObject ActiveInvObjectB;
+    public GameObject miniGameCanvas; // Referenz auf das Minispiel-Canvas
     
 
     void Update()
@@ -75,6 +76,11 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject); // Zerstöre Duplikate des GameManagers
+        }
+
+         if (miniGameCanvas != null)
+        {
+            miniGameCanvas.SetActive(false); // Stelle sicher, dass das Minispiel-Canvas initial deaktiviert ist
         }
     }
     public void RemoveItem(int equipmentCanvasID, ItemData item) //später
@@ -272,6 +278,25 @@ public class GameManager : MonoBehaviour
             {
                 Debug.LogWarning("Mouse already collected!"); // Warnung, falls die Maus bereits gesammelt wurde
             }
+        }
+    }
+
+     public void StartMiniGame()
+    {
+        if (miniGameCanvas != null)
+        {
+            miniGameCanvas.SetActive(true); // Minispiel-Canvas aktivieren
+            
+        }
+    }
+
+    // Methode zum Beenden des Minispiels
+    public void EndMiniGame()
+    {
+        if (miniGameCanvas != null)
+        {
+            miniGameCanvas.SetActive(false); // Minispiel-Canvas deaktivieren
+            
         }
     }
 }
