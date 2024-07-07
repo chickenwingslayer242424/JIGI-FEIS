@@ -64,6 +64,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+ public void RemoveItemWhenUsed(ItemData item)
+    {
+        //wenn die selectedItemID mit der requiredItemID übereinstimmt, dann soll das item in der collectedItems liste gelöscht werden.
+        if (selectedItemID != -1) //wenn kein item ausgewählt wurde dann passiert nichts
+        {
+            if (selectedItemID == item.requiredItemID || selectedItemID == item.requiredItemID2)
+            {
+                Debug.Log("das item wurde erfolgreich angewendet");
+                //hier item entfernen
+                collectedItems.Remove(selectedItem);
+                Debug.Log("wurde entfernt");
+                //ui dann updaten
+                UpdateEquipmentCanvas(); //nach benutzung wird das inventar wieder eingerückt
+                
+            }
+        }
+
+        //canvas(inventar) soll geupdated werden, entfernt das bild, und updated diese mit einem emtyItemslot
+    }
   
 
     private void Awake()
@@ -83,17 +103,7 @@ public class GameManager : MonoBehaviour
             miniGameCanvas.SetActive(false); // Stelle sicher, dass das Minispiel-Canvas initial deaktiviert ist
         }
     }
-    public void RemoveItem(int equipmentCanvasID, ItemData item) //später
-    {
-         //wenn die selectedItemID mit der requiredItemID übereinstimmt, dann soll das item in der collectedItems liste gelöscht werden.
-         if (selectedItemID == item.requiredItemID) //hier ändern!
-         {
-             //collectedItems.RemoveAt(equipmentCanvasID);
-             Debug.Log("ausgewählte item wurde erfolgreich entfernt");
-         }
-        
-        //canvas(inventar) soll geupdated werden, entfernt das bild, und updated diese mit einem emtyItemslot
-    }
+
     public void SelectItem(int equipmentCanvasID)
     {
         Color c = Color.white; // Setze die Farbe auf weiß
@@ -143,7 +153,7 @@ public class GameManager : MonoBehaviour
         // Implementiere diese Methode, falls erforderlich
     }
 
-    public void UpdateEquipmentCanvas()
+    public void UpdateEquipmentCanvas() 
     {
         int itemsAmount = collectedItems.Count, itemSlotAmount = equipmentSlot.Length; // Anzahl der Items und Slots
         for (int i = 0; i < itemSlotAmount; i++) // Schleife über alle Slots

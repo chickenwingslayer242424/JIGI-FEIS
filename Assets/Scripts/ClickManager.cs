@@ -118,21 +118,7 @@ public class ClickManager : MonoBehaviour
         TryGettingItem(item); // Versucht, das Item zu holen
         isMoving = false; // Setzt den Bewegungsstatus auf falsch
     }
-    public void RemoveItemWhenUsed(ItemData item)
-    {
-        //wenn die selectedItemID mit der requiredItemID übereinstimmt, dann soll das item in der collectedItems liste gelöscht werden.
-        if (gameManager.selectedItemID != -1) //wenn kein item ausgewählt wurde dann passiert nichts
-        {
-            if (gameManager.selectedItemID == item.requiredItemID || gameManager.selectedItemID == item.requiredItemID2)
-            {
-                Debug.Log("das item wurde erfolgreich angewendet");
-                 //gameManager.equipmentImages[1].sprite = gameManager.emtyItemSlotSprite;
-                
-            }
-        }
-
-        //canvas(inventar) soll geupdated werden, entfernt das bild, und updated diese mit einem emtyItemslot
-    }
+   
 
     public void TryGettingItem(ItemData item)
     {
@@ -140,14 +126,14 @@ public class ClickManager : MonoBehaviour
         {
             Debug.Log("Zutat1 wurde gegeben");
             DrinkItem1 = true;
-            RemoveItemWhenUsed(item);
+            gameManager.RemoveItemWhenUsed(item);
             return;
         }
         if (gameManager.selectedItemID == item.requiredItemID2 && gameManager.selectedItemID == 17 && !DrinkItem2) //checkt ob zigartten übergeben wurde wenn ja wird es gespeichert
         {
             Debug.Log("Zutat2 wurde gegeben");
             DrinkItem2 = true;
-             RemoveItemWhenUsed(item);
+            gameManager.RemoveItemWhenUsed(item);
             return;
         }
 
@@ -170,7 +156,7 @@ public class ClickManager : MonoBehaviour
             GameManager.isOmaDefeated = true; // Setze die Variable, dass die Oma besiegt wurde
             Debug.Log("Oma wurde besiegt");
         }
-        RemoveItemWhenUsed(item);
+       gameManager.RemoveItemWhenUsed(item);
 
 
         StartCoroutine(UpdateSceneAfterAction(item, canGetItem));
