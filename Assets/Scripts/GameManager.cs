@@ -86,9 +86,9 @@ public class GameManager : MonoBehaviour
     public void RemoveItem(int equipmentCanvasID, ItemData item) //später
     {
          //wenn die selectedItemID mit der requiredItemID übereinstimmt, dann soll das item in der collectedItems liste gelöscht werden.
-         if (selectedItemID == item.requiredItemID)
+         if (selectedItemID == item.requiredItemID) //hier ändern!
          {
-             collectedItems.RemoveAt(equipmentCanvasID);
+             //collectedItems.RemoveAt(equipmentCanvasID);
              Debug.Log("ausgewählte item wurde erfolgreich entfernt");
          }
         

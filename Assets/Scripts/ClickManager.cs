@@ -127,7 +127,7 @@ public class ClickManager : MonoBehaviour
             {
                 Debug.Log("das item wurde erfolgreich angewendet");
                  //gameManager.equipmentImages[1].sprite = gameManager.emtyItemSlotSprite;
-                return;
+                
             }
         }
 
@@ -140,12 +140,14 @@ public class ClickManager : MonoBehaviour
         {
             Debug.Log("Zutat1 wurde gegeben");
             DrinkItem1 = true;
+            RemoveItemWhenUsed(item);
             return;
         }
         if (gameManager.selectedItemID == item.requiredItemID2 && gameManager.selectedItemID == 17 && !DrinkItem2) //checkt ob zigartten übergeben wurde wenn ja wird es gespeichert
         {
             Debug.Log("Zutat2 wurde gegeben");
             DrinkItem2 = true;
+             RemoveItemWhenUsed(item);
             return;
         }
 
@@ -168,7 +170,7 @@ public class ClickManager : MonoBehaviour
             GameManager.isOmaDefeated = true; // Setze die Variable, dass die Oma besiegt wurde
             Debug.Log("Oma wurde besiegt");
         }
-
+        RemoveItemWhenUsed(item);
 
 
         StartCoroutine(UpdateSceneAfterAction(item, canGetItem));
@@ -187,10 +189,11 @@ public class ClickManager : MonoBehaviour
                 Destroy(obj); // Entfernt das GameObject
             }
             gameManager.UpdateEquipmentCanvas();// Aktualisiert das Ausrüstungs-Canvas
-            RemoveItemWhenUsed(item);
+            
         }
         else
         {
+            Debug.Log("kein item wurde benutzt");
             gameManager.UpdateHintBox(item); // Aktualisiert die Hinweiskiste mit dem Item
             gameManager.CheckSpecialConditions(item); // Überprüft spezielle Bedingungen des Items
         }
