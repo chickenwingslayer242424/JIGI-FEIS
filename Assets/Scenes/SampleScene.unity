@@ -10529,6 +10529,7 @@ MonoBehaviour:
   KnockDrink2: {fileID: 1174136513}
   DeKnockDrink1: {fileID: 815047905}
   DeKnockDrink2: {fileID: 216911015}
+  DeKnockDrink3: {fileID: 1086064948}
 --- !u!4 &1818828532
 Transform:
   m_ObjectHideFlags: 0

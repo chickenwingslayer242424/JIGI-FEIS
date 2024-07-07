@@ -10,6 +10,7 @@ public class ItemData : MonoBehaviour
     public GameObject[] objectsToRemove;
     public GameObject hideUI; //damit der spieler nicht 2x auf denselben UI drückt
     public Sprite itemSlotSprite;
+   
     
      //item reinziehen, was nach dem anklicken verschwinden soll
      public string objectName;

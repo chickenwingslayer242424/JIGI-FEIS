@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public Image[] equipmentSlot, equipmentImages; // UI-Elemente für die Ausrüstungsslots und -bilder
     public Sprite emtyItemSlotSprite; // Sprite für leere Itemslots
     public Color selectedItemColor; // Farbe für das ausgewählte Item
-    public int selectedCanvasSlotID = 0, selectedItemID; // IDs für den ausgewählten Slot und das ausgewählte Item
+    public int selectedCanvasSlotID = 0, selectedItemID ; // IDs für den ausgewählten Slot und das ausgewählte Item
     public CameraFollow cameraFollow; // Referenz auf das CameraFollow-Skript
     public static bool hasSpokenToCasinoDealer = false; // Flag, ob mit dem Casino-Dealer gesprochen wurde
     public static bool isOmaDefeated = false; // Flag, ob die Oma besiegt wurde
@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public ItemData selectedItem; // Das aktuell ausgewählte Item
     public GameObject ActiveInvObjectA;// Hinzugefügt, um den ausgewählten Artikel zu speichern
     public GameObject ActiveInvObjectB;
+    
 
     void Update()
     {
@@ -76,7 +77,17 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject); // Zerstöre Duplikate des GameManagers
         }
     }
-
+    public void RemoveItem(int equipmentCanvasID, ItemData item) //später
+    {
+         //wenn die selectedItemID mit der requiredItemID übereinstimmt, dann soll das item in der collectedItems liste gelöscht werden.
+         if (selectedItemID == item.requiredItemID)
+         {
+             collectedItems.RemoveAt(equipmentCanvasID);
+             Debug.Log("ausgewählte item wurde erfolgreich entfernt");
+         }
+        
+        //canvas(inventar) soll geupdated werden, entfernt das bild, und updated diese mit einem emtyItemslot
+    }
     public void SelectItem(int equipmentCanvasID)
     {
         Color c = Color.white; // Setze die Farbe auf weiß
@@ -141,6 +152,14 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        
+
+
+
+
+
+
+       
         if (itemsAmount == 0) // Überprüfe, ob keine Items vorhanden sind
         {
             SelectItem(-1); // Wähle kein Item aus
@@ -245,7 +264,7 @@ public class GameManager : MonoBehaviour
         {
             if (!collectedItems.Contains(mouseItem)) // Überprüfen, ob die Maus bereits gesammelt wurde
             {
-                collectedItems.Add(mouseItem);
+                collectedItems.Add(mouseItem); //führt zu problemen vll ändern
                 UpdateEquipmentCanvas();
                 mouseItem.HideItem(); // Maus ausblenden
             }

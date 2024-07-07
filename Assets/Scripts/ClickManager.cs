@@ -16,7 +16,7 @@ public class ClickManager : MonoBehaviour
     public static bool DrinkItem2 = false;
     public GameObject KnockDrink1;// Hinzugefügt, um den ausgewählten Artikel zu speichern
     public GameObject KnockDrink2;
-     public GameObject DeKnockDrink1;// Hinzugefügt, um den ausgewählten Artikel zu speichern
+    public GameObject DeKnockDrink1;// Hinzugefügt, um den ausgewählten Artikel zu speichern
     public GameObject DeKnockDrink2;
     public GameObject DeKnockDrink3;
     public static bool check1 = true;
@@ -74,11 +74,11 @@ public class ClickManager : MonoBehaviour
         {
             KnockDrink1.SetActive(true); // in zukunft in eine foreach schleiche packen wenn mehrere items aktiviert werden!
             KnockDrink2.SetActive(true);
-             DeKnockDrink1.SetActive(false); // in zukunft in eine foreach schleiche packen wenn mehrere items aktiviert werden!
+            DeKnockDrink1.SetActive(false); // in zukunft in eine foreach schleiche packen wenn mehrere items aktiviert werden!
             DeKnockDrink2.SetActive(false);
             DeKnockDrink3.SetActive(false);
             check1 = false;// damit es nur 1x abspielt
-        } 
+        }
     }
     private void Flip()
     {
@@ -106,21 +106,31 @@ public class ClickManager : MonoBehaviour
         TryGettingItem(item); // Versucht, das Item zu holen
         isMoving = false; // Setzt den Bewegungsstatus auf falsch
     }
-    public void RemoveItemWhenUsed()
+    public void RemoveItemWhenUsed(ItemData item)
     {
         //wenn die selectedItemID mit der requiredItemID übereinstimmt, dann soll das item in der collectedItems liste gelöscht werden.
+        if (gameManager.selectedItemID != -1) //wenn kein item ausgewählt wurde dann passiert nichts
+        {
+            if (gameManager.selectedItemID == item.requiredItemID || gameManager.selectedItemID == item.requiredItemID2)
+            {
+                Debug.Log("das item wurde erfolgreich angewendet");
+                 //gameManager.equipmentImages[1].sprite = gameManager.emtyItemSlotSprite;
+                return;
+            }
+        }
+
         //canvas(inventar) soll geupdated werden, entfernt das bild, und updated diese mit einem emtyItemslot
     }
 
     public void TryGettingItem(ItemData item)
     {
-        if (gameManager.selectedItemID == 16 && !DrinkItem1) //checkt ob rattenreste übergeben wurde wenn ja wird es gespeichert
+        if (gameManager.selectedItemID == item.requiredItemID && gameManager.selectedItemID == 16 && !DrinkItem1) //checkt ob rattenreste übergeben wurde wenn ja wird es gespeichert
         {
             Debug.Log("Zutat1 wurde gegeben");
             DrinkItem1 = true;
             return;
         }
-        if (gameManager.selectedItemID == 17 && !DrinkItem2) //checkt ob zigartten übergeben wurde wenn ja wird es gespeichert
+        if (gameManager.selectedItemID == item.requiredItemID2 && gameManager.selectedItemID == 17 && !DrinkItem2) //checkt ob zigartten übergeben wurde wenn ja wird es gespeichert
         {
             Debug.Log("Zutat2 wurde gegeben");
             DrinkItem2 = true;
@@ -164,7 +174,8 @@ public class ClickManager : MonoBehaviour
                 obj.SetActive(false); // Setzt das GameObject auf inaktiv
                 Destroy(obj); // Entfernt das GameObject
             }
-            gameManager.UpdateEquipmentCanvas(); // Aktualisiert das Ausrüstungs-Canvas
+            gameManager.UpdateEquipmentCanvas();// Aktualisiert das Ausrüstungs-Canvas
+            RemoveItemWhenUsed(item);
         }
         else
         {
