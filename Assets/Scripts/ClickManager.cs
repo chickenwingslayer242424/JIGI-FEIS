@@ -74,6 +74,14 @@ public class ClickManager : MonoBehaviour
                 {
                     GoToGround(hit.point);
                 }
+                else if (hit.collider.CompareTag("poster"))
+                {
+                    ItemData item = hit.collider.GetComponent<ItemData>();
+                    if (item != null && item.itemID == 777456)
+                    {
+                        gameManager.ShowPosterPopup(); // Popup anzeigen
+                    }
+                }
             }
         }
 

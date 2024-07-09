@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     public GameObject miniGameCanvas; // Referenz auf das Minispiel-Canvas
     public GameObject objectToHide;//DunkelheitStromkasten
     private int correctDraggableCount = 0; // Zählt die Anzahl der korrekt platzierten Draggable-Buttons
+    public GameObject posterCanvas; // Neues UI-Canvas für das Poster
+    public Button posterExitButton; // Exit-Button auf dem Poster-Canvas
     
 
     void Update()
@@ -105,6 +107,14 @@ public class GameManager : MonoBehaviour
         {
             miniGameCanvas.SetActive(false); // Stelle sicher, dass das Minispiel-Canvas initial deaktiviert ist
         }
+
+         // Popup Canvas initial deaktivieren
+         if (posterCanvas != null)
+        {
+            posterCanvas.SetActive(false); // Stelle sicher, dass das Poster-Canvas initial deaktiviert ist
+        }
+
+        posterExitButton.onClick.AddListener(ClosePosterPopup); // Exit-Button Listener hinzufügen
     }
 
     public void SelectItem(int equipmentCanvasID)
@@ -325,6 +335,22 @@ public class GameManager : MonoBehaviour
             {
                 miniGameCanvas.SetActive(false);
             }
+        }
+    }
+
+     public void ShowPosterPopup()
+    {
+        if (posterCanvas != null)
+        {
+            posterCanvas.SetActive(true); // Poster-Canvas aktivieren
+        }
+    }
+
+    public void ClosePosterPopup()
+    {
+        if (posterCanvas != null)
+        {
+            posterCanvas.SetActive(false); // Poster-Canvas deaktivieren
         }
     }
 }
