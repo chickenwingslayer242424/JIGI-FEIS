@@ -9,6 +9,7 @@ TagManager:
   - Minispiel Trigger
   - plugIns
   - TargetButton
+  - poster
   layers:
   - Default
   - TransparentFX
