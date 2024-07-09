@@ -54,8 +54,7 @@ public class NPC : MonoBehaviour
                 initialDialogLines = new string[] { "Wow, du super Hecht", "Hier mein super Shaker" };
                 playerQuestions1 = new string[] { "Ich bin eine Frau..." };
                 npcResponses1 = new string[] { "..Abstand" };
-                
-                
+            
                 
             }
 

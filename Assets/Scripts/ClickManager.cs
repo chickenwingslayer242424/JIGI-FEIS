@@ -116,7 +116,7 @@ public class ClickManager : MonoBehaviour
 
     private IEnumerator MoveAndTryGettingItem(ItemData item)
     {
-        yield return StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position)); // Bewegt den Spieler zum Zielpunkt des Items
+        yield return StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position)); //das hier nutzen um zum npc zuerst hinlaufen dann interagieren
         TryGettingItem(item); // Versucht, das Item zu holen
         isMoving = false; // Setzt den Bewegungsstatus auf falsch
     }

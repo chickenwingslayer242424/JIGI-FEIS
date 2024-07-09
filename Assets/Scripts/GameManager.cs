@@ -79,7 +79,8 @@ public class GameManager : MonoBehaviour
                 collectedItems.Remove(selectedItem);
                 Debug.Log("wurde entfernt");
                 //ui dann updaten
-                UpdateEquipmentCanvas(); //nach benutzung wird das inventar wieder eingerückt
+                UpdateEquipmentCanvas();
+                SelectItem(-1); //nach benutzung wird das inventar wieder eingerückt
                 
             }
         }
