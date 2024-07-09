@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 
 public class NPC : MonoBehaviour
@@ -41,10 +42,12 @@ public class NPC : MonoBehaviour
         else if (!hasReceivedItem && requiredItemID != 0) 
         {
             GameManager gameManager = GameManager.Instance;
+            ItemData item = ItemData.Instance;
             Debug.Log("Required Item ID: " + requiredItemID + ", Selected Item ID: " + (gameManager.selectedItem != null ? gameManager.selectedItem.itemID.ToString() : "null"));
             
            if (gameManager.selectedItemID == 99) //checkt ob das item ausgewählt wurde, wenn ja spielt folgendes ab //funktioniert
             {
+                gameManager.RemoveItemForNPC();
                 Debug.Log("Required item is selected.");
                 // gameManager.RemoveCollectedItem(requiredItemID); // Entferne oder kommentiere diesen Aufruf
                 hasReceivedItem = true;
@@ -54,7 +57,7 @@ public class NPC : MonoBehaviour
                 initialDialogLines = new string[] { "Wow, du super Hecht", "Hier mein super Shaker" };
                 playerQuestions1 = new string[] { "Ich bin eine Frau..." };
                 npcResponses1 = new string[] { "..Abstand" };
-            
+         
                 
             }
 

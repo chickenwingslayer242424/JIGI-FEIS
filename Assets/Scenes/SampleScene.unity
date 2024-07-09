@@ -4577,7 +4577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &619579405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4661,7 +4661,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.1899998, y: 1.61585}
+  m_AnchoredPosition: {x: 10.690001, y: 1.57585}
   m_SizeDelta: {x: 1.1797, y: 2.1883}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &631499209
@@ -6906,12 +6906,12 @@ GameObject:
   - component: {fileID: 955592835}
   - component: {fileID: 955592837}
   m_Layer: 0
-  m_Name: "Hochzeitskapellen_Schlu\u0308ssel"
+  m_Name: "Schlu\u0308ssel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &955592835
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6954,7 +6954,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d900d19540329cc4f9f849bc04bde343, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6973,7 +6973,7 @@ Transform:
   m_GameObject: {fileID: 955592834}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.21, y: 1.59, z: 10}
+  m_LocalPosition: {x: 10.71, y: 1.55, z: 10}
   m_LocalScale: {x: 0.15582117, y: 0.15582117, z: 0.15582117}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8910,7 +8910,7 @@ Transform:
   m_GameObject: {fileID: 1116455413}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3, y: -20.1, z: 0}
+  m_LocalPosition: {x: -9.8, y: -34.9, z: 0}
   m_LocalScale: {x: 0.91880965, y: 0.91880965, z: 0.91880965}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14731,6 +14731,8 @@ MonoBehaviour:
   npcName: HuSo
   objectToSpawn: {fileID: 0}
   requestedItem: {fileID: 0}
+  "Schl\xFCssel1": {fileID: 619579404}
+  "Schl\xFCssel2": {fileID: 955592834}
 --- !u!212 &1848252486
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17494,6 +17496,7 @@ SceneRoots:
   - {fileID: 1216800213}
   - {fileID: 668747256}
   - {fileID: 2104052243}
+  - {fileID: 993805370}
   - {fileID: 1818828532}
   - {fileID: 425190782}
   - {fileID: 483058051}
@@ -17502,7 +17505,6 @@ SceneRoots:
   - {fileID: 1848201413}
   - {fileID: 468140700}
   - {fileID: 1939730489}
-  - {fileID: 993805370}
   - {fileID: 196039130}
   - {fileID: 1013297163}
   - {fileID: 1751475086}

@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public Image[] equipmentSlot, equipmentImages; // UI-Elemente für die Ausrüstungsslots und -bilder
     public Sprite emtyItemSlotSprite; // Sprite für leere Itemslots
     public Color selectedItemColor; // Farbe für das ausgewählte Item
-    public int selectedCanvasSlotID = 0, selectedItemID ; // IDs für den ausgewählten Slot und das ausgewählte Item
+    public int selectedCanvasSlotID = 0, selectedItemID; // IDs für den ausgewählten Slot und das ausgewählte Item
     public CameraFollow cameraFollow; // Referenz auf das CameraFollow-Skript
     public static bool hasSpokenToCasinoDealer = false; // Flag, ob mit dem Casino-Dealer gesprochen wurde
     public static bool isOmaDefeated = false; // Flag, ob die Oma besiegt wurde
@@ -29,8 +29,9 @@ public class GameManager : MonoBehaviour
     public GameObject ActiveInvObjectB;
     public GameObject miniGameCanvas; // Referenz auf das Minispiel-Canvas
     public GameObject objectToHide;//DunkelheitStromkasten
-    private int correctDraggableCount = 0; // Zählt die Anzahl der korrekt platzierten Draggable-Buttons
-    
+    private int correctDraggableCount = 0;
+     // Zählt die Anzahl der korrekt platzierten Draggable-Buttons
+
 
     void Update()
     {
@@ -67,7 +68,8 @@ public class GameManager : MonoBehaviour
     }
 
 
- public void RemoveItemWhenUsed(ItemData item)
+
+    public void RemoveItemWhenUsed(ItemData item) //nur für item and item interaktionen gedacht
     {
         //wenn die selectedItemID mit der requiredItemID übereinstimmt, dann soll das item in der collectedItems liste gelöscht werden.
         if (selectedItemID != -1) //wenn kein item ausgewählt wurde dann passiert nichts
@@ -81,13 +83,25 @@ public class GameManager : MonoBehaviour
                 //ui dann updaten
                 UpdateEquipmentCanvas();
                 SelectItem(-1); //nach benutzung wird das inventar wieder eingerückt
-                
+
             }
         }
 
         //canvas(inventar) soll geupdated werden, entfernt das bild, und updated diese mit einem emtyItemslot
     }
-  
+
+    public void RemoveItemForNPC() //nur für item an npc gedacht
+    {
+
+        Debug.Log("das item wurde erfolgreich angewendet");
+        //hier item entfernen
+        collectedItems.Remove(selectedItem);
+        Debug.Log("wurde entfernt");
+        //ui dann updaten
+        UpdateEquipmentCanvas();
+        SelectItem(-1); //nach benutzung wird das inventar wieder eingerückt
+
+    }
 
     private void Awake()
     {
@@ -101,7 +115,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject); // Zerstöre Duplikate des GameManagers
         }
 
-         if (miniGameCanvas != null)
+        if (miniGameCanvas != null)
         {
             miniGameCanvas.SetActive(false); // Stelle sicher, dass das Minispiel-Canvas initial deaktiviert ist
         }
@@ -156,7 +170,7 @@ public class GameManager : MonoBehaviour
         // Implementiere diese Methode, falls erforderlich
     }
 
-    public void UpdateEquipmentCanvas() 
+    public void UpdateEquipmentCanvas()
     {
         int itemsAmount = collectedItems.Count, itemSlotAmount = equipmentSlot.Length; // Anzahl der Items und Slots
         for (int i = 0; i < itemSlotAmount; i++) // Schleife über alle Slots
@@ -171,14 +185,14 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        
 
 
 
 
 
 
-       
+
+
         if (itemsAmount == 0) // Überprüfe, ob keine Items vorhanden sind
         {
             SelectItem(-1); // Wähle kein Item aus
@@ -217,7 +231,7 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(ChangeScene(localScenes[0], 0)); // Szene wechseln
                 break;
             case -12:
-                StartCoroutine(ChangeScene(localScenes[1], 0)); // Szene wechseln
+                StartCoroutine(ChangeScene(localScenes[1], 0)); // hochzeitskapelle
                 break;
             case -13:
                 StartCoroutine(ChangeScene(localScenes[2], 0)); // Szene wechseln
@@ -227,6 +241,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+
 
     public IEnumerator ChangeScene(GameObject newScene, float delay)
     {
@@ -294,12 +309,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-     public void StartMiniGame()
+    public void StartMiniGame()
     {
         if (miniGameCanvas != null)
         {
             miniGameCanvas.SetActive(true); // Minispiel-Canvas aktivieren
-            
+
         }
     }
 
