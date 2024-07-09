@@ -319,6 +319,6 @@ public class GameManager : MonoBehaviour
             objectToHide.SetActive(false);
         }
     }
-    
+
 }
 
