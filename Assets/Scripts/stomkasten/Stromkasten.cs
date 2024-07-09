@@ -5,14 +5,14 @@ using UnityEngine;
 public class MiniGameHandler : MonoBehaviour
 {
     public GameObject miniGameCanvas; // Referenz auf das Minispiel-Canvas
-    public GameObject draggableObject; // Das Objekt, das bewegt werden soll
+    public List<GameObject> draggableObjects; // Liste der draggable Objekte
+    public List<GameObject> targetButtons; // Liste der Ziel-Buttons
 
     private Vector2 difference = Vector2.zero;
     private bool isDragging = false;
     private GameObject selectedObject;
 
     public static bool isMiniGameActive { get; private set; } // Eigenschaft, die den Zustand des Minispiels speichert
-
 
     void Update()
     {
@@ -34,12 +34,12 @@ public class MiniGameHandler : MonoBehaviour
             {
                 Debug.Log("Hit collider: " + hit.collider.gameObject.name);
 
-                if (hit.collider.gameObject == draggableObject)
+                if (draggableObjects.Contains(hit.collider.gameObject))
                 {
                     Debug.Log("Draggable object hit");
                     isDragging = true;
-                    selectedObject = draggableObject;
-                    difference = (Vector2)mousePosition - (Vector2)draggableObject.transform.position;
+                    selectedObject = hit.collider.gameObject;
+                    difference = (Vector2)mousePosition - (Vector2)selectedObject.transform.position;
                 }
             }
         }
@@ -60,7 +60,7 @@ public class MiniGameHandler : MonoBehaviour
             // Überprüfen, ob auf einem gültigen Ziel abgelegt wurde
             RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
 
-            if (hit.collider != null && hit.collider.CompareTag("TargetButton"))
+            if (hit.collider != null && targetButtons.Contains(hit.collider.gameObject))
             {
                 Debug.Log("Dropped on target button");
                 // Benachrichtigen des GameManagers
@@ -85,6 +85,5 @@ public class MiniGameHandler : MonoBehaviour
             isMiniGameActive = false; // Setzt das Minispiel auf inaktiv
             GameManager.Instance.EndMiniGame();
         }
-      
-  }   
+    }
 }

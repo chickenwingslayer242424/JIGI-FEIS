@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public GameObject ActiveInvObjectB;
     public GameObject miniGameCanvas; // Referenz auf das Minispiel-Canvas
     public GameObject objectToHide;//DunkelheitStromkasten
+    private int correctDraggableCount = 0; // Zählt die Anzahl der korrekt platzierten Draggable-Buttons
     
 
     void Update()
@@ -301,24 +302,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Methode zum Beenden des Minispiels
     public void EndMiniGame()
     {
-        if (miniGameCanvas != null)
-        {
-            miniGameCanvas.SetActive(false); // Minispiel-Canvas deaktivieren
-            
-        }
+        correctDraggableCount = 0; // Setze den Zähler zurück, wenn das Minispiel beendet wird
     }
 
-     // Methode, die aufgerufen wird, wenn das Objekt erfolgreich auf dem Ziel abgelegt wurde
     public void OnDropOnTarget()
     {
-        if (objectToHide != null)
+        correctDraggableCount++; // Erhöhe den Zähler, wenn ein Draggable-Button korrekt platziert wurde
+
+        if (correctDraggableCount == 4) // Überprüfe, ob alle vier Draggable-Buttons korrekt platziert wurden
         {
-            objectToHide.SetActive(false);
+            // Blende das `objectToHide` aus, wenn alle Draggable-Buttons korrekt platziert wurden
+            if (objectToHide != null)
+            {
+                objectToHide.SetActive(false);
+            }
+
+            // Beende das Minispiel
+            if (miniGameCanvas != null)
+            {
+                miniGameCanvas.SetActive(false);
+            }
         }
     }
-
 }
+
 
