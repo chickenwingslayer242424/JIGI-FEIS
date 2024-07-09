@@ -21,7 +21,6 @@ public class ClickManager : MonoBehaviour
     public GameObject DeKnockDrink3;
     public static bool check1 = true;
 
-
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -31,6 +30,7 @@ public class ClickManager : MonoBehaviour
     // Dialog
     public void InteractWithNPC(NPC npc)
     {
+        if (MiniGameHandler.isMiniGameActive) return; // Abbrechen, wenn das Minispiel aktiv ist
         npc.Interact();
         Debug.Log("Interacting with NPC: " + npc.name);
     }
@@ -38,8 +38,8 @@ public class ClickManager : MonoBehaviour
     private void Update()
     {
         CheckForDrink();
-        // Abbrechen, wenn der Dialog aktiv ist
-        if (DialogManager.isDialogActive) return;
+        // Abbrechen, wenn der Dialog oder das Minispiel aktiv ist
+        if (DialogManager.isDialogActive || MiniGameHandler.isMiniGameActive) return;
         if (isMoving)
         {
             Vector3 currentPosition = player.position;
@@ -54,8 +54,9 @@ public class ClickManager : MonoBehaviour
             previousPosition = currentPosition;
         }
 
-         if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
+            if (MiniGameHandler.isMiniGameActive) return; // Abbrechen, wenn das Minispiel aktiv ist
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
 
@@ -74,12 +75,12 @@ public class ClickManager : MonoBehaviour
                     GoToGround(hit.point);
                 }
             }
-            
         }
 
         // Prüfen, ob auf einen NPC geklickt wurde
         CheckForNPCInteraction();
     }
+
     public void CheckForDrink()
     {
         if (DrinkItem1 && DrinkItem2 && check1) // wenn beide drinks gegebn wurde,
@@ -92,6 +93,7 @@ public class ClickManager : MonoBehaviour
             check1 = false;// damit es nur 1x abspielt
         }
     }
+
     private void Flip()
     {
         facingRight = !facingRight;
@@ -102,8 +104,8 @@ public class ClickManager : MonoBehaviour
 
     public void GoToItem(ItemData item)
     {
-        // Dialog
-        if (DialogManager.isDialogActive) return; // Unterbricht, wenn ein Dialog aktiv ist
+        // Abbrechen, wenn der Dialog oder das Minispiel aktiv ist
+        if (DialogManager.isDialogActive || MiniGameHandler.isMiniGameActive) return;
         if (!isMoving) // Wenn der Spieler sich nicht bewegt
         {
             gameManager.UpdateHintBox(null); // Aktualisiert die Hinweiskiste
@@ -118,7 +120,6 @@ public class ClickManager : MonoBehaviour
         TryGettingItem(item); // Versucht, das Item zu holen
         isMoving = false; // Setzt den Bewegungsstatus auf falsch
     }
-   
 
     public void TryGettingItem(ItemData item)
     {
@@ -150,14 +151,12 @@ public class ClickManager : MonoBehaviour
             return; // Unterbricht die Methode, wenn die Bedingung nicht erfüllt ist
         }
 
-
         if (item.itemID == steckerItemID)
         {
             GameManager.isOmaDefeated = true; // Setze die Variable, dass die Oma besiegt wurde
             Debug.Log("Oma wurde besiegt");
         }
-       gameManager.RemoveItemWhenUsed(item);
-
+        gameManager.RemoveItemWhenUsed(item);
 
         StartCoroutine(UpdateSceneAfterAction(item, canGetItem));
     }
@@ -175,7 +174,6 @@ public class ClickManager : MonoBehaviour
                 Destroy(obj); // Entfernt das GameObject
             }
             gameManager.UpdateEquipmentCanvas();// Aktualisiert das Ausrüstungs-Canvas
-            
         }
         else
         {
@@ -187,6 +185,7 @@ public class ClickManager : MonoBehaviour
 
     public void GoToGround(Vector3 point)
     {
+        if (MiniGameHandler.isMiniGameActive) return; // Abbrechen, wenn das Minispiel aktiv ist
         if (!isMoving)
         {
             isMoving = true;
@@ -199,7 +198,7 @@ public class ClickManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) // Wenn die linke Maustaste gedrückt wird
         {
-            if (DialogManager.isDialogActive) return; // Unterbricht, wenn ein Dialog aktiv ist
+            if (DialogManager.isDialogActive || MiniGameHandler.isMiniGameActive) return; // Abbrechen, wenn der Dialog oder das Minispiel aktiv ist
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero); // Raycast an der Mausposition
             if (hit.collider != null) // Wenn der Raycast etwas trifft
             {

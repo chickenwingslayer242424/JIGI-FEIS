@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public GameObject ActiveInvObjectA;// Hinzugefügt, um den ausgewählten Artikel zu speichern
     public GameObject ActiveInvObjectB;
     public GameObject miniGameCanvas; // Referenz auf das Minispiel-Canvas
+    public GameObject objectToHide;//DunkelheitStromkasten
     
 
     void Update()
@@ -309,5 +310,15 @@ public class GameManager : MonoBehaviour
             
         }
     }
+
+     // Methode, die aufgerufen wird, wenn das Objekt erfolgreich auf dem Ziel abgelegt wurde
+    public void OnDropOnTarget()
+    {
+        if (objectToHide != null)
+        {
+            objectToHide.SetActive(false);
+        }
+    }
+    
 }
 
