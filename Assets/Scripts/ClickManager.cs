@@ -14,6 +14,7 @@ public class ClickManager : MonoBehaviour
     private const int stromkastenItemID = 666999;
     public static bool DrinkItem1 = false;
     public static bool DrinkItem2 = false;
+    public static bool KnockDrink = false;
     public GameObject KnockDrink1;// Hinzugefügt, um den ausgewählten Artikel zu speichern
     public GameObject KnockDrink2;
     public GameObject DeKnockDrink1;// Hinzugefügt, um den ausgewählten Artikel zu speichern
@@ -145,6 +146,9 @@ public class ClickManager : MonoBehaviour
             gameManager.RemoveItemWhenUsed(item);
             return;
         }
+     
+
+    
 
         bool canGetItem = item.requiredItemID == -1 || gameManager.selectedItemID == item.requiredItemID;
         if (canGetItem && item.itemID != steckerItemID && item.itemID != stromkastenItemID) // Hier wird das Item mit der ID 123 nicht gesammelt

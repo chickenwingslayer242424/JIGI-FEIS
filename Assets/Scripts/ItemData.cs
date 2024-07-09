@@ -17,7 +17,7 @@ public class ItemData : MonoBehaviour
      public Vector2 nameTagSize = new Vector2(3,0.65f);
        public string hintMessage;
      public Vector2 hintBoxSize = new Vector2(3,0.65f);
-  
+  public static ItemData Instance;
     public void HideItem()
     {
         gameObject.SetActive(false);
