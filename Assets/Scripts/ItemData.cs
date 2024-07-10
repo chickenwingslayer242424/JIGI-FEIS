@@ -18,6 +18,8 @@ public class ItemData : MonoBehaviour
        public string hintMessage;
      public Vector2 hintBoxSize = new Vector2(3,0.65f);
   public static ItemData Instance;
+  public string nachdenkText; // Nachdenktext für das Item
+  public bool showNachdenkCanvas; // Neue Variable, um das Nachdenk-Canvas zu kontrollieren
     public void HideItem()
     {
         gameObject.SetActive(false);

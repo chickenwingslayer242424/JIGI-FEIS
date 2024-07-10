@@ -161,6 +161,16 @@ public class ClickManager : MonoBehaviour
             Debug.Log("Item Collected");
         }
 
+        else
+            {
+                Debug.Log("Item nicht gesammelt");
+                if (item.showNachdenkCanvas) // Überprüfe, ob das Nachdenk-Canvas angezeigt werden soll
+                    {
+                        Debug.Log("Showing nachdenk canvas with message: " + item.nachdenkText);
+                        NachdenkManager.Instance.ShowNachdenkCanvas(item.nachdenkText); // Zeigt das Nachdenk-Canvas mit der entsprechenden Nachricht
+                    }
+            }
+
         if (item.itemID == steckerItemID && !GameManager.hasSpokenToCasinoDealer)
         {
             Debug.Log("Du musst zuerst mit dem Casino-Dealer sprechen.");

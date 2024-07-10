@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
     public Button posterExitButton; // Exit-Button auf dem Poster-Canvas
     public static bool isPopupActive = false; // Flag to check if a popup is active
      public Button miniGameExitButton; // Exit-Button für das Minispiel
+    public NachdenkManager nachdenkManager;
+
 
     void Update()
     {
@@ -64,8 +66,6 @@ public class GameManager : MonoBehaviour
                 {
                     ActiveInvObjectB.SetActive(true);
                 }
-
-
             }
         }
     }
@@ -133,6 +133,12 @@ public class GameManager : MonoBehaviour
         if (miniGameExitButton != null)
         {
             miniGameExitButton.onClick.AddListener(CloseMiniGame); // Exit-Button Listener hinzufügen
+        }
+
+         // Initialisiere das NachdenkCanvas
+        if (nachdenkManager != null)
+        {
+            nachdenkManager.CloseNachdenkCanvas();
         }
     }
 
