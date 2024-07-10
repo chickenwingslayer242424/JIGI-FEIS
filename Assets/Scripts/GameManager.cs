@@ -30,11 +30,11 @@ public class GameManager : MonoBehaviour
     public GameObject miniGameCanvas; // Referenz auf das Minispiel-Canvas
     public GameObject objectToHide;//DunkelheitStromkasten
     private int correctDraggableCount = 0;
-     // Zählt die Anzahl der korrekt platzierten Draggable-Buttons
+    // Zählt die Anzahl der korrekt platzierten Draggable-Buttons
     public GameObject posterCanvas; // Neues UI-Canvas für das Poster
     public Button posterExitButton; // Exit-Button auf dem Poster-Canvas
     public static bool isPopupActive = false; // Flag to check if a popup is active
-     public Button miniGameExitButton; // Exit-Button für das Minispiel
+    public Button miniGameExitButton; // Exit-Button für das Minispiel
     public NachdenkManager nachdenkManager;
     public static bool isNachdenkenActive = false; // Flag für das Nachdenk-Canvas
 
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         CheckForDeadRat();
-        
+
 
 
     }
@@ -124,8 +124,8 @@ public class GameManager : MonoBehaviour
             miniGameCanvas.SetActive(false); // Stelle sicher, dass das Minispiel-Canvas initial deaktiviert ist
         }
 
-         // Popup Canvas initial deaktivieren
-         if (posterCanvas != null)
+        // Popup Canvas initial deaktivieren
+        if (posterCanvas != null)
         {
             posterCanvas.SetActive(false); // Stelle sicher, dass das Poster-Canvas initial deaktiviert ist
         }
@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
             miniGameExitButton.onClick.AddListener(CloseMiniGame); // Exit-Button Listener hinzufügen
         }
 
-         // Initialisiere das NachdenkCanvas
+        // Initialisiere das NachdenkCanvas
         if (nachdenkManager != null)
         {
             nachdenkManager.CloseNachdenkCanvas();
@@ -252,9 +252,6 @@ public class GameManager : MonoBehaviour
             case -11:
                 StartCoroutine(ChangeScene(localScenes[0], 0)); // Szene wechseln
                 break;
-            case -12:
-                StartCoroutine(ChangeScene(localScenes[1], 0)); // hochzeitskapelle
-                break;
             case -13:
                 StartCoroutine(ChangeScene(localScenes[2], 0)); // Szene wechseln
                 break;
@@ -262,6 +259,13 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(ChangeScene(localScenes[3], 1)); // Szene wechseln
                 break;
         }
+    }
+
+    public void CheckForKey(ItemData item)
+    {
+
+        StartCoroutine(ChangeScene(localScenes[1], 0));
+
     }
 
 
@@ -366,7 +370,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-     public void ShowPosterPopup()
+    public void ShowPosterPopup()
     {
         if (posterCanvas != null)
         {

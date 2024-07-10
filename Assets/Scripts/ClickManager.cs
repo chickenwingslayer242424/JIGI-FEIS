@@ -153,6 +153,11 @@ public class ClickManager : MonoBehaviour
             gameManager.RemoveItemWhenUsed(item);
             return;
         }
+        if(gameManager.selectedItemID == item.requiredItemID && gameManager.selectedItemID == -5)
+        {
+            gameManager.CheckForKey(item);
+            return; //immer return nach special conditions, sonst versucht das nächste if ein item ins inv zu packen obwohl nichts ist.
+        }
 
         bool canGetItem = item.requiredItemID == -1 || gameManager.selectedItemID == item.requiredItemID;
         if (canGetItem && item.itemID != steckerItemID && item.itemID != stromkastenItemID) // Hier wird das Item mit der ID 123 nicht gesammelt
