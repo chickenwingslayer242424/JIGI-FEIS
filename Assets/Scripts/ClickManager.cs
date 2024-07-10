@@ -40,7 +40,7 @@ public class ClickManager : MonoBehaviour
     {
         CheckForDrink();
         // Abbrechen, wenn der Dialog oder das Minispiel aktiv ist
-        if (DialogManager.isDialogActive || MiniGameHandler.isMiniGameActive) return;
+        if (DialogManager.isDialogActive || MiniGameHandler.isMiniGameActive || GameManager.isPopupActive) return;
         if (isMoving)
         {
             Vector3 currentPosition = player.position;
@@ -57,7 +57,7 @@ public class ClickManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (MiniGameHandler.isMiniGameActive) return; // Abbrechen, wenn das Minispiel aktiv ist
+            if (MiniGameHandler.isMiniGameActive || GameManager.isPopupActive) return; // Abbrechen, wenn das Minispiel oder Popup aktiv ist
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
 
@@ -90,6 +90,8 @@ public class ClickManager : MonoBehaviour
         CheckForNPCInteraction();
     }
 
+
+
     public void CheckForDrink()
     {
         if (DrinkItem1 && DrinkItem2 && check1) // wenn beide drinks gegebn wurde,
@@ -114,7 +116,7 @@ public class ClickManager : MonoBehaviour
     public void GoToItem(ItemData item)
     {
         // Abbrechen, wenn der Dialog oder das Minispiel aktiv ist
-        if (DialogManager.isDialogActive || MiniGameHandler.isMiniGameActive) return;
+        if (DialogManager.isDialogActive || MiniGameHandler.isMiniGameActive || GameManager.isPopupActive) return;
         if (!isMoving) // Wenn der Spieler sich nicht bewegt
         {
             gameManager.UpdateHintBox(null); // Aktualisiert die Hinweiskiste
@@ -122,6 +124,7 @@ public class ClickManager : MonoBehaviour
             StartCoroutine(MoveAndTryGettingItem(item)); // Startet die Coroutine zum Bewegen und Holen des Items
         }
     }
+
 
     private IEnumerator MoveAndTryGettingItem(ItemData item)
     {
@@ -132,6 +135,8 @@ public class ClickManager : MonoBehaviour
 
     public void TryGettingItem(ItemData item)
     {
+        if (GameManager.isPopupActive) return; // Abbrechen, wenn ein Popup aktiv ist
+
         if (gameManager.selectedItemID == item.requiredItemID && gameManager.selectedItemID == 16 && !DrinkItem1) //checkt ob rattenreste übergeben wurde wenn ja wird es gespeichert
         {
             Debug.Log("Zutat1 wurde gegeben");
@@ -146,9 +151,6 @@ public class ClickManager : MonoBehaviour
             gameManager.RemoveItemWhenUsed(item);
             return;
         }
-     
-
-    
 
         bool canGetItem = item.requiredItemID == -1 || gameManager.selectedItemID == item.requiredItemID;
         if (canGetItem && item.itemID != steckerItemID && item.itemID != stromkastenItemID) // Hier wird das Item mit der ID 123 nicht gesammelt
@@ -172,6 +174,7 @@ public class ClickManager : MonoBehaviour
 
         StartCoroutine(UpdateSceneAfterAction(item, canGetItem));
     }
+
 
     private IEnumerator UpdateSceneAfterAction(ItemData item, bool canGetItem)
     {
@@ -197,7 +200,7 @@ public class ClickManager : MonoBehaviour
 
     public void GoToGround(Vector3 point)
     {
-        if (MiniGameHandler.isMiniGameActive) return; // Abbrechen, wenn das Minispiel aktiv ist
+        if (MiniGameHandler.isMiniGameActive || GameManager.isPopupActive) return; // Abbrechen, wenn das Minispiel oder Popup aktiv ist
         if (!isMoving)
         {
             isMoving = true;
@@ -210,7 +213,7 @@ public class ClickManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) // Wenn die linke Maustaste gedrückt wird
         {
-            if (DialogManager.isDialogActive || MiniGameHandler.isMiniGameActive) return; // Abbrechen, wenn der Dialog oder das Minispiel aktiv ist
+            if (DialogManager.isDialogActive || MiniGameHandler.isMiniGameActive || GameManager.isPopupActive) return; // Abbrechen, wenn der Dialog, das Minispiel oder Popup aktiv ist
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero); // Raycast an der Mausposition
             if (hit.collider != null) // Wenn der Raycast etwas trifft
             {
@@ -228,5 +231,5 @@ public class ClickManager : MonoBehaviour
                 }
             }
         }
-    }
+    }   
 }

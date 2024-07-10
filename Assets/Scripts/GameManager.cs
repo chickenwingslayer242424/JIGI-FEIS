@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
      // Zählt die Anzahl der korrekt platzierten Draggable-Buttons
     public GameObject posterCanvas; // Neues UI-Canvas für das Poster
     public Button posterExitButton; // Exit-Button auf dem Poster-Canvas
+    public static bool isPopupActive = false; // Flag to check if a popup is active
 
 
     void Update()
@@ -324,13 +325,18 @@ public class GameManager : MonoBehaviour
         if (miniGameCanvas != null)
         {
             miniGameCanvas.SetActive(true); // Minispiel-Canvas aktivieren
-
+            isPopupActive = true; // Setze das Flag auf true
         }
     }
 
     public void EndMiniGame()
     {
         correctDraggableCount = 0; // Setze den Zähler zurück, wenn das Minispiel beendet wird
+        isPopupActive = false; // Setze das Flag auf false
+        if (miniGameCanvas != null)
+        {
+            miniGameCanvas.SetActive(false);
+        }
     }
 
     public void OnDropOnTarget()
@@ -358,6 +364,7 @@ public class GameManager : MonoBehaviour
         if (posterCanvas != null)
         {
             posterCanvas.SetActive(true); // Poster-Canvas aktivieren
+            isPopupActive = true; // Setze das Flag auf true
         }
     }
 
@@ -366,8 +373,10 @@ public class GameManager : MonoBehaviour
         if (posterCanvas != null)
         {
             posterCanvas.SetActive(false); // Poster-Canvas deaktivieren
+            isPopupActive = false; // Setze das Flag auf false
         }
     }
+    
 }
 
 
