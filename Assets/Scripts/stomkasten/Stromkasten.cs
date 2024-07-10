@@ -83,7 +83,7 @@ public class MiniGameHandler : MonoBehaviour
         {
             miniGameCanvas.SetActive(false);
             isMiniGameActive = false; // Setzt das Minispiel auf inaktiv
-            GameManager.Instance.EndMiniGame();
+            GameManager.Instance.CloseMiniGame();
         }
     }
 }

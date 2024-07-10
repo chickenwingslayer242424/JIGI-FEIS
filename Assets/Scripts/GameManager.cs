@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public GameObject posterCanvas; // Neues UI-Canvas für das Poster
     public Button posterExitButton; // Exit-Button auf dem Poster-Canvas
     public static bool isPopupActive = false; // Flag to check if a popup is active
+     public Button miniGameExitButton; // Exit-Button für das Minispiel
 
     void Update()
     {
@@ -129,6 +130,10 @@ public class GameManager : MonoBehaviour
         }
 
         posterExitButton.onClick.AddListener(ClosePosterPopup); // Exit-Button Listener hinzufügen
+        if (miniGameExitButton != null)
+        {
+            miniGameExitButton.onClick.AddListener(CloseMiniGame); // Exit-Button Listener hinzufügen
+        }
     }
 
     public void SelectItem(int equipmentCanvasID)
@@ -329,13 +334,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void EndMiniGame()
+    public void CloseMiniGame()
     {
         correctDraggableCount = 0; // Setze den Zähler zurück, wenn das Minispiel beendet wird
         isPopupActive = false; // Setze das Flag auf false
         if (miniGameCanvas != null)
         {
-            miniGameCanvas.SetActive(false);
+            miniGameCanvas.SetActive(false); // Minispiel-Canvas deaktivieren
         }
     }
 
@@ -351,11 +356,6 @@ public class GameManager : MonoBehaviour
                 objectToHide.SetActive(false);
             }
 
-            // Beende das Minispiel
-            if (miniGameCanvas != null)
-            {
-                miniGameCanvas.SetActive(false);
-            }
         }
     }
 
