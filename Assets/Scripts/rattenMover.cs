@@ -78,7 +78,7 @@ public class Mover : MonoBehaviour
             {
                 isCollected = true;
                 GameManager.Instance.CollectMouse(this);
-                gameObject.SetActive(false); // Deaktiviere das GameObject, nachdem es eingesammelt wurde
+                //gameObject.SetActive(false); // Deaktiviere das GameObject, nachdem es eingesammelt wurde
             }
         }
         else

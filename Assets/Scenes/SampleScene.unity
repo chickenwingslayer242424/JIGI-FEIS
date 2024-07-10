@@ -447,6 +447,10 @@ MonoBehaviour:
   npcName: Bartender
   objectToSpawn: {fileID: 499810925}
   requestedItem: {fileID: 0}
+  Shaker1: {fileID: 216911015}
+  Shaker2: {fileID: 815047905}
+  KnockDrink1: {fileID: 499810925}
+  KnockDrink2: {fileID: 1488044709}
 --- !u!70 &33776415
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1550,7 +1554,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &216911016
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1593,7 +1597,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 74f651f7538c6754bb0171fba22e9f73, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6438337, g: 0, b: 0.9339623, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1612,8 +1616,8 @@ Transform:
   m_GameObject: {fileID: 216911015}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.32999992, y: 0.3699999, z: 10}
-  m_LocalScale: {x: 0.08793925, y: 0.095107324, z: 1}
+  m_LocalPosition: {x: -0.2276, y: 0.4817, z: 10}
+  m_LocalScale: {x: 0.09793794, y: 0.10601613, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 427485501}
@@ -1890,6 +1894,10 @@ MonoBehaviour:
   npcName: Cherry
   objectToSpawn: {fileID: 0}
   requestedItem: {fileID: 0}
+  Shaker1: {fileID: 0}
+  Shaker2: {fileID: 0}
+  KnockDrink1: {fileID: 0}
+  KnockDrink2: {fileID: 0}
 --- !u!212 &333758723
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2959,10 +2967,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 23850612}
   - {fileID: 1036241440}
   - {fileID: 97426534}
   - {fileID: 1302309382}
-  - {fileID: 23850612}
   - {fileID: 33776411}
   - {fileID: 1174136514}
   - {fileID: 411793978}
@@ -3004,7 +3012,7 @@ Transform:
   m_GameObject: {fileID: 427485500}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.073502325, w: -0.9972951}
-  m_LocalPosition: {x: 10.1, y: -34.7, z: 0}
+  m_LocalPosition: {x: 15, y: -35.4, z: 0}
   m_LocalScale: {x: 13.214297, y: 9.12669, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4321,6 +4329,10 @@ MonoBehaviour:
   npcName: Chaya
   objectToSpawn: {fileID: 0}
   requestedItem: {fileID: 0}
+  Shaker1: {fileID: 0}
+  Shaker2: {fileID: 0}
+  KnockDrink1: {fileID: 0}
+  KnockDrink2: {fileID: 0}
   objectToDeactivate: {fileID: 868725311}
 --- !u!1 &574184766
 GameObject:
@@ -4420,6 +4432,10 @@ MonoBehaviour:
   npcName: Georgia
   objectToSpawn: {fileID: 0}
   requestedItem: {fileID: 0}
+  Shaker1: {fileID: 0}
+  Shaker2: {fileID: 0}
+  KnockDrink1: {fileID: 0}
+  KnockDrink2: {fileID: 0}
 --- !u!114 &574184770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4595,6 +4611,10 @@ MonoBehaviour:
   npcName: Margaret
   objectToSpawn: {fileID: 0}
   requestedItem: {fileID: 0}
+  Shaker1: {fileID: 0}
+  Shaker2: {fileID: 0}
+  KnockDrink1: {fileID: 0}
+  KnockDrink2: {fileID: 0}
 --- !u!114 &575336694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6626,7 +6646,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &815047906
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6643,8 +6663,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.29, y: 0.33}
-  m_SizeDelta: {x: 0.7197, y: 1.0895}
+  m_AnchoredPosition: {x: -0.1783, y: 0.4324}
+  m_SizeDelta: {x: 0.9432, y: 1.2944}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &815047907
 MonoBehaviour:
@@ -7035,6 +7055,10 @@ MonoBehaviour:
   npcName: Georgia
   objectToSpawn: {fileID: 0}
   requestedItem: {fileID: 0}
+  Shaker1: {fileID: 0}
+  Shaker2: {fileID: 0}
+  KnockDrink1: {fileID: 0}
+  KnockDrink2: {fileID: 0}
 --- !u!1 &868725311
 GameObject:
   m_ObjectHideFlags: 0
@@ -9510,6 +9534,10 @@ MonoBehaviour:
   npcName: El Bis
   objectToSpawn: {fileID: 0}
   requestedItem: {fileID: 0}
+  Shaker1: {fileID: 0}
+  Shaker2: {fileID: 0}
+  KnockDrink1: {fileID: 0}
+  KnockDrink2: {fileID: 0}
 --- !u!212 &1111045512
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11842,6 +11870,10 @@ MonoBehaviour:
   npcName: Finley
   objectToSpawn: {fileID: 0}
   requestedItem: {fileID: 0}
+  Shaker1: {fileID: 0}
+  Shaker2: {fileID: 0}
+  KnockDrink1: {fileID: 0}
+  KnockDrink2: {fileID: 0}
   rewardItemForOmaDefeat: {fileID: 411793979}
 --- !u!70 &1396747430
 CapsuleCollider2D:
@@ -12272,7 +12304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1488044710
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13512,6 +13544,10 @@ MonoBehaviour:
   npcName: BigBoss
   objectToSpawn: {fileID: 0}
   requestedItem: {fileID: 0}
+  Shaker1: {fileID: 0}
+  Shaker2: {fileID: 0}
+  KnockDrink1: {fileID: 0}
+  KnockDrink2: {fileID: 0}
 --- !u!1 &1605188848
 GameObject:
   m_ObjectHideFlags: 0
@@ -15932,6 +15968,10 @@ MonoBehaviour:
   npcName: HuSo
   objectToSpawn: {fileID: 0}
   requestedItem: {fileID: 0}
+  Shaker1: {fileID: 0}
+  Shaker2: {fileID: 0}
+  KnockDrink1: {fileID: 0}
+  KnockDrink2: {fileID: 0}
   "Schl\xFCssel1": {fileID: 619579404}
   "Schl\xFCssel2": {fileID: 955592834}
   ReceiveKnock: 0
@@ -16395,6 +16435,10 @@ MonoBehaviour:
   npcName: Lina
   objectToSpawn: {fileID: 0}
   requestedItem: {fileID: 0}
+  Shaker1: {fileID: 0}
+  Shaker2: {fileID: 0}
+  KnockDrink1: {fileID: 0}
+  KnockDrink2: {fileID: 0}
 --- !u!1 &1862451216
 GameObject:
   m_ObjectHideFlags: 0
@@ -18843,7 +18887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6838529090842059261, guid: 6c8863458660c7246a4799cbcf8d5968, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

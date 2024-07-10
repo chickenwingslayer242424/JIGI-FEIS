@@ -24,7 +24,10 @@ public class NPC : MonoBehaviour
     public GameObject objectToSpawn;
     private bool hasSpokenToPlayer = false;
     public ItemData requestedItem;
-
+    public GameObject Shaker1;
+public GameObject Shaker2;
+  public GameObject KnockDrink1;
+public GameObject KnockDrink2;
 
 
 
@@ -38,6 +41,8 @@ public class NPC : MonoBehaviour
             playerQuestions1 = new string[] { "Yes, I am looking for my love. Did you see them?" };
             npcResponses1 = new string[] { "You should grab one of my very special drinks. They will guide you the right way." };
             hasSpokenToPlayer = true;
+            KnockDrink1.SetActive(true);
+            KnockDrink2.SetActive(true);
         }
         else if (!hasReceivedItem && requiredItemID != 0) 
         {
@@ -49,10 +54,13 @@ public class NPC : MonoBehaviour
             {
                 gameManager.RemoveItemForNPC();
                 Debug.Log("Required item is selected.");
+                Shaker1.SetActive(true);
+                Shaker2.SetActive(true);
+                //Shaker aktivieren
+                
                 // gameManager.RemoveCollectedItem(requiredItemID); // Entferne oder kommentiere diesen Aufruf
                 hasReceivedItem = true;
                 
-                //GameManager.collectedItems.Add(rewardItem); das item soll auf der bar sein, kann aber erst benutz werden, wenn die schlange gegeben wurde
 
                 initialDialogLines = new string[] { "Wow, du super Hecht", "Hier mein super Shaker" };
                 playerQuestions1 = new string[] { "Ich bin eine Frau..." };
