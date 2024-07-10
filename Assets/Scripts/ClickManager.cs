@@ -135,7 +135,7 @@ public class ClickManager : MonoBehaviour
 
     public void TryGettingItem(ItemData item)
     {
-        if (GameManager.isPopupActive) return; // Abbrechen, wenn ein Popup aktiv ist
+       if (GameManager.isPopupActive) return; // Abbrechen, wenn ein Popup aktiv ist
 
         if (gameManager.selectedItemID == item.requiredItemID && gameManager.selectedItemID == 16 && !DrinkItem1) //checkt ob rattenreste übergeben wurde wenn ja wird es gespeichert
         {

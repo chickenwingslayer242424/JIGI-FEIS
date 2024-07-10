@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
     public Button posterExitButton; // Exit-Button auf dem Poster-Canvas
     public static bool isPopupActive = false; // Flag to check if a popup is active
 
-
     void Update()
     {
         CheckForDeadRat();
@@ -326,6 +325,7 @@ public class GameManager : MonoBehaviour
         {
             miniGameCanvas.SetActive(true); // Minispiel-Canvas aktivieren
             isPopupActive = true; // Setze das Flag auf true
+
         }
     }
 
@@ -376,7 +376,6 @@ public class GameManager : MonoBehaviour
             isPopupActive = false; // Setze das Flag auf false
         }
     }
-    
 }
 
 
