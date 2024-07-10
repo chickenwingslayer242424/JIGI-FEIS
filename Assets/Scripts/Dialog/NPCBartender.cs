@@ -25,16 +25,16 @@ public class NPC : MonoBehaviour
     private bool hasSpokenToPlayer = false;
     public ItemData requestedItem;
     public GameObject Shaker1;
-public GameObject Shaker2;
-  public GameObject KnockDrink1;
-public GameObject KnockDrink2;
+    public GameObject Shaker2;
+    public GameObject KnockDrink1;
+    public GameObject KnockDrink2;
 
 
 
     public virtual void Interact()
     {
         Debug.Log("Interact aufgerufen");
-        
+
         if (!hasSpokenToPlayer)
         {
             initialDialogLines = new string[] { "You look very stressed.", "Let me guess, you're looking for someone?" }; //spielt diesesn dialog nur 1x ab
@@ -44,29 +44,29 @@ public GameObject KnockDrink2;
             KnockDrink1.SetActive(true);
             KnockDrink2.SetActive(true);
         }
-        else if (!hasReceivedItem && requiredItemID != 0) 
+        else if (!hasReceivedItem && requiredItemID != 0)
         {
             GameManager gameManager = GameManager.Instance;
             ItemData item = ItemData.Instance;
             Debug.Log("Required Item ID: " + requiredItemID + ", Selected Item ID: " + (gameManager.selectedItem != null ? gameManager.selectedItem.itemID.ToString() : "null"));
-            
-           if (gameManager.selectedItemID == 99) //checkt ob das item ausgewählt wurde, wenn ja spielt folgendes ab //funktioniert
+
+            if (gameManager.selectedItemID == 99) //checkt ob das item ausgewählt wurde, wenn ja spielt folgendes ab //funktioniert
             {
                 gameManager.RemoveItemForNPC();
                 Debug.Log("Required item is selected.");
                 Shaker1.SetActive(true);
                 Shaker2.SetActive(true);
                 //Shaker aktivieren
-                
+
                 // gameManager.RemoveCollectedItem(requiredItemID); // Entferne oder kommentiere diesen Aufruf
                 hasReceivedItem = true;
-                
+
 
                 initialDialogLines = new string[] { "Wow, du super Hecht", "Hier mein super Shaker" };
                 playerQuestions1 = new string[] { "Ich bin eine Frau..." };
                 npcResponses1 = new string[] { "..Abstand" };
-         
-                
+
+
             }
 
 
@@ -80,7 +80,7 @@ public GameObject KnockDrink2;
                 npcResponses1 = new string[] { "She always escapes me when she sees food....." };
             }
         }
-        
+
         Debug.Log("NPC Sprite gesetzt: " + (npcSprite != null ? npcSprite.name : "null"));
         FindObjectOfType<DialogManager>().StartDialog(this);
     }
