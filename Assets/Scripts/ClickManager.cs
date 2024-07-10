@@ -57,7 +57,7 @@ public class ClickManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (MiniGameHandler.isMiniGameActive || GameManager.isPopupActive) return; // Abbrechen, wenn das Minispiel oder Popup aktiv ist
+            if (MiniGameHandler.isMiniGameActive || GameManager.isPopupActive || GameManager.isNachdenkenActive) return; // Abbrechen, wenn das Minispiel oder Popup aktiv ist
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
 
@@ -119,7 +119,7 @@ public class ClickManager : MonoBehaviour
     public void GoToItem(ItemData item)
     {
         // Abbrechen, wenn der Dialog oder das Minispiel aktiv ist
-        if (DialogManager.isDialogActive || MiniGameHandler.isMiniGameActive || GameManager.isPopupActive) return;
+        if (DialogManager.isDialogActive || MiniGameHandler.isMiniGameActive || GameManager.isPopupActive|| GameManager.isNachdenkenActive) return;
         if (!isMoving) // Wenn der Spieler sich nicht bewegt
         {
             gameManager.UpdateHintBox(null); // Aktualisiert die Hinweiskiste

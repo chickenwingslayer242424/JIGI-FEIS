@@ -18231,7 +18231,7 @@ MonoBehaviour:
   objectToHide: {fileID: 1505056668}
   posterCanvas: {fileID: 403671214}
   posterExitButton: {fileID: 1652015576}
-  miniGameExitButton: {fileID: 0}
+  miniGameExitButton: {fileID: 1446936828}
   nachdenkManager: {fileID: 1458195332}
 --- !u!4 &2104052243
 Transform:

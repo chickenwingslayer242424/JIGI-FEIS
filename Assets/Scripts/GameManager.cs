@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     public static bool isPopupActive = false; // Flag to check if a popup is active
      public Button miniGameExitButton; // Exit-Button für das Minispiel
     public NachdenkManager nachdenkManager;
+    public static bool isNachdenkenActive = false; // Flag für das Nachdenk-Canvas
 
 
     void Update()
@@ -385,6 +386,23 @@ public class GameManager : MonoBehaviour
     public GameObject[] GetLocalScenes()
     {
         return localScenes;
+    }
+    public void ShowNachdenkCanvas(string text)
+    {
+        if (nachdenkManager != null)
+        {
+            nachdenkManager.ShowNachdenkCanvas(text);
+            isNachdenkenActive = true;  // Setze das Flag, wenn NachdenkCanvas angezeigt wird
+        }
+    }
+
+    public void CloseNachdenkCanvas()
+    {
+        if (nachdenkManager != null)
+        {
+            nachdenkManager.CloseNachdenkCanvas();
+            isNachdenkenActive = false;  // Setze das Flag zurück, wenn NachdenkCanvas geschlossen wird
+        }
     }
 }
 

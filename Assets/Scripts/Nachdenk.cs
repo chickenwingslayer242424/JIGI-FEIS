@@ -37,6 +37,7 @@ public class NachdenkManager : MonoBehaviour
             nachdenkText.text = text;
             nachdenkCanvas.SetActive(true);
             GameManager.isPopupActive = true;
+            GameManager.isNachdenkenActive = true;  // Flag für NachdenkCanvas aktiv setzen
         }
     }
 
@@ -46,6 +47,7 @@ public class NachdenkManager : MonoBehaviour
         {
             nachdenkCanvas.SetActive(false);
             GameManager.isPopupActive = false;
+            GameManager.isNachdenkenActive = false;  // Flag für NachdenkCanvas inaktiv setzen
         }
     }
 }
