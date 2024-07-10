@@ -3402,10 +3402,10 @@ Transform:
   m_Children:
   - {fileID: 1125506199}
   - {fileID: 333758719}
+  - {fileID: 1602359952}
   - {fileID: 1605188849}
   - {fileID: 1505056669}
   - {fileID: 1111045508}
-  - {fileID: 1602359952}
   - {fileID: 55298604}
   - {fileID: 370780946}
   - {fileID: 465897973}
@@ -9161,7 +9161,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 46, y: -103.84996}
+  m_AnchoredPosition: {x: 46, y: -103.849976}
   m_SizeDelta: {x: -369.47, y: -344.42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1116917170
@@ -12592,6 +12592,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1602359952}
   - component: {fileID: 1602359955}
+  - component: {fileID: 1602359956}
   - component: {fileID: 1602359954}
   - component: {fileID: 1602359953}
   m_Layer: 0
@@ -12727,6 +12728,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1602359956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602359951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abe3bda015da8f24c8b9725aaa0c68e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialDialogLines: []
+  playerQuestions1: []
+  npcResponses1: []
+  playerQuestions2: []
+  npcResponses2: []
+  playerQuestions3: []
+  npcResponses3: []
+  requiredItemID: 0
+  rewardItem: {fileID: 0}
+  hasReceivedItem: 0
+  npcSprite: {fileID: 21300000, guid: 7d76a75f946f88b48b668381d3144386, type: 3}
+  pcImage: {fileID: 21300000, guid: e9eefdac08a80a3488b8bb0659dfeb30, type: 3}
+  npcName: BigBoss
+  objectToSpawn: {fileID: 0}
+  requestedItem: {fileID: 0}
 --- !u!1 &1605188848
 GameObject:
   m_ObjectHideFlags: 0
@@ -15007,6 +15035,7 @@ MonoBehaviour:
   requestedItem: {fileID: 0}
   "Schl\xFCssel1": {fileID: 619579404}
   "Schl\xFCssel2": {fileID: 955592834}
+  ReceiveKnock: 0
 --- !u!212 &1848252486
 SpriteRenderer:
   m_ObjectHideFlags: 0
