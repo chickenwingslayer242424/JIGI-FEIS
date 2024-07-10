@@ -71,6 +71,11 @@ public class ClickManager : MonoBehaviour
                         gameManager.StartMiniGame(); // Minispiel starten
                     }
                 }
+                else if (gameManager.GetLocalScenes()[1].activeSelf && gameManager.objectToHide.activeSelf)
+                {
+                    // Blockiere andere Klicks in localScene[1], solange objectToHide aktiv ist
+                    return;
+                }
                 else if (hit.collider.CompareTag("Ground"))
                 {
                     GoToGround(hit.point);
@@ -89,8 +94,6 @@ public class ClickManager : MonoBehaviour
         // Prüfen, ob auf einen NPC geklickt wurde
         CheckForNPCInteraction();
     }
-
-
 
     public void CheckForDrink()
     {
@@ -124,7 +127,6 @@ public class ClickManager : MonoBehaviour
             StartCoroutine(MoveAndTryGettingItem(item)); // Startet die Coroutine zum Bewegen und Holen des Items
         }
     }
-
 
     private IEnumerator MoveAndTryGettingItem(ItemData item)
     {
@@ -175,7 +177,6 @@ public class ClickManager : MonoBehaviour
         StartCoroutine(UpdateSceneAfterAction(item, canGetItem));
     }
 
-
     private IEnumerator UpdateSceneAfterAction(ItemData item, bool canGetItem)
     {
         while (isMoving) // Solange sich der Spieler bewegt
@@ -201,35 +202,35 @@ public class ClickManager : MonoBehaviour
     public void GoToGround(Vector3 point)
     {
         if (MiniGameHandler.isMiniGameActive || GameManager.isPopupActive) return; // Abbrechen, wenn das Minispiel oder Popup aktiv ist
-        if (!isMoving)
+        if (!isMoving) // Wenn der Spieler sich nicht bewegt
         {
-            isMoving = true;
-            StartCoroutine(gameManager.MoveToPoint(player, point));
+            gameManager.UpdateHintBox(null); // Aktualisiert die Hinweiskiste
+            isMoving = true; // Setzt den Bewegungsstatus auf wahr
+            StartCoroutine(MoveToGroundAndStop(point)); // Startet die Coroutine zum Bewegen zum Punkt und Anhalten
         }
     }
 
-    // Dialog
+    private IEnumerator MoveToGroundAndStop(Vector3 point)
+    {
+        yield return StartCoroutine(gameManager.MoveToPoint(player, point)); //das hier nutzen um zum npc zuerst hinlaufen dann interagieren
+        isMoving = false; // Setzt den Bewegungsstatus auf falsch
+    }
+
     private void CheckForNPCInteraction()
     {
-        if (Input.GetMouseButtonDown(0)) // Wenn die linke Maustaste gedrückt wird
+        if (Input.GetMouseButtonDown(0))
         {
-            if (DialogManager.isDialogActive || MiniGameHandler.isMiniGameActive || GameManager.isPopupActive) return; // Abbrechen, wenn der Dialog, das Minispiel oder Popup aktiv ist
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero); // Raycast an der Mausposition
-            if (hit.collider != null) // Wenn der Raycast etwas trifft
-            {
-                NPC npc = hit.collider.GetComponent<NPC>(); // Holt das NPC-Component des getroffenen Objekts
-                if (npc != null) // Wenn das getroffene Objekt ein NPC ist
-                {
-                    InteractWithNPC(npc); // Interagiert mit dem NPC
-                }
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
 
-                // Prüfen, ob auf ein Item geklickt wurde
-                ItemData item = hit.collider.GetComponent<ItemData>(); // Holt das ItemData-Component des getroffenen Objekts
-                if (item != null) // Wenn das getroffene Objekt ein Item ist
+            if (hit.collider != null && hit.collider.CompareTag("NPC"))
+            {
+                NPC npc = hit.collider.GetComponent<NPC>();
+                if (npc != null)
                 {
-                    GoToItem(item); // Gehe zu dem Item
+                    InteractWithNPC(npc); // Interaktion mit dem NPC
                 }
             }
         }
-    }   
+    }
 }

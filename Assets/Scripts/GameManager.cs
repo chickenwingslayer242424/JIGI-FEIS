@@ -376,6 +376,10 @@ public class GameManager : MonoBehaviour
             isPopupActive = false; // Setze das Flag auf false
         }
     }
+    public GameObject[] GetLocalScenes()
+    {
+        return localScenes;
+    }
 }
 
 

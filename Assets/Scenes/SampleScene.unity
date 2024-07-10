@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 33776415}
   m_Layer: 0
   m_Name: Barkeeper
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1664,7 +1664,7 @@ GameObject:
   - component: {fileID: 333758720}
   m_Layer: 0
   m_Name: Mafiosa
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3794,7 +3794,7 @@ GameObject:
   - component: {fileID: 558907038}
   m_Layer: 0
   m_Name: SecurityFrau
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3968,7 +3968,7 @@ GameObject:
   - component: {fileID: 574184768}
   m_Layer: 0
   m_Name: "S\xE4ngerin"
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4141,7 +4141,7 @@ GameObject:
   - component: {fileID: 575336692}
   m_Layer: 0
   m_Name: Granny
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6303,7 +6303,7 @@ GameObject:
   - component: {fileID: 864795964}
   m_Layer: 0
   m_Name: "outfit T\xE4nzerin"
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8932,7 +8932,7 @@ GameObject:
   - component: {fileID: 1111045509}
   m_Layer: 0
   m_Name: El Bis
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9161,7 +9161,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 46, y: -103.849976}
+  m_AnchoredPosition: {x: 46, y: -103.84999}
   m_SizeDelta: {x: -369.47, y: -344.42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1116917170
@@ -11017,7 +11017,7 @@ GameObject:
   - component: {fileID: 1396747430}
   m_Layer: 0
   m_Name: CasinoDealer
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12597,7 +12597,7 @@ GameObject:
   - component: {fileID: 1602359953}
   m_Layer: 0
   m_Name: Mafioso
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14927,7 +14927,7 @@ GameObject:
   - component: {fileID: 1848252483}
   m_Layer: 0
   m_Name: KeySpawner ass
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15336,7 +15336,7 @@ GameObject:
   - component: {fileID: 1859758946}
   m_Layer: 0
   m_Name: "Exotische T\xE4nzerin (1)"
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17488,6 +17488,7 @@ MonoBehaviour:
   objectToHide: {fileID: 1505056668}
   posterCanvas: {fileID: 403671214}
   posterExitButton: {fileID: 1652015576}
+  miniGameExitButton: {fileID: 0}
 --- !u!4 &2104052243
 Transform:
   m_ObjectHideFlags: 0
