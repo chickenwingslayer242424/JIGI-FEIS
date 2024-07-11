@@ -131,6 +131,7 @@ public class GameManager : MonoBehaviour
         }
 
         posterExitButton.onClick.AddListener(ClosePosterPopup); // Exit-Button Listener hinzufügen
+       
         if (miniGameExitButton != null)
         {
             miniGameExitButton.onClick.AddListener(CloseMiniGame); // Exit-Button Listener hinzufügen

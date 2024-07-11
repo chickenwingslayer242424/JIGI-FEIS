@@ -3032,7 +3032,7 @@ GameObject:
   m_Component:
   - component: {fileID: 440796283}
   m_Layer: 0
-  m_Name: Go To Point (3)
+  m_Name: Go to poster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11223,8 +11223,8 @@ MonoBehaviour:
   nameTagSize: {x: 3, y: 0.65}
   hintMessage: 
   hintBoxSize: {x: 3, y: 0.65}
-  nachdenkText: 
-  showNachdenkCanvas: 0
+  nachdenkText: ARGH- The door is looked.
+  showNachdenkCanvas: 1
 --- !u!212 &1302309381
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15476,6 +15476,7 @@ MonoBehaviour:
   DeKnockDrink1: {fileID: 815047905}
   DeKnockDrink2: {fileID: 216911015}
   DeKnockDrink3: {fileID: 1086064948}
+  posterGoToPoint: {fileID: 440796283}
 --- !u!4 &1818828532
 Transform:
   m_ObjectHideFlags: 0

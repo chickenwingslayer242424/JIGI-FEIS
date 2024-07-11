@@ -21,6 +21,7 @@ public class ClickManager : MonoBehaviour
     public GameObject DeKnockDrink2;
     public GameObject DeKnockDrink3;
     public static bool check1 = true;
+    public Transform posterGoToPoint; // Hinzugefügt, um den festgelegten Go To Point vom poster zu speichern
 
     private void Start()
     {
@@ -94,7 +95,7 @@ public class ClickManager : MonoBehaviour
                     ItemData item = hit.collider.GetComponent<ItemData>();
                     if (item != null && item.itemID == 777456)
                     {
-                        gameManager.ShowPosterPopup(); // Popup anzeigen
+                        GoToPoster(item); // Popup anzeigen
                     }
                 }
             }
@@ -103,6 +104,23 @@ public class ClickManager : MonoBehaviour
         // Prüfen, ob auf einen NPC geklickt wurde
         CheckForNPCInteraction();
     }
+
+    private void GoToPoster(ItemData item)
+    {
+        if (!isMoving && posterGoToPoint != null) // Überprüfen, ob der Spieler sich nicht bewegt und der Go To Point festgelegt ist
+        {
+            isMoving = true; // Setzt den Bewegungsstatus auf wahr
+            StartCoroutine(MoveToPosterAndShowCanvas(item)); // Startet die Coroutine zum Bewegen und Anzeigen des Canvas
+        }
+    }
+
+    private IEnumerator MoveToPosterAndShowCanvas(ItemData item)
+    {
+        yield return StartCoroutine(gameManager.MoveToPoint(player, posterGoToPoint.position)); // Bewegt den Spieler zum Go To Point
+        isMoving = false; // Setzt den Bewegungsstatus auf falsch
+        gameManager.ShowPosterPopup(); // Zeigt das Poster-Canvas an
+    }
+
 
     public void CheckForDrink()
     {
