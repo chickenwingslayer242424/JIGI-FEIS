@@ -5,13 +5,13 @@ using UnityEngine;
 public class SecurityFrau : NPC
 {
     public GameObject objectToDeactivate; // Hinzugefügt: Referenz auf das zu deaktivierende GameObject
-
+    public GameObject objectToActivate;
     public override void Interact()
     {
         Debug.Log("SecurityFrau Interact aufgerufen");
-
+        GameManager gameManager = GameManager.Instance;
         // Überprüfe, ob der Spieler das benötigte Item hat
-        if (GameManager.Instance.IsSelectedItem(requiredItemID))
+        if (gameManager.selectedItemID == 456)
         {
             // Wenn der Spieler das benötigte Item hat, setze die Dialogzeilen entsprechend
             initialDialogLines = new string[] { "Natürlich darfst du durch, Kollege." };
@@ -22,9 +22,10 @@ public class SecurityFrau : NPC
             if (objectToDeactivate != null)
             {
                 objectToDeactivate.SetActive(false);
-                Debug.Log("Object " + objectToDeactivate.name + " wurde deaktiviert.");
+                objectToActivate.SetActive(true);
+
             }
-        }
+        } 
         else
         {
             // Wenn der Spieler das benötigte Item nicht hat, setze die Standard-Dialogzeilen
