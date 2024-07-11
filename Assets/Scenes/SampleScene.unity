@@ -451,6 +451,8 @@ MonoBehaviour:
   Shaker2: {fileID: 815047905}
   KnockDrink1: {fileID: 499810925}
   KnockDrink2: {fileID: 1488044709}
+  goToPoint: {fileID: 1924219524}
+  flipPlayerSpriteRight: 0
 --- !u!70 &33776415
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -739,7 +741,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -176.84998, y: 64.51001}
+  m_AnchoredPosition: {x: -176.84999, y: 64.51001}
   m_SizeDelta: {x: -351.05, y: -84.41}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &56239947
@@ -1898,6 +1900,8 @@ MonoBehaviour:
   Shaker2: {fileID: 0}
   KnockDrink1: {fileID: 0}
   KnockDrink2: {fileID: 0}
+  goToPoint: {fileID: 0}
+  flipPlayerSpriteRight: 0
 --- !u!212 &333758723
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4333,6 +4337,8 @@ MonoBehaviour:
   Shaker2: {fileID: 0}
   KnockDrink1: {fileID: 0}
   KnockDrink2: {fileID: 0}
+  goToPoint: {fileID: 0}
+  flipPlayerSpriteRight: 0
   objectToDeactivate: {fileID: 868725311}
 --- !u!1 &574184766
 GameObject:
@@ -4436,6 +4442,8 @@ MonoBehaviour:
   Shaker2: {fileID: 0}
   KnockDrink1: {fileID: 0}
   KnockDrink2: {fileID: 0}
+  goToPoint: {fileID: 0}
+  flipPlayerSpriteRight: 0
 --- !u!114 &574184770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4615,6 +4623,8 @@ MonoBehaviour:
   Shaker2: {fileID: 0}
   KnockDrink1: {fileID: 0}
   KnockDrink2: {fileID: 0}
+  goToPoint: {fileID: 2120366892}
+  flipPlayerSpriteRight: 1
 --- !u!114 &575336694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6039,7 +6049,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 46, y: -103.849976}
+  m_AnchoredPosition: {x: 46, y: -103.84999}
   m_SizeDelta: {x: -369.47, y: -344.42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &719715326
@@ -7059,6 +7069,8 @@ MonoBehaviour:
   Shaker2: {fileID: 0}
   KnockDrink1: {fileID: 0}
   KnockDrink2: {fileID: 0}
+  goToPoint: {fileID: 0}
+  flipPlayerSpriteRight: 0
 --- !u!1 &868725311
 GameObject:
   m_ObjectHideFlags: 0
@@ -9538,6 +9550,8 @@ MonoBehaviour:
   Shaker2: {fileID: 0}
   KnockDrink1: {fileID: 0}
   KnockDrink2: {fileID: 0}
+  goToPoint: {fileID: 0}
+  flipPlayerSpriteRight: 0
 --- !u!212 &1111045512
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9661,7 +9675,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 46, y: -103.849976}
+  m_AnchoredPosition: {x: 46, y: -103.84999}
   m_SizeDelta: {x: -369.47, y: -344.42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1116917170
@@ -11874,6 +11888,8 @@ MonoBehaviour:
   Shaker2: {fileID: 0}
   KnockDrink1: {fileID: 1912207385}
   KnockDrink2: {fileID: 1912207385}
+  goToPoint: {fileID: 1522567104}
+  flipPlayerSpriteRight: 1
   rewardItemForOmaDefeat: {fileID: 411793979}
 --- !u!70 &1396747430
 CapsuleCollider2D:
@@ -12713,7 +12729,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1522567104}
   m_Layer: 0
-  m_Name: Go To Point
+  m_Name: Go to Casino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12728,7 +12744,7 @@ Transform:
   m_GameObject: {fileID: 1522567103}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.49, y: -4.1, z: 0}
+  m_LocalPosition: {x: -15.5, y: -23.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13548,6 +13564,8 @@ MonoBehaviour:
   Shaker2: {fileID: 0}
   KnockDrink1: {fileID: 0}
   KnockDrink2: {fileID: 0}
+  goToPoint: {fileID: 0}
+  flipPlayerSpriteRight: 0
 --- !u!1 &1605188848
 GameObject:
   m_ObjectHideFlags: 0
@@ -15972,6 +15990,8 @@ MonoBehaviour:
   Shaker2: {fileID: 0}
   KnockDrink1: {fileID: 0}
   KnockDrink2: {fileID: 0}
+  goToPoint: {fileID: 0}
+  flipPlayerSpriteRight: 0
   "Schl\xFCssel1": {fileID: 619579404}
   "Schl\xFCssel2": {fileID: 955592834}
   ReceiveKnock: 0
@@ -16439,6 +16459,8 @@ MonoBehaviour:
   Shaker2: {fileID: 0}
   KnockDrink1: {fileID: 0}
   KnockDrink2: {fileID: 0}
+  goToPoint: {fileID: 0}
+  flipPlayerSpriteRight: 0
 --- !u!1 &1862451216
 GameObject:
   m_ObjectHideFlags: 0
@@ -16932,7 +16954,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1924219524}
   m_Layer: 0
-  m_Name: Go To Point
+  m_Name: Go to Barkeeper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16947,7 +16969,7 @@ Transform:
   m_GameObject: {fileID: 1924219523}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.49, y: -4.1, z: 0}
+  m_LocalPosition: {x: 3.72, y: -4.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18637,7 +18659,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2120366892}
   m_Layer: 0
-  m_Name: Go To Point
+  m_Name: Go to granny
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18652,7 +18674,7 @@ Transform:
   m_GameObject: {fileID: 2120366891}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.49, y: -4.1, z: 0}
+  m_LocalPosition: {x: -19.9, y: -17.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18693,7 +18715,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -176.84998, y: 64.51001}
+  m_AnchoredPosition: {x: -176.84999, y: 64.51001}
   m_SizeDelta: {x: -351.05, y: -84.41}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2136684692

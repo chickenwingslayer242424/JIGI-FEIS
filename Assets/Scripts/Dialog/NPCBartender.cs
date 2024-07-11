@@ -28,6 +28,9 @@ public class NPC : MonoBehaviour
     public GameObject Shaker2;
     public GameObject KnockDrink1;
     public GameObject KnockDrink2;
+    public Transform goToPoint; // Neuer Go To Point für den NPC
+    // Neue Variable für die Blickrichtung
+    public bool flipPlayerSpriteRight;
 
 
 

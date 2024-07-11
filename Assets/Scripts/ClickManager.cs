@@ -34,6 +34,15 @@ public class ClickManager : MonoBehaviour
         if (MiniGameHandler.isMiniGameActive) return; // Abbrechen, wenn das Minispiel aktiv ist
         npc.Interact();
         Debug.Log("Interacting with NPC: " + npc.name);
+        // Sprite-Flip basierend auf der Blickrichtung des NPCs
+        if (npc.flipPlayerSpriteRight && !facingRight)
+        {
+            Flip();
+        }
+        else if (!npc.flipPlayerSpriteRight && facingRight)
+        {
+            Flip();
+        }
     }
 
     private void Update()
@@ -231,7 +240,7 @@ public class ClickManager : MonoBehaviour
         isMoving = false; // Setzt den Bewegungsstatus auf falsch
     }
 
-    private void CheckForNPCInteraction()
+     private void CheckForNPCInteraction()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -243,9 +252,27 @@ public class ClickManager : MonoBehaviour
                 NPC npc = hit.collider.GetComponent<NPC>();
                 if (npc != null)
                 {
-                    InteractWithNPC(npc); // Interaktion mit dem NPC
+                    // Bewege den Spieler zum Go To Point des NPCs, bevor interagiert wird
+                    if (npc.goToPoint != null)
+                    {
+                        GoToGround(npc.goToPoint.position);
+                        StartCoroutine(WaitAndInteractWithNPC(npc));
+                    }
+                    else
+                    {
+                        InteractWithNPC(npc); // Interagiere direkt, wenn kein Go To Point vorhanden ist
+                    }
                 }
             }
         }
+    }
+
+    private IEnumerator WaitAndInteractWithNPC(NPC npc)
+    {
+        while (isMoving) // Warte, bis der Spieler sich nicht mehr bewegt
+        {
+            yield return null;
+        }
+        InteractWithNPC(npc); // Interagiere mit dem NPC, wenn der Spieler angekommen ist
     }
 }
