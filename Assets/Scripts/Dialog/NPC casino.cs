@@ -53,9 +53,9 @@ public class NewNPC : NPC
                 playerQuestions1 = new string[] { "I'm looking for my love. Have you seen them?" };
                 npcResponses1 = new string[] { "S-Sorry, I haven’t seen anyone particular", "Maybe someone in the VIP area could help you out?" };
                 playerQuestions2 = new string[] { "Even if I would know how to get there...", "...V-I-P." ,"The security blocks the entrance." };
-                npcResponses2 = new string[] { "Um... there was a big incident in the VIP area today. Three employees quit.", "I still have their uniforms I-I can give you one if you help me with something.", "You see...", "There's a granny who always wins at the same slot machine, she scamming me and I can't beat her.", "If you sabotage her winning streak, I'll give you one of the uniforms.","You could sneek your way around security with them!", "P-Please?" };
+                npcResponses2 = new string[] { "Um... there was a big incident in the VIP area today. Three employees quit.", "I still have their uniforms I-I can give you one if you help me with something.","P-Please?"};
                 playerQuestions3 = new string[] { "What can I do for you?" };
-                npcResponses3 = new string[] { "There's a granny who always wins at the same slot machine, she scamming me and I can't beat her.", "If you sabotage her winning streak, I'll give you one of the uniforms.","You could sneek your way around security with them!", "P-Please?" };
+                npcResponses3 = new string[] { "There's a granny who always wins at the same slot machine, she scamming me and I can't beat her.", "If you sabotage her winning streak, I'll give you one of the uniforms.","You could sneek your way around security with them!" };
             }
         }
 
