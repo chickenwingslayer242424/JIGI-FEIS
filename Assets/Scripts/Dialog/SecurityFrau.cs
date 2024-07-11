@@ -14,6 +14,7 @@ public class SecurityFrau : NPC
         if (gameManager.selectedItemID == 456)
         {
             // Wenn der Spieler das benötigte Item hat, setze die Dialogzeilen entsprechend
+            gameManager.RemoveItemForNPC();
             initialDialogLines = new string[] { "Natürlich darfst du durch, Kollege." };
             playerQuestions1 = new string[] { "Danke!" };
             npcResponses1 = new string[] { "Pass auf dich auf." };
