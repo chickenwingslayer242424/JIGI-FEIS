@@ -8,6 +8,7 @@ public class KeySpawner : NPC
     public GameObject Schlüssel2;
     private GameManager gameManager;
     public bool ReceiveKnock = false;
+    private bool hasDroppedKey = false; // Variable hinzugefügt
 
     private void Start()
     {
@@ -17,6 +18,16 @@ public class KeySpawner : NPC
 
     public override void Interact()
     {
+         if (hasDroppedKey) // Überprüfen, ob der Schlüssel bereits gedroppt wurde
+        {
+            Debug.Log("Dieser NPC ist nicht mehr interaktiv.");
+            initialDialogLines = new string[] { "ehhhh" };
+            playerQuestions1 = new string[] { "i think hes knocked out good" };
+            npcResponses1 = new string[] { "öhhhhh........ isi hihiihih" };
+
+            FindObjectOfType<DialogManager>().StartDialog(this);
+            return;
+        }
         Debug.Log("Keyspawner Interact aufgerufen");
         Debug.Log("Überprüfe, ob das Item ausgewählt ist");
         //GameManager gameManager = GameManager.Instance;
@@ -50,6 +61,7 @@ public class KeySpawner : NPC
                 Schlüssel2.SetActive(true);
             }
             ReceiveKnock = true;
+            hasDroppedKey = true;
 
         }
         else
