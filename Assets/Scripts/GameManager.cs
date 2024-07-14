@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     public Button miniGameExitButton; // Exit-Button für das Minispiel
     public NachdenkManager nachdenkManager;
     public static bool isNachdenkenActive = false; // Flag für das Nachdenk-Canvas
-
+    public static bool isGrannyDialogTriggered = false;
 
     void Update()
     {

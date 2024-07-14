@@ -23,7 +23,6 @@ public class ClickManager : MonoBehaviour
     public static bool check1 = true;
     public Transform posterGoToPoint; // Hinzugefügt, um den festgelegten Go To Point vom poster zu speichern
 
-
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -50,6 +49,14 @@ public class ClickManager : MonoBehaviour
     private void Update()
     {
         CheckForDrink();
+
+        // Automatischen Granny-Dialog starten, wenn Oma besiegt wurde und der Dialog noch nicht gestartet wurde
+        if (GameManager.isOmaDefeated && !GameManager.isGrannyDialogTriggered)
+        {
+            StartGrannyDialog();
+            GameManager.isGrannyDialogTriggered = true;
+        }
+
         // Abbrechen, wenn der Dialog oder das Minispiel aktiv ist
         if (DialogManager.isDialogActive || MiniGameHandler.isMiniGameActive || GameManager.isPopupActive) return;
         if (isMoving)
@@ -105,7 +112,15 @@ public class ClickManager : MonoBehaviour
         // Prüfen, ob auf einen NPC geklickt wurde
         CheckForNPCInteraction();
     }
-
+        // Methode zum Starten des Granny-Dialogs
+    private void StartGrannyDialog()
+    {
+        Granny granny = FindObjectOfType<Granny>();
+        if (granny != null)
+        {
+            granny.Interact();
+        }
+    }
     private void GoToPoster(ItemData item)
     {
         if (!isMoving && posterGoToPoint != null) // Überprüfen, ob der Spieler sich nicht bewegt und der Go To Point festgelegt ist

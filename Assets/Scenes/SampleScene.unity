@@ -11710,8 +11710,8 @@ MonoBehaviour:
   nameTagSize: {x: 3, y: 0.65}
   hintMessage: 
   hintBoxSize: {x: 3, y: 0.65}
-  nachdenkText: steck mich aus
-  showNachdenkCanvas: 1
+  nachdenkText: 
+  showNachdenkCanvas: 0
 --- !u!1 &1378414297
 GameObject:
   m_ObjectHideFlags: 0
