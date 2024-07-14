@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2902943939835183341
+--- !u!114 &-5172948258105034594
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CasinoDealer
+  m_Name: Ratte
   m_Shader: {fileID: -6465566751694194690, guid: 6b9406b7b7fcb794e9f0b7edd4b24394, type: 3}
   m_Parent: {fileID: 2100000, guid: 4eadc8ea8c5e1db43ac274004f9bca77, type: 2}
   m_ModifiedSerializedProperties: 0

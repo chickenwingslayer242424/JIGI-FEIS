@@ -193,7 +193,7 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _istOutlineon: 0
+    - _istOutlineon: 1
     - _outline_thiccccc: 4
     m_Colors:
     - _BASE_COLOR: {r: 0, g: 0, b: 0, a: 0}
