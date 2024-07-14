@@ -23,6 +23,7 @@ public class ClickManager : MonoBehaviour
     public static bool check1 = true;
     public Transform posterGoToPoint; // Hinzugefügt, um den festgelegten Go To Point vom poster zu speichern
 
+
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
