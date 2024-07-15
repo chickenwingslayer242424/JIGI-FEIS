@@ -259,8 +259,52 @@ public class GameManager : MonoBehaviour
             case -32:
                 StartCoroutine(ChangeScene(localScenes[3], 1)); // Szene wechseln
                 break;
+                case -999786: // Neuer Case zum Wechseln zur ersten Szene mit neuer Startposition
+            StartCoroutine(ChangeSceneWithNewStart(localScenes[0], 0, new Vector2(40, 1))); // Szene wechseln und neue Position
+            break;
         }
     }
+    // Neue Methode zum Szenenwechsel mit angegebener Startposition
+public IEnumerator ChangeSceneWithNewStart(GameObject newScene, float delay, Vector2 newStartPosition)
+{
+    yield return new WaitForSeconds(delay);
+    blockingImage.enabled = true;
+    Color c = blockingImage.color;
+    while (blockingImage.color.a < 1)
+    {
+        yield return null;
+        c.a += Time.deltaTime;
+        blockingImage.color = c;
+    }
+
+    localScenes[activeLocalScene].SetActive(false);
+    newScene.SetActive(true);
+    activeLocalScene = System.Array.IndexOf(localScenes, newScene);
+
+    if (cameraFollow != null)
+    {
+        cameraFollow.enabled = true;
+    }
+
+    FindObjectOfType<ClickManager>().player.position = newStartPosition; // Setze die neue Startposition
+    UpdateHintBox(null);
+
+    yield return new WaitForEndOfFrame();
+
+    if (cameraFollow != null)
+    {
+        cameraFollow.enabled = (newScene.name != "Scene2");
+    }
+
+    while (blockingImage.color.a > 0)
+    {
+        yield return null;
+        c.a -= Time.deltaTime;
+        blockingImage.color = c;
+    }
+    blockingImage.enabled = false;
+    yield return null;
+}
 
     public void CheckForKey(ItemData item)
     {
