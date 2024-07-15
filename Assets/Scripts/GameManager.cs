@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     public NachdenkManager nachdenkManager;
     public static bool isNachdenkenActive = false; // Flag für das Nachdenk-Canvas
     public static bool isGrannyDialogTriggered = false;
-
+    private PolygonCollider2D groundCollider;
     void Update()
     {
         CheckForDeadRat();
@@ -118,6 +118,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject); // Zerstöre Duplikate des GameManagers
         }
+        groundCollider = GameObject.FindGameObjectWithTag("Ground").GetComponent<PolygonCollider2D>();
 
         if (miniGameCanvas != null)
         {
@@ -452,6 +453,10 @@ public IEnumerator ChangeSceneWithNewStart(GameObject newScene, float delay, Vec
             nachdenkManager.CloseNachdenkCanvas();
             isNachdenkenActive = false;  // Setze das Flag zurück, wenn NachdenkCanvas geschlossen wird
         }
+    }
+    public PolygonCollider2D GetGroundCollider()
+    {
+        return groundCollider;
     }
 }
 

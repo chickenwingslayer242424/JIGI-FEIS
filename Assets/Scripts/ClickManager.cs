@@ -106,6 +106,10 @@ public class ClickManager : MonoBehaviour
                         GoToPoster(item); // Popup anzeigen
                     }
                 }
+                else if (hit.collider.CompareTag("walls"))
+                {
+                    MoveToWallX(hit.point);
+                }
             }
         }
 
@@ -267,6 +271,24 @@ public class ClickManager : MonoBehaviour
             StartCoroutine(MoveToGroundAndStop(point)); // Startet die Coroutine zum Bewegen zum Punkt und Anhalten
         }
     }
+    
+    
+    private void MoveToWallX(Vector2 clickPoint)
+    {
+        if (!isMoving)
+        {
+            isMoving = true;
+            StartCoroutine(MoveToWallXCoroutine(clickPoint));
+        }
+    }
+
+    private IEnumerator MoveToWallXCoroutine(Vector2 clickPoint)
+    {
+        Vector2 targetPosition = new Vector2(clickPoint.x, player.position.y); // Bewege nur entlang der x-Achse
+        yield return StartCoroutine(gameManager.MoveToPoint(player, targetPosition));
+        isMoving = false;
+    }
+
 
     private IEnumerator MoveToGroundAndStop(Vector3 point)
     {
