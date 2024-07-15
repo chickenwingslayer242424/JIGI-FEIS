@@ -65,9 +65,9 @@ public class NPC : MonoBehaviour
                 hasReceivedItem = true;
 
 
-                initialDialogLines = new string[] { "Wow, du super Hecht", "Hier mein super Shaker" };
-                playerQuestions1 = new string[] { "Ich bin eine Frau..." };
-                npcResponses1 = new string[] { "..Abstand" };
+                initialDialogLines = new string[] { "Oh my, you scared me, Bertha!", "Where were you?","Thank you, total stranger I've never seen before.", "Here, now you can make special drinks just like me.", "You can't take it with you, just put in two ingredients and I can mix it up for ya." };
+                playerQuestions1 = new string[] { "Do you know how to get the key to the wedding chapel?" };
+                npcResponses1 = new string[] { "Well, I know that the chapel keys are kept by a gang member at the VIP-Club." };
 
 
             }

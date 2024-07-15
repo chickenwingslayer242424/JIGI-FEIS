@@ -15,9 +15,9 @@ public class SecurityFrau : NPC
         {
             // Wenn der Spieler das benötigte Item hat, setze die Dialogzeilen entsprechend
             gameManager.RemoveItemForNPC();
-            initialDialogLines = new string[] { "Natürlich darfst du durch, Kollege." };
-            playerQuestions1 = new string[] { "Danke!" };
-            npcResponses1 = new string[] { "Pass auf dich auf." };
+            initialDialogLines = new string[] { "Thanks sis, finally.", "Sorry for beeing so rough.",  "You know how crowded it can get here sometimes." };
+            playerQuestions1 = new string[] { "Have you seen my love?" };
+            npcResponses1 = new string[] { "Oh, sweetie.","I haven't seen him like you for quite some time, and that won't change." };
 
             // Deaktiviere das GameObject
             if (objectToDeactivate != null)
@@ -30,9 +30,9 @@ public class SecurityFrau : NPC
         else
         {
             // Wenn der Spieler das benötigte Item nicht hat, setze die Standard-Dialogzeilen
-            initialDialogLines = new string[] { "Hallo, ich bin die SecurityFrau.", "Du kommst nicht durch" };
-            playerQuestions1 = new string[] { "Ja, ich suche jemanden. Haben Sie sie gesehen?" };
-            npcResponses1 = new string[] { "Piss dich, ich habe niemanden gesehen." };
+            initialDialogLines = new string[] { " Nuh-uh- sister!", "You're not allowed in here.", "GEEZ-", "BECAUSE YOU DISTRACTED ME I MADE A HOLE INTO MY UNIFORM!","Now leave before I stab you with my nails.",  "They are long for a reason." };
+            playerQuestions1 = new string[] { "Hold on!", "I can get you a new uniform." };
+            npcResponses1 = new string[] { "Just hurry up.", "I've had enough of you." };
         }
 
         // Starte den Dialog direkt ohne die Interact-Methode der Basisklasse aufzurufen
