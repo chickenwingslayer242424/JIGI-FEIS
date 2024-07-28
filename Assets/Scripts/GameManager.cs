@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public float moveSpeed = 3.5f; // Bewegungsgeschwindigkeit des Spielers
     public float moveAccuracy = 0.15f; // Genauigkeit der Bewegung
+    public Vector2 positionDifference;
     public static List<ItemData> collectedItems = new List<ItemData>(); // Liste der gesammelten Items
     public RectTransform nameTag, hintBox; // UI-Elemente für Namensschilder und Hinweisbox
     public Image blockingImage; // Bild zum Blockieren des Bildschirms (z.B. für Übergänge)
@@ -39,6 +40,8 @@ public class GameManager : MonoBehaviour
     public static bool isNachdenkenActive = false; // Flag für das Nachdenk-Canvas
     public static bool isGrannyDialogTriggered = false;
     private PolygonCollider2D groundCollider;
+
+  
     void Update()
     {
         CheckForDeadRat();
@@ -170,10 +173,10 @@ public class GameManager : MonoBehaviour
     }
 
 
-
+  
     public IEnumerator MoveToPoint(Transform myObject, Vector2 point)
     {
-        Vector2 positionDifference = point - (Vector2)myObject.position; // Berechne den Unterschied zwischen Ziel- und aktueller Position
+        positionDifference = point - (Vector2)myObject.position; // Berechne den Unterschied zwischen Ziel- und aktueller Position
         while (positionDifference.magnitude > moveAccuracy) // Schleife, bis die Position genau genug ist
         {
             myObject.Translate(moveSpeed * positionDifference.normalized * Time.deltaTime); // Bewege das Objekt in Richtung des Ziels
