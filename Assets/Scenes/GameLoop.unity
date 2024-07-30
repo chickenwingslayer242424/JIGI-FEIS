@@ -2570,7 +2570,7 @@ MonoBehaviour:
   Shaker2: {fileID: 0}
   KnockDrink1: {fileID: 0}
   KnockDrink2: {fileID: 0}
-  goToPoint: {fileID: 0}
+  goToPoint: {fileID: 789100221}
   flipPlayerSpriteRight: 0
 --- !u!212 &333758723
 SpriteRenderer:
@@ -5152,7 +5152,7 @@ MonoBehaviour:
   Shaker2: {fileID: 0}
   KnockDrink1: {fileID: 0}
   KnockDrink2: {fileID: 0}
-  goToPoint: {fileID: 0}
+  goToPoint: {fileID: 1775431926}
   flipPlayerSpriteRight: 0
 --- !u!114 &574184770
 MonoBehaviour:
@@ -6529,7 +6529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &680037345
 Transform:
   m_ObjectHideFlags: 0
@@ -7467,7 +7467,7 @@ Transform:
   m_GameObject: {fileID: 789100220}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.4, y: -17.7, z: 0}
+  m_LocalPosition: {x: 3.44, y: -6.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7971,7 +7971,7 @@ Transform:
   m_GameObject: {fileID: 845721474}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.4, y: -17.7, z: 0}
+  m_LocalPosition: {x: 9.96, y: -0.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8122,8 +8122,8 @@ MonoBehaviour:
   Shaker2: {fileID: 0}
   KnockDrink1: {fileID: 0}
   KnockDrink2: {fileID: 0}
-  goToPoint: {fileID: 0}
-  flipPlayerSpriteRight: 0
+  goToPoint: {fileID: 1314932238}
+  flipPlayerSpriteRight: 1
 --- !u!114 &864795969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9995,7 +9995,7 @@ Transform:
   m_GameObject: {fileID: 1081560981}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.5, y: -17.7, z: 0}
+  m_LocalPosition: {x: -2.77, y: -5.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10540,8 +10540,8 @@ MonoBehaviour:
   Shaker2: {fileID: 0}
   KnockDrink1: {fileID: 0}
   KnockDrink2: {fileID: 0}
-  goToPoint: {fileID: 0}
-  flipPlayerSpriteRight: 0
+  goToPoint: {fileID: 1458381419}
+  flipPlayerSpriteRight: 1
 --- !u!212 &1111045512
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12529,7 +12529,7 @@ Transform:
   m_GameObject: {fileID: 1314932237}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -34.9, y: -43.9, z: 0}
+  m_LocalPosition: {x: -3.2, y: -4.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13364,7 +13364,7 @@ Transform:
   m_GameObject: {fileID: 1458381418}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.4, y: -17.7, z: 0}
+  m_LocalPosition: {x: -4.84, y: -9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14618,8 +14618,8 @@ MonoBehaviour:
   Shaker2: {fileID: 0}
   KnockDrink1: {fileID: 0}
   KnockDrink2: {fileID: 0}
-  goToPoint: {fileID: 0}
-  flipPlayerSpriteRight: 0
+  goToPoint: {fileID: 1081560982}
+  flipPlayerSpriteRight: 1
 --- !u!114 &1602359957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15057,7 +15057,7 @@ Transform:
   m_GameObject: {fileID: 1608307909}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -34.9, y: -43.9, z: 0}
+  m_LocalPosition: {x: 2.7, y: -4.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15789,7 +15789,7 @@ Transform:
   m_GameObject: {fileID: 1775431925}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -34.9, y: -43.9, z: 0}
+  m_LocalPosition: {x: 4.33, y: -7.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17111,7 +17111,7 @@ MonoBehaviour:
   Shaker2: {fileID: 0}
   KnockDrink1: {fileID: 0}
   KnockDrink2: {fileID: 0}
-  goToPoint: {fileID: 0}
+  goToPoint: {fileID: 845721475}
   flipPlayerSpriteRight: 0
   "Schl\xFCssel1": {fileID: 619579404}
   "Schl\xFCssel2": {fileID: 955592834}
@@ -17687,7 +17687,7 @@ MonoBehaviour:
   Shaker2: {fileID: 0}
   KnockDrink1: {fileID: 0}
   KnockDrink2: {fileID: 0}
-  goToPoint: {fileID: 0}
+  goToPoint: {fileID: 1608307910}
   flipPlayerSpriteRight: 0
 --- !u!114 &1859758951
 MonoBehaviour:
