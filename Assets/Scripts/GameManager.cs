@@ -289,16 +289,6 @@ public class GameManager : MonoBehaviour
             player.localScale = new Vector3(-1f, 1f, 1f);
 
         }
-        if (item.itemID == -12 && selectedItemID == -12 && player.localScale.x > 0)
-        {
-            player.localScale = new Vector3(0.75f, 0.75f, 0.75f);
-
-        }
-        else if (item.itemID == -12 && selectedItemID == -12 && player.localScale.x < 0)
-        {
-            player.localScale = new Vector3(-0.75f, 0.75f, 0.75f);
-
-        }
 
         if (item.itemID == -999786 && player.localScale.x > 0)
         {
@@ -358,6 +348,16 @@ public class GameManager : MonoBehaviour
     {
 
         StartCoroutine(ChangeScene(localScenes[1], 0));
+           if (player.localScale.x > 0)
+        {
+            player.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+
+        }
+        else if (player.localScale.x < 0)
+        {
+            player.localScale = new Vector3(-0.75f, 0.75f, 0.75f);
+
+        }
 
     }
 
