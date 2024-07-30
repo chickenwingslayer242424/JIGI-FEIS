@@ -994,7 +994,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -147.48996, y: 92.04001}
+  m_AnchoredPosition: {x: -147.48999, y: 92.04001}
   m_SizeDelta: {x: -432.75, y: -115.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &56239947
@@ -20272,9 +20272,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b375b956a2182c24caa23fd22b10d5f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
+  moveSpeed: 3
   moveAccuracy: 0.15
   positionDifference: {x: 0, y: 0}
+  player: {fileID: 1216800213}
   nameTag: {fileID: 0}
   hintBox: {fileID: 665209832}
   blockingImage: {fileID: 1021504691}
@@ -20408,7 +20409,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -147.48996, y: 92.04001}
+  m_AnchoredPosition: {x: -147.48999, y: 92.04001}
   m_SizeDelta: {x: -432.75, y: -115.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2136684692

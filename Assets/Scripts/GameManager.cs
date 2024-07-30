@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public float moveSpeed = 3.5f; // Bewegungsgeschwindigkeit des Spielers
     public float moveAccuracy = 0.15f; // Genauigkeit der Bewegung
     public Vector2 positionDifference;
+
+    public Transform player;
     public static List<ItemData> collectedItems = new List<ItemData>(); // Liste der gesammelten Items
     public RectTransform nameTag, hintBox; // UI-Elemente für Namensschilder und Hinweisbox
     public Image blockingImage; // Bild zum Blockieren des Bildschirms (z.B. für Übergänge)
@@ -41,7 +43,7 @@ public class GameManager : MonoBehaviour
     public static bool isGrannyDialogTriggered = false;
     private PolygonCollider2D groundCollider;
 
-  
+
     void Update()
     {
         CheckForDeadRat();
@@ -135,7 +137,7 @@ public class GameManager : MonoBehaviour
         }
 
         posterExitButton.onClick.AddListener(ClosePosterPopup); // Exit-Button Listener hinzufügen
-       
+
         if (miniGameExitButton != null)
         {
             miniGameExitButton.onClick.AddListener(CloseMiniGame); // Exit-Button Listener hinzufügen
@@ -173,7 +175,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-  
+
     public IEnumerator MoveToPoint(Transform myObject, Vector2 point)
     {
         positionDifference = point - (Vector2)myObject.position; // Berechne den Unterschied zwischen Ziel- und aktueller Position
@@ -263,52 +265,94 @@ public class GameManager : MonoBehaviour
             case -32:
                 StartCoroutine(ChangeScene(localScenes[3], 1)); // Szene wechseln
                 break;
-                case -999786: // Neuer Case zum Wechseln zur ersten Szene mit neuer Startposition
-            StartCoroutine(ChangeSceneWithNewStart(localScenes[0], 0, new Vector2(40, 1))); // Szene wechseln und neue Position
-            break;
+            case -999786: // Neuer Case zum Wechseln zur ersten Szene mit neuer Startposition
+                StartCoroutine(ChangeSceneWithNewStart(localScenes[0], 0, new Vector2(40, 1))); // Szene wechseln und neue Position
+                break;
         }
+        if (item.itemID == -13 && player.localScale.x > 0)
+        {
+            player.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+
+        }
+        else if (item.itemID == -13 && player.localScale.x < 0)
+        {
+            player.localScale = new Vector3(-0.75f, 0.75f, 0.75f);
+
+        }
+        if (item.itemID == -11 && player.localScale.x > 0)
+        {
+            player.localScale = new Vector3(1f, 1f, 1f);
+
+        }
+        else if (item.itemID == -11 && player.localScale.x < 0)
+        {
+            player.localScale = new Vector3(-1f, 1f, 1f);
+
+        }
+        if (item.itemID == -12 && player.localScale.x > 0)
+        {
+            player.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+
+        }
+        else if (item.itemID == -12 && player.localScale.x < 0)
+        {
+            player.localScale = new Vector3(-0.75f, 0.75f, 0.75f);
+
+        }
+
+        if (item.itemID == -999786 && player.localScale.x > 0)
+        {
+            player.localScale = new Vector3(1f, 1f, 1f);
+
+        }
+        else if (item.itemID == -999786 && player.localScale.x < 0)
+        {
+            player.localScale = new Vector3(-1f, 1f, 1f);
+
+        }
+
     }
     // Neue Methode zum Szenenwechsel mit angegebener Startposition
-public IEnumerator ChangeSceneWithNewStart(GameObject newScene, float delay, Vector2 newStartPosition)
-{
-    yield return new WaitForSeconds(delay);
-    blockingImage.enabled = true;
-    Color c = blockingImage.color;
-    while (blockingImage.color.a < 1)
+    public IEnumerator ChangeSceneWithNewStart(GameObject newScene, float delay, Vector2 newStartPosition)
     {
+        yield return new WaitForSeconds(delay);
+        blockingImage.enabled = true;
+        Color c = blockingImage.color;
+        while (blockingImage.color.a < 1)
+        {
+            yield return null;
+            c.a += Time.deltaTime;
+            blockingImage.color = c;
+        }
+
+        localScenes[activeLocalScene].SetActive(false);
+        newScene.SetActive(true);
+        activeLocalScene = System.Array.IndexOf(localScenes, newScene);
+
+        if (cameraFollow != null)
+        {
+            cameraFollow.enabled = true;
+        }
+
+        FindObjectOfType<ClickManager>().player.position = newStartPosition; // Setze die neue Startposition
+        UpdateHintBox(null);
+
+        yield return new WaitForEndOfFrame();
+
+        if (cameraFollow != null)
+        {
+            cameraFollow.enabled = (newScene.name != "Scene2");
+        }
+
+        while (blockingImage.color.a > 0)
+        {
+            yield return null;
+            c.a -= Time.deltaTime;
+            blockingImage.color = c;
+        }
+        blockingImage.enabled = false;
         yield return null;
-        c.a += Time.deltaTime;
-        blockingImage.color = c;
     }
-
-    localScenes[activeLocalScene].SetActive(false);
-    newScene.SetActive(true);
-    activeLocalScene = System.Array.IndexOf(localScenes, newScene);
-
-    if (cameraFollow != null)
-    {
-        cameraFollow.enabled = true;
-    }
-
-    FindObjectOfType<ClickManager>().player.position = newStartPosition; // Setze die neue Startposition
-    UpdateHintBox(null);
-
-    yield return new WaitForEndOfFrame();
-
-    if (cameraFollow != null)
-    {
-        cameraFollow.enabled = (newScene.name != "Scene2");
-    }
-
-    while (blockingImage.color.a > 0)
-    {
-        yield return null;
-        c.a -= Time.deltaTime;
-        blockingImage.color = c;
-    }
-    blockingImage.enabled = false;
-    yield return null;
-}
 
     public void CheckForKey(ItemData item)
     {
