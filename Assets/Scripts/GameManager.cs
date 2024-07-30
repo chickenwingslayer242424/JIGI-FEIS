@@ -289,12 +289,12 @@ public class GameManager : MonoBehaviour
             player.localScale = new Vector3(-1f, 1f, 1f);
 
         }
-        if (item.itemID == -12 && player.localScale.x > 0)
+        if (item.itemID == -12 && selectedItemID == -12 && player.localScale.x > 0)
         {
             player.localScale = new Vector3(0.75f, 0.75f, 0.75f);
 
         }
-        else if (item.itemID == -12 && player.localScale.x < 0)
+        else if (item.itemID == -12 && selectedItemID == -12 && player.localScale.x < 0)
         {
             player.localScale = new Vector3(-0.75f, 0.75f, 0.75f);
 
