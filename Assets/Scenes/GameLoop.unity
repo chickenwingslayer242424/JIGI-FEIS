@@ -573,6 +573,7 @@ GameObject:
   - component: {fileID: 33776414}
   - component: {fileID: 33776412}
   - component: {fileID: 33776417}
+  - component: {fileID: 33776418}
   m_Layer: 0
   m_Name: Barkeeper
   m_TagString: NPC
@@ -763,6 +764,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.9703608, y: 6.339919}
   m_EdgeRadius: 0
+--- !u!95 &33776418
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33776410}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4156c7c67c5a9134bb9881c7e2c53bc4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &35887531
 GameObject:
   m_ObjectHideFlags: 0
@@ -2721,6 +2743,7 @@ GameObject:
   - component: {fileID: 333758722}
   - component: {fileID: 333758721}
   - component: {fileID: 333758725}
+  - component: {fileID: 333758726}
   m_Layer: 0
   m_Name: Cherry
   m_TagString: NPC
@@ -2911,6 +2934,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.3492818, y: 10.07}
   m_EdgeRadius: 0
+--- !u!95 &333758726
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333758718}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3233e35b7e339f04cbae3b48a2dc6181, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &349041575
 GameObject:
   m_ObjectHideFlags: 0
@@ -5235,6 +5279,7 @@ GameObject:
   - component: {fileID: 574184770}
   - component: {fileID: 574184769}
   - component: {fileID: 574184773}
+  - component: {fileID: 574184774}
   m_Layer: 0
   m_Name: "S\xE4ngerin"
   m_TagString: NPC
@@ -5425,6 +5470,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5968685, y: 8.93922}
   m_EdgeRadius: 0
+--- !u!95 &574184774
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574184766}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 38da66d26302ac24491591fe77b719a4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &575336690
 GameObject:
   m_ObjectHideFlags: 0
@@ -5439,6 +5505,7 @@ GameObject:
   - component: {fileID: 575336694}
   - component: {fileID: 575336693}
   - component: {fileID: 575336697}
+  - component: {fileID: 575336698}
   m_Layer: 0
   m_Name: Granny
   m_TagString: NPC
@@ -5629,6 +5696,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5975182, y: 2.4092865}
   m_EdgeRadius: 0
+--- !u!95 &575336698
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575336690}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9f1b1418a3522e84e826ec92f7615f0a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &589554740
 GameObject:
   m_ObjectHideFlags: 0
@@ -8063,6 +8151,7 @@ GameObject:
   - component: {fileID: 864795966}
   - component: {fileID: 864795968}
   - component: {fileID: 864795970}
+  - component: {fileID: 864795971}
   m_Layer: 0
   m_Name: Georgia
   m_TagString: NPC
@@ -8253,6 +8342,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.654047, y: 10.133202}
   m_EdgeRadius: 0
+--- !u!95 &864795971
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864795962}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1cf9cc6318416fa44a12d4ebd3348e39, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &870120359
 GameObject:
   m_ObjectHideFlags: 0
@@ -10533,6 +10643,7 @@ GameObject:
   - component: {fileID: 1111045511}
   - component: {fileID: 1111045510}
   - component: {fileID: 1111045514}
+  - component: {fileID: 1111045515}
   m_Layer: 0
   m_Name: El Bis
   m_TagString: NPC
@@ -10723,6 +10834,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.9133837, y: 9.116301}
   m_EdgeRadius: 0
+--- !u!95 &1111045515
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111045507}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: abe3cd3a286288c4d80bc51014dc2180, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1116455413
 GameObject:
   m_ObjectHideFlags: 0
@@ -10794,7 +10926,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 67, y: -83.98001}
+  m_AnchoredPosition: {x: 67, y: -83.98003}
   m_SizeDelta: {x: -219.98, y: -278.55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1116917170
@@ -13131,6 +13263,7 @@ GameObject:
   - component: {fileID: 1396747426}
   - component: {fileID: 1396747429}
   - component: {fileID: 1396747432}
+  - component: {fileID: 1396747433}
   m_Layer: 0
   m_Name: CasinoDealer
   m_TagString: NPC
@@ -13322,6 +13455,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5030298, y: 10.166208}
   m_EdgeRadius: 0
+--- !u!95 &1396747433
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396747423}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 55a9184eaed1b594688278879530a74f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1410205166
 GameObject:
   m_ObjectHideFlags: 0
@@ -14680,6 +14834,7 @@ GameObject:
   - component: {fileID: 1602359956}
   - component: {fileID: 1602359954}
   - component: {fileID: 1602359958}
+  - component: {fileID: 1602359959}
   m_Layer: 0
   m_Name: BigBoss
   m_TagString: NPC
@@ -14870,6 +15025,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.313503, y: 8.470081}
   m_EdgeRadius: 0
+--- !u!95 &1602359959
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602359951}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 19858eb7871265e4e8cbaef16376c271, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1605188848
 GameObject:
   m_ObjectHideFlags: 0
@@ -15698,7 +15874,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 67, y: -83.98001}
+  m_AnchoredPosition: {x: 67, y: -83.98003}
   m_SizeDelta: {x: -219.98, y: -278.55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1695479506
@@ -17169,6 +17345,7 @@ GameObject:
   - component: {fileID: 1848252485}
   - component: {fileID: 1848252484}
   - component: {fileID: 1848252488}
+  - component: {fileID: 1848252489}
   m_Layer: 0
   m_Name: KeySpawner ass
   m_TagString: NPC
@@ -17362,6 +17539,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.5163965, y: 6.5009155}
   m_EdgeRadius: 0
+--- !u!95 &1848252489
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848252481}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 00159bf7f3d32944f847a2362e668319, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1848725470
 GameObject:
   m_ObjectHideFlags: 0
@@ -17693,6 +17891,7 @@ GameObject:
   - component: {fileID: 1859758948}
   - component: {fileID: 1859758950}
   - component: {fileID: 1859758952}
+  - component: {fileID: 1859758953}
   m_Layer: 0
   m_Name: Lina
   m_TagString: NPC
@@ -17883,6 +18082,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.5487545, y: 8.661198}
   m_EdgeRadius: 0
+--- !u!95 &1859758953
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859758944}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4c1360effd1669f4692d295d338d864d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1862451216
 GameObject:
   m_ObjectHideFlags: 0
