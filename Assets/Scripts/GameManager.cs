@@ -266,7 +266,7 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(ChangeScene(localScenes[3], 1)); // Szene wechseln
                 break;
             case -999786: // Neuer Case zum Wechseln zur ersten Szene mit neuer Startposition
-                StartCoroutine(ChangeSceneWithNewStart(localScenes[0], 0, new Vector2(40, 1))); // Szene wechseln und neue Position
+                StartCoroutine(ChangeSceneWithNewStart(localScenes[0], 0, new Vector2(31, 1))); // Szene wechseln und neue Position
                 break;
         }
         if (item.itemID == -13 && player.localScale.x > 0)
