@@ -256,7 +256,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c05a5d2b171a575498d2b9b9d38df3bf, type: 2}
+  - {fileID: 2100000, guid: f43e6fcb23a6d0047bff0df06235327f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2296,7 +2296,9 @@ GameObject:
   m_Component:
   - component: {fileID: 216911017}
   - component: {fileID: 216911016}
+  - component: {fileID: 216911020}
   - component: {fileID: 216911018}
+  - component: {fileID: 216911019}
   m_Layer: 0
   m_Name: cocktail_shaker
   m_TagString: Untagged
@@ -2324,7 +2326,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: fe87433e89cd09747b89362b240b26f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2397,6 +2399,53 @@ MonoBehaviour:
   hintBoxSize: {x: 3, y: 0.65}
   nachdenkText: fartyshake
   showNachdenkCanvas: 1
+--- !u!70 &216911019
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216911015}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.00000047683716}
+  m_Size: {x: 0.91999996, y: 1.4}
+  m_Direction: 0
+--- !u!114 &216911020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216911015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f0bb0d92b728344b0e729ff2f64f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &220197360
 GameObject:
   m_ObjectHideFlags: 0
@@ -3157,8 +3206,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 378892349}
+  - component: {fileID: 378892353}
   - component: {fileID: 378892351}
   - component: {fileID: 378892350}
+  - component: {fileID: 378892352}
   m_Layer: 0
   m_Name: "Zigarettenstu\u0308mmel"
   m_TagString: Untagged
@@ -3229,7 +3280,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4f9fbe01598f73f45a515c90e12e1360, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3261,6 +3312,53 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &378892352
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378892348}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.0000076293945}
+  m_Size: {x: 5.999999, y: 5.999999}
+  m_Direction: 0
+--- !u!114 &378892353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378892348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f0bb0d92b728344b0e729ff2f64f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &380929049
 GameObject:
   m_ObjectHideFlags: 0
@@ -4513,6 +4611,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2630274772601661527, guid: 6c8863458660c7246a4799cbcf8d5968, type: 3}
   m_PrefabInstance: {fileID: 5716985407962655142}
   m_PrefabAsset: {fileID: 0}
+--- !u!70 &499810930
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499810925}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.0000038146973}
+  m_Size: {x: 6, y: 6}
+  m_Direction: 0
+--- !u!114 &499810931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499810925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f0bb0d92b728344b0e729ff2f64f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4798,7 +4943,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7d1710740b0425546a698a4098b5debb, type: 2}
+  - {fileID: 2100000, guid: c56a47a6cbdd0d244880516670721210, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8811,8 +8956,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 955592836}
+  - component: {fileID: 955592839}
   - component: {fileID: 955592835}
   - component: {fileID: 955592837}
+  - component: {fileID: 955592838}
   m_Layer: 0
   m_Name: "Schlu\u0308ssel"
   m_TagString: Untagged
@@ -8840,7 +8987,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 63ab5700bb14ba14ab79274852c18ec6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8915,6 +9062,53 @@ MonoBehaviour:
   hintBoxSize: {x: 3, y: 0.65}
   nachdenkText: 
   showNachdenkCanvas: 0
+--- !u!70 &955592838
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955592834}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.000002861023, y: 0}
+  m_Size: {x: 6.000001, y: 6}
+  m_Direction: 0
+--- !u!114 &955592839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955592834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f0bb0d92b728344b0e729ff2f64f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &962432774
 GameObject:
   m_ObjectHideFlags: 0
@@ -10926,7 +11120,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 67, y: -83.98003}
+  m_AnchoredPosition: {x: 67, y: -83.98004}
   m_SizeDelta: {x: -219.98, y: -278.55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1116917170
@@ -12918,8 +13112,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1349274314}
+  - component: {fileID: 1349274318}
   - component: {fileID: 1349274315}
   - component: {fileID: 1349274316}
+  - component: {fileID: 1349274317}
   m_Layer: 0
   m_Name: Stecker
   m_TagString: Stecker
@@ -12963,7 +13159,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ba214d3136dc2cd4eb498b6ea3b22ea4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13021,6 +13217,53 @@ MonoBehaviour:
   hintBoxSize: {x: 3, y: 0.65}
   nachdenkText: 
   showNachdenkCanvas: 0
+--- !u!70 &1349274317
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349274313}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.011120595, y: -0.08793284}
+  m_Size: {x: 0.565974, y: 0.55155325}
+  m_Direction: 0
+--- !u!114 &1349274318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349274313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f0bb0d92b728344b0e729ff2f64f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1378414297
 GameObject:
   m_ObjectHideFlags: 0
@@ -14256,8 +14499,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1540874708}
+  - component: {fileID: 1540874712}
   - component: {fileID: 1540874710}
   - component: {fileID: 1540874709}
+  - component: {fileID: 1540874711}
   m_Layer: 0
   m_Name: Rattenreste
   m_TagString: Untagged
@@ -14328,7 +14573,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0a503b3a53b96994fae913299458b517, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14360,6 +14605,53 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &1540874711
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540874707}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0000038146973, y: 0.000015258789}
+  m_Size: {x: 6.0000014, y: 6.000001}
+  m_Direction: 0
+--- !u!114 &1540874712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540874707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f0bb0d92b728344b0e729ff2f64f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1552590387
 GameObject:
   m_ObjectHideFlags: 0
@@ -15057,6 +15349,7 @@ GameObject:
   - component: {fileID: 1605188849}
   - component: {fileID: 1605188851}
   - component: {fileID: 1605188850}
+  - component: {fileID: 1605188853}
   - component: {fileID: 1605188852}
   m_Layer: 0
   m_Name: Stromkasten
@@ -15126,7 +15419,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 484d5af6cc7fcd1489d4007d1afedb05, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15203,6 +15496,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1474364, y: 1.6989617}
   m_EdgeRadius: 0
+--- !u!114 &1605188853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605188848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f0bb0d92b728344b0e729ff2f64f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1605938001
 GameObject:
   m_ObjectHideFlags: 0
@@ -15874,7 +16179,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 67, y: -83.98003}
+  m_AnchoredPosition: {x: 67, y: -83.98004}
   m_SizeDelta: {x: -219.98, y: -278.55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1695479506
@@ -20131,6 +20436,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2069250175}
+  - component: {fileID: 2069250180}
   - component: {fileID: 2069250179}
   - component: {fileID: 2069250178}
   - component: {fileID: 2069250177}
@@ -20250,8 +20556,8 @@ MonoBehaviour:
   requiredItemID: 0
   rewardItem: {fileID: 0}
   hasReceivedItem: 0
-  npcSprite: {fileID: 0}
-  pcImage: {fileID: 21300000, guid: e9eefdac08a80a3488b8bb0659dfeb30, type: 3}
+  npcSprite: {fileID: 21300000, guid: 9d7aac14719d762469158699c366d953, type: 3}
+  pcImage: {fileID: 21300000, guid: 6221483bf85b17045b0358c0ac579305, type: 3}
   npcName: Radio
   objectToSpawn: {fileID: 0}
   requestedItem: {fileID: 0}
@@ -20281,7 +20587,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6107d41e3d0d9ca499106ec7576c985f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20313,6 +20619,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2069250180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069250174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f0bb0d92b728344b0e729ff2f64f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2086662463
 GameObject:
   m_ObjectHideFlags: 0
@@ -20914,6 +21232,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: b276f420b52578c46a66ca6170ae072a, type: 3}
+    - target: {fileID: 3331313944693241682, guid: 6c8863458660c7246a4799cbcf8d5968, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c215260b9d79f4b4f83a67ded17405e4, type: 2}
     - target: {fileID: 6087127688128585193, guid: 6c8863458660c7246a4799cbcf8d5968, type: 3}
       propertyPath: itemID
       value: 1333
@@ -20933,7 +21255,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6838529090842059261, guid: 6c8863458660c7246a4799cbcf8d5968, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 499810931}
+    - targetCorrespondingSourceObject: {fileID: 6838529090842059261, guid: 6c8863458660c7246a4799cbcf8d5968, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 499810930}
   m_SourcePrefab: {fileID: 100100000, guid: 6c8863458660c7246a4799cbcf8d5968, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
