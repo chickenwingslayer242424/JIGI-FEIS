@@ -1993,9 +1993,10 @@ PolygonCollider2D:
       - {x: -0.36568698, y: -0.10849329}
       - {x: -0.34747425, y: -0.11082801}
       - {x: -0.347333, y: -0.74378467}
-      - {x: -0.28901535, y: -0.744813}
-      - {x: -0.28910923, y: -1.0837818}
-      - {x: -0.33236936, y: -1.1199268}
+      - {x: -0.31669816, y: -0.70696986}
+      - {x: -0.28891882, y: -0.71128577}
+      - {x: -0.2888196, y: -1.1252915}
+      - {x: -0.33352768, y: -1.132699}
       - {x: -0.33341423, y: -2.0682178}
       - {x: -0.1758037, y: -2.0921528}
       - {x: -0.17342457, y: -1.9327725}
@@ -3704,7 +3705,7 @@ Transform:
   m_GameObject: {fileID: 427485500}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.073502325, w: -0.9972951}
-  m_LocalPosition: {x: 2, y: -4.23, z: 0}
+  m_LocalPosition: {x: -0, y: -4.94, z: 0}
   m_LocalScale: {x: 13.214297, y: 9.12669, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4897,7 +4898,7 @@ GameObject:
   - component: {fileID: 558907041}
   - component: {fileID: 558907043}
   m_Layer: 0
-  m_Name: SecurityFrau
+  m_Name: Zeynep
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5029,7 +5030,7 @@ MonoBehaviour:
   KnockDrink2: {fileID: 0}
   goToPoint: {fileID: 1024608024}
   flipPlayerSpriteRight: 1
-  objectToDeactivate: {fileID: 220197360}
+  objectToDeactivate: {fileID: 1157948029}
   objectToActivate: {fileID: 680037344}
 --- !u!114 &558907042
 MonoBehaviour:
@@ -11312,8 +11313,8 @@ Transform:
   m_GameObject: {fileID: 1174136513}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.2741, y: 0.3646, z: 10}
-  m_LocalScale: {x: 0.098233804, y: 0.11672102, z: 0.07348029}
+  m_LocalPosition: {x: -0.2104, y: 0.327, z: 10}
+  m_LocalScale: {x: 0.12639983, y: 0.13644674, z: 0.07348029}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1410205167}
@@ -13158,7 +13159,7 @@ Transform:
   m_GameObject: {fileID: 1410205166}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.8, y: -32.4, z: 0}
+  m_LocalPosition: {x: 17.8, y: -27.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
