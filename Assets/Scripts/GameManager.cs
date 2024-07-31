@@ -257,20 +257,27 @@ public class GameManager : MonoBehaviour
         switch (item.itemID) // Überprüfe die Item-ID und führe spezielle Aktionen aus
         {
             case -11:
-                StartCoroutine(ChangeScene(localScenes[0], 0)); // Szene wechseln
+                StartCoroutine(ChangeScene(localScenes[0], 0,item)); // Szene wechseln
                 break;
             case -13:
-                StartCoroutine(ChangeScene(localScenes[2], 0)); // Szene wechseln
+                StartCoroutine(ChangeScene(localScenes[2], 0,item)); // Szene wechseln
                 break;
             case -32:
-                StartCoroutine(ChangeScene(localScenes[3], 1)); // Szene wechseln
+                StartCoroutine(ChangeScene(localScenes[3], 1,item)); // Szene wechseln
                 break;
             case -999786: // Neuer Case zum Wechseln zur ersten Szene mit neuer Startposition
-                StartCoroutine(ChangeSceneWithNewStart(localScenes[0], 0, new Vector2(31, 1))); // Szene wechseln und neue Position
+                StartCoroutine(ChangeSceneWithNewStart(localScenes[0], 0, new Vector2(31, 1),item)); // Szene wechseln und neue Position
                 break;
         }
-        if (item.itemID == -13 && player.localScale.x > 0)
+   
+    }
+
+
+    public void CheckForScale(ItemData item)
+    {
+          if (item.itemID == -13 && player.localScale.x > 0)
         {
+
             player.localScale = new Vector3(0.75f, 0.75f, 0.75f);
 
         }
@@ -303,7 +310,7 @@ public class GameManager : MonoBehaviour
 
     }
     // Neue Methode zum Szenenwechsel mit angegebener Startposition
-    public IEnumerator ChangeSceneWithNewStart(GameObject newScene, float delay, Vector2 newStartPosition)
+    public IEnumerator ChangeSceneWithNewStart(GameObject newScene, float delay, Vector2 newStartPosition,ItemData item)
     {
         yield return new WaitForSeconds(delay);
         blockingImage.enabled = true;
@@ -313,7 +320,9 @@ public class GameManager : MonoBehaviour
             yield return null;
             c.a += Time.deltaTime;
             blockingImage.color = c;
+            
         }
+       CheckForScale(item);
 
         localScenes[activeLocalScene].SetActive(false);
         newScene.SetActive(true);
@@ -347,7 +356,7 @@ public class GameManager : MonoBehaviour
     public void CheckForKey(ItemData item)
     {
 
-        StartCoroutine(ChangeScene(localScenes[1], 0));
+        StartCoroutine(ChangeScene(localScenes[1], 0,item));
            if (player.localScale.x > 0)
         {
             player.localScale = new Vector3(0.75f, 0.75f, 0.75f);
@@ -362,21 +371,29 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public IEnumerator ChangeScene(GameObject newScene, float delay)
+    public IEnumerator ChangeScene(GameObject newScene, float delay,ItemData item)
     {
         yield return new WaitForSeconds(delay);
         blockingImage.enabled = true;
         Color c = blockingImage.color;
+          c.a = 0;
         while (blockingImage.color.a < 1)
         {
             yield return null;
             c.a += Time.deltaTime;
+             c.a = Mathf.Clamp01(c.a);
             blockingImage.color = c;
         }
+        
+        CheckForScale(item);
+        
+ 
+        
 
         localScenes[activeLocalScene].SetActive(false);
         newScene.SetActive(true);
         activeLocalScene = System.Array.IndexOf(localScenes, newScene);
+        
 
         if (cameraFollow != null)
         {
@@ -385,6 +402,7 @@ public class GameManager : MonoBehaviour
 
         FindObjectOfType<ClickManager>().player.position = playerStartPos[activeLocalScene].position;
         UpdateHintBox(null);
+        
 
         // 等待摄像机位置刷新
         yield return new WaitForEndOfFrame();
@@ -404,6 +422,7 @@ public class GameManager : MonoBehaviour
             c.a -= Time.deltaTime;
             blockingImage.color = c;
         }
+      
         blockingImage.enabled = false;
         yield return null;
     }

@@ -203,6 +203,8 @@ public class ClickManager : MonoBehaviour
         if(gameManager.selectedItemID == item.requiredItemID && gameManager.selectedItemID == -5)
         {
             gameManager.CheckForKey(item);
+            gameManager.CheckForScale(item);
+            
             return; //immer return nach special conditions, sonst versucht das nächste if ein item ins inv zu packen obwohl nichts ist.
         }
 
