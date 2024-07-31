@@ -1269,6 +1269,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 77648250}
+  - component: {fileID: 77648251}
   m_Layer: 0
   m_Name: Scene3
   m_TagString: Untagged
@@ -1309,6 +1310,23 @@ Transform:
   - {fileID: 1656369963}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &77648251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77648249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30058c92d747864da362fb8be76e3ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraFollow: {fileID: 519420033}
+  scene1MinBounds: {x: 0, y: 0}
+  scene1MaxBounds: {x: 35.1, y: 10}
+  scene3MinBounds: {x: 0, y: 0}
+  scene3MaxBounds: {x: 27.8, y: 10}
 --- !u!1 &96091955
 GameObject:
   m_ObjectHideFlags: 0
@@ -3842,6 +3860,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 425190782}
+  - component: {fileID: 425190783}
   m_Layer: 0
   m_Name: Scene1
   m_TagString: Untagged
@@ -3889,6 +3908,23 @@ Transform:
   - {fileID: 1654206165}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &425190783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425190781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30058c92d747864da362fb8be76e3ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraFollow: {fileID: 519420033}
+  scene1MinBounds: {x: 0, y: 0}
+  scene1MaxBounds: {x: 35.1, y: 10}
+  scene3MinBounds: {x: 0, y: 0}
+  scene3MaxBounds: {x: 27.8, y: 10}
 --- !u!1 &427485500
 GameObject:
   m_ObjectHideFlags: 0
@@ -4584,9 +4620,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1216800213}
   offset: {x: 0, y: 0, z: -10}
-  minPosition: {x: 0, y: 0}
-  maxPosition: {x: 35.1, y: 10}
-  edgeOffset: 5
 --- !u!1 &521266034
 GameObject:
   m_ObjectHideFlags: 0
@@ -10737,7 +10770,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 67, y: -83.97998}
+  m_AnchoredPosition: {x: 67, y: -83.98001}
   m_SizeDelta: {x: -219.98, y: -278.55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1116917170
@@ -15641,7 +15674,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 67, y: -83.97998}
+  m_AnchoredPosition: {x: 67, y: -83.98001}
   m_SizeDelta: {x: -219.98, y: -278.55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1695479506

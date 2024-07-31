@@ -2,11 +2,10 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform player; // 玩家 Transform
-    public Vector3 offset;   // 摄像机偏移量
-    public Vector2 minPosition; // 最小摄像机位置
-    public Vector2 maxPosition; // 最大摄像机位置
-    public float edgeOffset = 1f; // 边缘偏移量
+    public Transform player; // Spieler Transform
+    public Vector3 offset;   // Kamera Offset
+    private Vector2 minPosition; // Minimale Kameraposition
+    private Vector2 maxPosition; // Maximale Kameraposition
 
     private void LateUpdate()
     {
@@ -19,7 +18,7 @@ public class CameraFollow : MonoBehaviour
         {
             Vector3 targetPosition = player.position + offset;
 
-            // 限制摄像机位置
+            // Begrenzung der Kameraposition
             targetPosition.x = Mathf.Clamp(targetPosition.x, minPosition.x + Camera.main.orthographicSize * Camera.main.aspect, maxPosition.x - Camera.main.orthographicSize * Camera.main.aspect);
             targetPosition.y = Mathf.Clamp(targetPosition.y, minPosition.y + Camera.main.orthographicSize, maxPosition.y - Camera.main.orthographicSize);
 
@@ -38,5 +37,11 @@ public class CameraFollow : MonoBehaviour
             transform.position = resetPosition;
         }
     }
-}
 
+    // Methode, um die Grenzen der Szene festzulegen
+    public void SetSceneBounds(Vector2 newMinPosition, Vector2 newMaxPosition)
+    {
+        minPosition = newMinPosition;
+        maxPosition = newMaxPosition;
+    }
+}
