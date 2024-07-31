@@ -2068,7 +2068,8 @@ PolygonCollider2D:
       - {x: -0.36568698, y: -0.10849329}
       - {x: -0.34747425, y: -0.11082801}
       - {x: -0.347333, y: -0.74378467}
-      - {x: -0.28901535, y: -0.744813}
+      - {x: -0.31681347, y: -0.7035011}
+      - {x: -0.28855804, y: -0.6994319}
       - {x: -0.28910923, y: -1.0837818}
       - {x: -0.33236936, y: -1.1199268}
       - {x: -0.33341423, y: -2.0682178}
@@ -3494,7 +3495,7 @@ GameObject:
   - component: {fileID: 402568612}
   - component: {fileID: 402568611}
   m_Layer: 0
-  m_Name: AbtrennungLayerSprite
+  m_Name: AbsperrungLayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3903,7 +3904,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &427485501
 Transform:
   m_ObjectHideFlags: 0
@@ -4972,7 +4973,7 @@ GameObject:
   - component: {fileID: 558907041}
   - component: {fileID: 558907043}
   m_Layer: 0
-  m_Name: SecurityFrau
+  m_Name: Zeynep
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5104,7 +5105,7 @@ MonoBehaviour:
   KnockDrink2: {fileID: 0}
   goToPoint: {fileID: 1024608024}
   flipPlayerSpriteRight: 1
-  objectToDeactivate: {fileID: 220197360}
+  objectToDeactivate: {fileID: 1157948029}
   objectToActivate: {fileID: 680037344}
 --- !u!114 &558907042
 MonoBehaviour:
@@ -9950,8 +9951,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.22245014, y: 0.3168}
-  m_SizeDelta: {x: 0.5551, y: 0.7592}
+  m_AnchoredPosition: {x: -0.1391, y: 0.332}
+  m_SizeDelta: {x: 0.6005, y: 0.8399}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1077788753
 GameObject:
@@ -11222,7 +11223,7 @@ GameObject:
   - component: {fileID: 1157948031}
   - component: {fileID: 1157948030}
   m_Layer: 0
-  m_Name: AbtrennungSprite
+  m_Name: Absperrungsprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11322,8 +11323,8 @@ Transform:
   m_GameObject: {fileID: 1174136513}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.2741, y: 0.3646, z: 10}
-  m_LocalScale: {x: 0.098233804, y: 0.11672102, z: 0.07348029}
+  m_LocalPosition: {x: -0.171, y: 0.38, z: 10}
+  m_LocalScale: {x: 0.11758587, y: 0.14532934, z: 0.07348029}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1410205167}
@@ -13289,7 +13290,7 @@ Transform:
   m_GameObject: {fileID: 1410205166}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.8, y: -32.4, z: 0}
+  m_LocalPosition: {x: 16.4, y: -26.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
