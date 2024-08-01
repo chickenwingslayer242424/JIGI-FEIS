@@ -42,7 +42,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _istOutlineon: 1
+    - _istOutlineon: 0
     - _outline_thiccccc: 122
     m_Colors:
     - _TextureSize: {r: 600, g: 600, b: 0, a: 0}
