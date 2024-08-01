@@ -2447,7 +2447,7 @@ MonoBehaviour:
   nameTagSize: {x: 3, y: 0.65}
   hintMessage: 
   hintBoxSize: {x: 3, y: 0.65}
-  nachdenkText: fartyshake
+  nachdenkText: Looks like i need some ingredients
   showNachdenkCanvas: 1
 --- !u!70 &216911019
 CapsuleCollider2D:
@@ -13916,7 +13916,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1180241699
   m_SortingLayer: 1
-  m_SortingOrder: 5
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: d451b83df35701f4496ade285c92203f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -15321,7 +15321,7 @@ Transform:
   m_GameObject: {fileID: 1077788753}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.69, y: -44.26, z: -0}
+  m_LocalPosition: {x: 1.07, y: -24.53, z: 0.007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17619,7 +17619,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1180241699
   m_SortingLayer: 1
-  m_SortingOrder: 5
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: d451b83df35701f4496ade285c92203f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -17957,7 +17957,7 @@ Transform:
   m_GameObject: {fileID: 1314932237}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.86, y: -3.08, z: 0}
+  m_LocalPosition: {x: -3.05, y: -3.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25673,7 +25673,7 @@ Transform:
   m_GameObject: {fileID: 1608307909}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.3, y: -2.52, z: 0}
+  m_LocalPosition: {x: 2.55, y: -2.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
