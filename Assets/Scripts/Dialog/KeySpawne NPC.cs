@@ -23,7 +23,7 @@ public class KeySpawner : NPC
             Debug.Log("Dieser NPC ist nicht mehr interaktiv.");
             initialDialogLines = new string[] { "ehhhh" };
             playerQuestions1 = new string[] { "i think hes knocked out good" };
-            npcResponses1 = new string[] { "öhhhhh........ isi hihiihih" };
+            npcResponses1 = new string[] { "öhhhhh.......hihiihih" };
 
             FindObjectOfType<DialogManager>().StartDialog(this);
             return;
@@ -46,8 +46,8 @@ public class KeySpawner : NPC
             }
 
             initialDialogLines = new string[] { "Thats a good drink. Than-" };
-            playerQuestions1 = new string[] { "looks like he dropped something" };
-            npcResponses1 = new string[] { "öhhhhh........ isi hihiihih" };
+            playerQuestions1 = new string[] { "looks like he dropped something." };
+            npcResponses1 = new string[] { "öhhhhh........hihiihih" };
 
             //schlüssel aktivieren
             if (Schlüssel1 != null)
@@ -67,7 +67,7 @@ public class KeySpawner : NPC
         else
         {
             initialDialogLines = new string[] { "Well, well, what do we have here?", "Another lost soul looking for something 'special'?", "I can show you my 'special' moves tonight." };
-            playerQuestions1 = new string[] { "Ehm..", "I am looking for my love.", "Did you see them?" };
+            playerQuestions1 = new string[] { "Ehm..ew", "I am looking for my love.", "Did you see them?" };
             npcResponses1 = new string[] { "You must be one of those who think that just because you had one night with the Boss, you can convince him to release his hostages and become a better person.", "Tough luck, the Boss is getting married today.", "And guess what? I've got the keys.", "But keeping an eye out to make sure everything goes smoothly while looking for some flesh for tonight is making me thirsty." };
             Debug.Log("Item 19 ist nicht ausgewählt");
         }

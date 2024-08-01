@@ -11,7 +11,7 @@ public class Mafiosa : NPC
         // Setze die Dialogzeilen für den KeySpawner
         initialDialogLines = new string[] { "Hihi","Tonight is perfect, nothing else matters",  "I'm getting a new outfit after this, can you believe it?" };
         playerQuestions1 = new string[] { "Mhm, alright girl." };
-        npcResponses1 = new string[] { "Everything is just... wonderful!", "Not even the darkest room will ruin my mood!"};
+        npcResponses1 = new string[] { "Everything is just... wonderful!", "Not even the darkest room could ruin my mood!"};
 
         // Starte den Dialog direkt ohne die Interact-Methode der Basisklasse aufzurufen
         FindObjectOfType<DialogManager>().StartDialog(this);

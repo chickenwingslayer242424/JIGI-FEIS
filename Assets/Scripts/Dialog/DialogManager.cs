@@ -66,7 +66,7 @@ public class DialogManager : MonoBehaviour
         pcImage.sprite = npc.pcImage; // Setze das PC-Image (kann optional sein, je nach deiner Implementierung)
 
         npcNameText.text = npc.npcName; // Setze den NPC-Namen
-        pcNameText.text = "sexy chick"; // Setze den Namen des Spielers (kann je nach Bedarf variieren)
+        pcNameText.text = "Valery"; // Setze den Namen des Spielers (kann je nach Bedarf variieren)
 
         isDialogActive = true; // Setze den Dialogstatus auf aktiv
         hasDrinkSpawned = false; // Zurücksetzen der Drink-Spawn-Variable

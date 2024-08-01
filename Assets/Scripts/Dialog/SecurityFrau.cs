@@ -17,7 +17,7 @@ public class SecurityFrau : NPC
             gameManager.RemoveItemForNPC();
             initialDialogLines = new string[] { "Thanks sis, finally.", "Sorry for beeing so rough.",  "You know how crowded it can get here sometimes." };
             playerQuestions1 = new string[] { "Have you seen my love?" };
-            npcResponses1 = new string[] { "Oh, sweetie.","I haven't seen him like you for quite some time, and that won't change." };
+            npcResponses1 = new string[] { "Oh, sweetie.","I haven't seen mine like you for quite some time, and that won't change." };
 
             // Deaktiviere das GameObject
             if (objectToDeactivate != null)

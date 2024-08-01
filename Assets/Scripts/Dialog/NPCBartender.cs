@@ -42,7 +42,7 @@ public class NPC : MonoBehaviour
         {
             initialDialogLines = new string[] { "You look very stressed.", "Let me guess, you're looking for someone?" }; //spielt diesesn dialog nur 1x ab
             playerQuestions1 = new string[] { "Yes, I am looking for my love. Did you see them?" };
-            npcResponses1 = new string[] { "You should grab one of my very special drinks. They will guide you the right way." };
+            npcResponses1 = new string[] { "You should grab one of my very special drinks. It will guide you the right way." };
             hasSpokenToPlayer = true;
             KnockDrink1.SetActive(true);
             KnockDrink2.SetActive(true);
@@ -65,7 +65,7 @@ public class NPC : MonoBehaviour
                 hasReceivedItem = true;
 
 
-                initialDialogLines = new string[] { "Oh my, you scared me, Bertha!", "Where were you?","Thank you, total stranger I've never seen before.", "Here, now you can make special drinks just like me.", "You can't take it with you, just put in two ingredients and I can mix it up for ya." };
+                initialDialogLines = new string[] { "Oh my, you scared me, Bertha!", "Where were you?","Thank you, total stranger I've never seen before.", "Here, now you can make special drinks just like me.", "You can't take it with you, so just put in two ingredients and I can mix it up for ya." };
                 playerQuestions1 = new string[] { "Do you know how to get the key to the wedding chapel?" };
                 npcResponses1 = new string[] { "Well, I know that the chapel keys are kept by a gang member at the VIP-Club." };
 
@@ -80,7 +80,7 @@ public class NPC : MonoBehaviour
                 Debug.Log("Required item is not selected.");
                 initialDialogLines = new string[] { "O nourrrrrrr, I can’t do this anymore.", "My poor snakey Bertha…", "...she’s gone...", "I can’t find her.", "If someone brings Bertha back to me, I would let them use my special cocktail shaker." };
                 playerQuestions1 = new string[] { "Hmmmmm" };
-                npcResponses1 = new string[] { "She always escapes me when she sees food....." };
+                npcResponses1 = new string[] { "She must be hungry by now....." };
             }
         }
 

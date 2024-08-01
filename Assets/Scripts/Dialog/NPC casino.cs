@@ -15,7 +15,7 @@ public class NewNPC : NPC
         {
             initialDialogLines = new string[] { "Thank you!", "At last, the lady's oppression has come to an end.", "Here... be careful in there. I can’t go there by myself anymore.", "There's a really disgusting creature on the loose. It's horrible!" };
             playerQuestions1 = new string[] { "Aight but do you know how I can find my lover?" };
-            npcResponses1 = new string[] { "Hm, one of the gangsters is in the wedding chapel marrying his Gem", "Maybe he can help you, but you can only get into the chapel with a key.", "Because it's a special event.", "I think the barkeeper has the keys." };
+            npcResponses1 = new string[] { "Hm, one of the gangsters is in the wedding chapel marrying his chick", "Maybe he can help you, but you can only get into the chapel with a key.", "Because it's a special event.", "I think the barkeeper has the keys." };
             playerQuestions2 = new string[] { "They’re probably in the basement with the gangsters." };
             npcResponses2 = new string[] { "You'll need to find a way to get past them. Maybe someone in the area knows a secret passage." };
 
@@ -41,7 +41,7 @@ public class NewNPC : NPC
 
                     initialDialogLines = new string[] { "Thank you!", "At last, the lady's oppression has come to an end.", "Here... be careful in there. I can’t go there by myself anymore.", "There's a really disgusting creature on the loose. It's horrible!" };
                     playerQuestions1 = new string[] { "Aight but do you know how I can find my lover?" };
-                    npcResponses1 = new string[] { "Hm, one of the gangsters is in the wedding chapel marrying his Gem", "Maybe he can help you, but you can only get into the chapel with a key.", "Because it's a special event.", "I think the barkeeper has the keys." };
+                    npcResponses1 = new string[] { "Hm, one of the gangsters is in the wedding chapel marrying his chick", "Maybe he can help you, but you can only get into the chapel with a key.", "Because it's a special event.", "I think the barkeeper has the keys." };
                     playerQuestions2 = new string[] { "They’re probably in the basement with the gangsters." };
                     npcResponses2 = new string[] { "You'll need to find a way to get past them. Maybe someone in the area knows a secret passage." };
                     FindObjectOfType<GameManager>().UpdateEquipmentCanvas();
