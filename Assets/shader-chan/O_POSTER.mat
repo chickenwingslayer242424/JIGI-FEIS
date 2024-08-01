@@ -43,7 +43,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _istOutlineon: 0
-    - _outline_thiccccc: 1
+    - _outline_thiccccc: 3
     - _unsichtbar: 0
     m_Colors:
     - _TextureSize: {r: 198, g: 280, b: 0, a: 0}
