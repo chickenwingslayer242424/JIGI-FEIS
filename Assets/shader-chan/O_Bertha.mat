@@ -24,13 +24,15 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: cce872cad04b6ed42877a7a2848f9b94, type: 3}
+        m_Texture: {fileID: 2800000, guid: ecdf44ef49619da4b8a0b404ab100705, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _istOutlineon: 0
+    - _outline_thiccccc: 15
     m_Colors:
-    - _TextureSize: {r: 600, g: 600, b: 0, a: 0}
+    - _TextureSize: {r: 300, g: 300, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2399207602613946082
 MonoBehaviour:

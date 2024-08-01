@@ -30,7 +30,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _istOutlineon: 0
-    - _outline_thiccccc: 9
+    - _outline_thiccccc: 5
     m_Colors:
     - _TextureSize: {r: 1074, g: 2048, b: 0, a: 0}
   m_BuildTextureStacks: []
