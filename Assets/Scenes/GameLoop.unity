@@ -10743,7 +10743,7 @@ MonoBehaviour:
   hasReceivedItem: 0
   npcSprite: {fileID: 21300000, guid: a389fcd01e430904abc027c4a81d81e5, type: 3}
   pcImage: {fileID: 21300000, guid: 6221483bf85b17045b0358c0ac579305, type: 3}
-  npcName: Georgia
+  npcName: Sandy
   objectToSpawn: {fileID: 0}
   requestedItem: {fileID: 0}
   Shaker1: {fileID: 0}
