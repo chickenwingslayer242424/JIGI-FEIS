@@ -36848,7 +36848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b375b956a2182c24caa23fd22b10d5f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
+  moveSpeed: 10
   moveAccuracy: 0.15
   positionDifference: {x: 0, y: 0}
   player: {fileID: 1216800213}
